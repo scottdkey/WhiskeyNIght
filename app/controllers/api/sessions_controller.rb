@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Api::SessionsController < ApplicationController
+  before_action :set_category, only: [:show, :update, :destroy]
   def index
     render json: Session.all
   end
