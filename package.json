@@ -1,8 +1,8 @@
 {
-  "dependencies": {
-    "axios": "^0.19.2",
-    "bootstrap": "^4.5.0",
-    "react-bootstrap": "^1.0.1",
-    "react-datepicker": "^2.15.0"
-  }
+  
+"scripts": {
+  "build": "cd client && npm install --only=dev && npm install && npm run build && cd ..",
+  "deploy": "cp -a client/build/. public/",
+  "heroku-postbuild": "npm run build && npm run deploy && echo 'Client Built'"
+}
 }
