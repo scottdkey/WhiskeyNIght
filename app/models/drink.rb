@@ -1,2 +1,3 @@
-class Drink < ApplicationRecord
-end
+# frozen_string_literal: true
+
+class Drink < ApplicationRecord; end

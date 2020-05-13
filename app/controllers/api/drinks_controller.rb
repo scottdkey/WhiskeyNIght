@@ -1,2 +1,3 @@
-class Api::DrinksController < ApplicationController
-end
+# frozen_string_literal: true
+
+class Api::DrinksController < ApplicationController; end

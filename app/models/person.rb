@@ -1,2 +1,3 @@
-class Person < ApplicationRecord
-end
+# frozen_string_literal: true
+
+class Person < ApplicationRecord; end

@@ -1,2 +1,3 @@
-class Api::PeopleController < ApplicationController
-end
+# frozen_string_literal: true
+
+class Api::PeopleController < ApplicationController; end

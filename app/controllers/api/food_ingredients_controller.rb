@@ -1,2 +1,3 @@
-class Api::FoodIngredientsController < ApplicationController
-end
+# frozen_string_literal: true
+
+class Api::FoodIngredientsController < ApplicationController; end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::SessionsController < ApplicationController
   def index
     render json: Session.all
@@ -21,7 +23,6 @@ class Api::SessionsController < ApplicationController
     end
   end
 
-
   def destroy
     @session.destroy
   end
@@ -35,5 +36,4 @@ class Api::SessionsController < ApplicationController
   def set_session
     @session = Session.find(params[:id])
   end
-
 end
