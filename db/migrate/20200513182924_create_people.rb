@@ -3,6 +3,7 @@ class CreatePeople < ActiveRecord::Migration[6.0]
     create_table :people do |t|
       t.string :name
       t.boolean :going
+      t.bigint "session_id", null: false
 
       t.timestamps
     end
