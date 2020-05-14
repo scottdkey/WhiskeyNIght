@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Api::SessionTest < ActiveSupport::TestCase
+class SessionTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -16,9 +16,8 @@ const Attendence = ({ id }) => {
     const nameArr = names.split(",");
     nameArr.forEach(name =>
       axios
-        .post(`/api/attendees`, {
-          api_attendee: { name, going: true, api_session_id: id }
-        })
+        .post(`/api/sessions/${id}/attendees`, {name, going: true}
+        )
         .then(res => {
           setNames("");
           toggleShow()
@@ -37,7 +36,7 @@ const Attendence = ({ id }) => {
 
   useEffect(() => {
     axios
-      .get("/api/attendees")
+      .get(`/api/sessions/${id}/attendees`)
       .then(res => setAttending(res.data))
       .catch(e => console.log(e));
   }, [show]);

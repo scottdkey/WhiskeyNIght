@@ -1,51 +1,50 @@
+# frozen_string_literal: true
+
 class Api::AttendeesController < ApplicationController
-  before_action :set_api_attendee, only: [:show, :update, :destroy]
+  before_action :set_session
+  before_action :set_attendee, only: %i[show update destroy]
 
-  # GET /api/attendees
   def index
-    @api_attendees = Api::Attendee.all
-
-    render json: @api_attendees
+    render json: @session.attendees.all
   end
 
-  # GET /api/attendees/1
   def show
-    render json: @api_attendee
+    render json: @attendee
   end
 
-  # POST /api/attendees
   def create
-    @api_attendee = Api::Attendee.new(api_attendee_params)
+    attendee = @session.attendees.new(attendee_params)
 
-    if @api_attendee.save
-      render json: @api_attendee, status: :created, location: @api_attendee
+    if attendee.save
+      render json: attendee
     else
-      render json: @api_attendee.errors, status: :unprocessable_entity
+      render json: attendee.errors, status: 422
     end
   end
 
-  # PATCH/PUT /api/attendees/1
   def update
-    if @api_attendee.update(api_attendee_params)
-      render json: @api_attendee
+    if @attendee.update(attendee_params)
+      render json: @attendee
     else
-      render json: @api_attendee.errors, status: :unprocessable_entity
+      render json: attendee.errors, status: 423
     end
   end
 
-  # DELETE /api/attendees/1
   def destroy
-    @api_attendee.destroy
+    @attendee.destroy
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_api_attendee
-      @api_attendee = Api::Attendee.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def api_attendee_params
-      params.require(:api_attendee).permit(:name, :going, :api_session_id)
-    end
+  def attendee_params
+    params.require(:attendee).permit(:name, :going)
+  end
+
+  def set_attendee
+    @attendee = @session.attendee.find(params[:id])
+  end
+
+  def set_session
+    @session = Session.find(params[:session_id])
+  end
 end
