@@ -11,10 +11,9 @@ const DeleteModal = ({ deleteItemName, deleteFunction }) => {
   return (
     <>
       <Button variant="primary" onClick={toggleShow}>
-        Delete
+        Delete {deleteItemName}
       </Button>
       <Modal show={show} onHide={toggleShow}>
-        <Modal.Dialog>
           <Modal.Header closeButton>
             <Modal.Title>Delete Confirmation</Modal.Title>
           </Modal.Header>
@@ -24,12 +23,11 @@ const DeleteModal = ({ deleteItemName, deleteFunction }) => {
           </Modal.Body>
 
           <Modal.Footer>
-            <Button variant="secondary">Close</Button>
+            <Button variant="secondary" onClick={toggleShow}>Cancel</Button>
             <Button variant="primary" onClick={deleteFunction}>
               Delete
             </Button>
           </Modal.Footer>
-        </Modal.Dialog>
       </Modal>
     </>
   );
