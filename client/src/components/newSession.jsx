@@ -31,7 +31,7 @@ const Session = (props) => {
       .post("api/sessions", { host, date })
       .then(res => {
         console.log(res)
-        props.setSession({id: res.data.id, date, host})
+        props.setSession({id: res.data.id, date: res.data.date, host})
         setDate(new Date());
         setHost("");
         setOpenModal(false);

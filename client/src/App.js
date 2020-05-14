@@ -10,17 +10,16 @@ function App() {
     return (
       <>
         <p>now in session</p>
+        <p>{session.date}</p>
+        <p>{session.host}</p>
       </>
     );
   };
   useEffect(() => {
-    console.log("use effect active")
     axios
       .get("api/sessions")
       .then(res => {
-        console.log(res)
         const session = [...res.data].pop();
-        console.log(session)
         setSession(session);
       })
       .catch(e => console.log(e));
