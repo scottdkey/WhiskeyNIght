@@ -29,7 +29,7 @@ const Session = props => {
 
   const handleSubmit = e => {
     axios
-      .post("api/sessions", { host, date })
+      .post("api/sessions", {api_session: { host, date }})
       .then(res => {
         console.log(res);
         props.setSession({ id: res.data.id, date: res.data.date, host });

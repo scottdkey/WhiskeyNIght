@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,51 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_200_513_183_728) do
+ActiveRecord::Schema.define(version: 2020_05_14_222910) do
+
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'drink_ingredients', force: :cascade do |t|
-    t.string 'name'
-    t.bigint 'drink_id', null: false
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
+  create_table "api_attendees", force: :cascade do |t|
+    t.string "name"
+    t.boolean "going"
+    t.bigint "api_session_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["api_session_id"], name: "index_api_attendees_on_api_session_id"
   end
 
-  create_table 'drinks', force: :cascade do |t|
-    t.string 'label'
-    t.bigint 'session_id', null: false
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
+  create_table "api_sessions", force: :cascade do |t|
+    t.datetime "date"
+    t.string "host"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table 'food_ingredients', force: :cascade do |t|
-    t.string 'label'
-    t.bigint 'person_id', null: false
-    t.bigint 'food_id', null: false
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
-  end
-
-  create_table 'foods', force: :cascade do |t|
-    t.string 'label'
-    t.bigint 'session_id', null: false
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
-  end
-
-  create_table 'people', force: :cascade do |t|
-    t.string 'name'
-    t.boolean 'going'
-    t.bigint 'session_id', null: false
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
-  end
-
-  create_table 'sessions', force: :cascade do |t|
-    t.datetime 'date'
-    t.string 'host'
-    t.datetime 'created_at', precision: 6, null: false
-    t.datetime 'updated_at', precision: 6, null: false
-  end
+  add_foreign_key "api_attendees", "api_sessions"
 end

@@ -1,8 +1,6 @@
-# frozen_string_literal: true
-
 require 'test_helper'
 
-class PersonTest < ActiveSupport::TestCase
+class Api::SessionTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

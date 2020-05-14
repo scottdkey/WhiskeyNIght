@@ -1,9 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  date: 2020-05-13 12:40:28
-  host: MyString
+  name: MyString
+  going: false
+  api_session: one
 
 two:
-  date: 2020-05-13 12:40:28
-  host: MyString
+  name: MyString
+  going: false
+  api_session: two

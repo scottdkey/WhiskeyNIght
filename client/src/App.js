@@ -24,8 +24,8 @@ function App() {
         <p>{session.host}</p>
         <div>{pickedDate.toDateString()}</div>
         <div>{pickedDate.toLocaleTimeString()} </div>
-        
-        <Attendence />
+
+        <Attendence id={session.id}/>
       </>
     );
   };
