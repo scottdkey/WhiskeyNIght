@@ -3,13 +3,17 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Dropdown from "react-bootstrap/Dropdown";
 import DatePicker from "react-datepicker";
+import TimePicker from "react-time-picker";
+import Datetime from "react-datetime";
+import moment from "moment";
 import axios from "axios";
 import "react-datepicker/dist/react-datepicker.css";
 
-const Session = (props) => {
+const Session = props => {
   const [openModal, setOpenModal] = useState(false);
   const [host, setHost] = useState("");
   const [date, setDate] = useState(new Date());
+  const [time, setTime] = useState("");
 
   const toggleModal = () => {
     setOpenModal(!openModal);
@@ -23,22 +27,23 @@ const Session = (props) => {
       })
       .catch(e => console.log(e));
 
-    props.setSession()
+    props.setSession();
   };
 
   const handleSubmit = e => {
+    const completeDate = new Date(`${date} ${time}`);
+    console.log(completeDate);
     axios
-      .post("api/sessions", { host, date })
+      .post("api/sessions", { host, date: completeDate })
       .then(res => {
-        console.log(res)
-        props.setSession({id: res.data.id, date: res.data.date, host})
+        console.log(res);
+        props.setSession({ id: res.data.id, date: res.data.date, host });
         setDate(new Date());
         setHost("");
         setOpenModal(false);
       })
       .catch(e => console.log(e));
   };
-  
 
   return (
     <>
@@ -76,11 +81,7 @@ const Session = (props) => {
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-          <DatePicker
-            selected={date}
-            onChange={date => setDate(date)}
-            fixedHeight={true}
-          />
+          <Datetime onChange={date => setDate(date)} value={date} />
         </Modal.Body>
 
         <Modal.Footer>
