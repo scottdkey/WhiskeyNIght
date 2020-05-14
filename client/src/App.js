@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import NewSession from "./components/newSession";
 import axios from "axios";
-import moment from "moment";
-import "moment-timezone";
+import Attendence from "./components/attendence";
 
 function App() {
   const [session, setSession] = useState({});
@@ -19,12 +18,13 @@ function App() {
   }, []);
 
   const CurrentSession = () => {
-    console.log(session)
+    const pickedDate = new Date(session.date)
     return (
       <>
-        <p>now in session</p>
-        <div>{session.date}</div>
         <p>{session.host}</p>
+        <div>{pickedDate.toDateString()}</div>
+        <div>{pickedDate.toLocaleTimeString()} </div>
+        <Attendence />
       </>
     );
   };

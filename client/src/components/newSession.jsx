@@ -2,18 +2,15 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Dropdown from "react-bootstrap/Dropdown";
-import DatePicker from "react-datepicker";
-import TimePicker from "react-time-picker";
 import Datetime from "react-datetime";
-import moment from "moment";
 import axios from "axios";
+import DeleteModal from './deleteConfirmation'
 import "react-datepicker/dist/react-datepicker.css";
 
 const Session = props => {
   const [openModal, setOpenModal] = useState(false);
   const [host, setHost] = useState("");
   const [date, setDate] = useState(new Date());
-  const [time, setTime] = useState("");
 
   const toggleModal = () => {
     setOpenModal(!openModal);
@@ -31,10 +28,8 @@ const Session = props => {
   };
 
   const handleSubmit = e => {
-    const completeDate = new Date(`${date} ${time}`);
-    console.log(completeDate);
     axios
-      .post("api/sessions", { host, date: completeDate })
+      .post("api/sessions", { host, date })
       .then(res => {
         console.log(res);
         props.setSession({ id: res.data.id, date: res.data.date, host });
@@ -52,7 +47,12 @@ const Session = props => {
           Create WN
         </Button>
       ) : (
-        <Button onClick={deleteSession}>Delete Session</Button>
+        <DeleteModal
+          deleteItemName="This Session"
+          deleteFunction={deleteSession}
+        >
+          Delete Session
+        </DeleteModal>
       )}
 
       <Modal show={openModal} animation={false}>
