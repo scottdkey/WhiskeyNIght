@@ -35,11 +35,15 @@ const Attendence = ({ id }) => {
     attending.map(attendee => <div key={attendee.id}>{attendee.name}</div>);
 
   useEffect(() => {
+    if(id === undefined) {
+      //do nothing
+    }else {
     axios
       .get(`/api/sessions/${id}/attendees`)
       .then(res => setAttending(res.data))
       .catch(e => console.log(e));
-  }, [show]);
+    }
+  }, [show, id]);
   return (
     <>
       {attendenceList()}

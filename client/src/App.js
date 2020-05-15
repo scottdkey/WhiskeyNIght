@@ -3,6 +3,7 @@ import "./App.css";
 import NewSession from "./components/newSession";
 import axios from "axios";
 import Attendence from "./components/attendence";
+import Food from "./components/food";
 
 function App() {
   const [session, setSession] = useState({});
@@ -26,6 +27,7 @@ function App() {
         <div>{pickedDate.toLocaleTimeString()} </div>
 
         <Attendence id={session.id}/>
+        <Food id={session.id}/>
       </>
     );
   };
