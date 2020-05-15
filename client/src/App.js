@@ -3,7 +3,8 @@ import "./App.css";
 import NewSession from "./components/newSession";
 import axios from "axios";
 import Attendence from "./components/attendence";
-import Food from "./components/food";
+import ItemList from "./components/itemList";
+import Form from "react-bootstrap/Form";
 
 function App() {
   const [session, setSession] = useState({});
@@ -19,15 +20,19 @@ function App() {
   }, []);
 
   const CurrentSession = () => {
-    const pickedDate = new Date(session.date)
+    const pickedDate = new Date(session.date);
     return (
       <>
         <p>{session.host}</p>
         <div>{pickedDate.toDateString()}</div>
         <div>{pickedDate.toLocaleTimeString()} </div>
 
-        <Attendence id={session.id}/>
-        <Food id={session.id}/>
+        <Attendence id={session.id} />
+        <Form>
+          <Form.Group style={styles.foodForm}>
+            <ItemList id={session.id} listType="food" />
+          </Form.Group>
+        </Form>
       </>
     );
   };
@@ -36,9 +41,15 @@ function App() {
     <div className="App">
       <h1>SuperFun Whiskey Night</h1>
       <NewSession session={session} setSession={setSession} />
-      {session === undefined ? null : <CurrentSession/>}
+      {session === undefined ? null : <CurrentSession />}
     </div>
   );
 }
 
 export default App;
+
+const styles = {
+  foodForm: {
+    width: "50%"
+  }
+}
