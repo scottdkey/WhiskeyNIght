@@ -12,10 +12,10 @@ const ItemList = ({ id, listType }) => {
   const [openModal, setOpenModal] = useState(false);
 
   const handleSubmit = () => {
+    const item = { label, foodstuff: listType };
     axios
-      .post(`/api/sessions/${id}/items`, { label })
+      .post(`/api/sessions/${id}/items`, item)
       .then(res => {
-        console.log(res.data.id);
         submitIngredients(res.data.id);
       })
       .catch(e => console.log(e));
@@ -109,43 +109,28 @@ const ItemList = ({ id, listType }) => {
         .then(res => setItems(res.data))
         .catch(e => console.log(e));
     }
-  }, [id, openModal]);
-  const ItemIngredients = ({ id }) => {
-    const ingredients = [];
-    axios
-      .get(`/api/items/${id}/ingredients`)
-      .then(res => {
-        ingredients.push(...res.data);
-      })
-      .catch(e => console.log(e));
+  }, [id]);
 
 
-    return (
-      <>
-        {ingredients.map(i => {
-          console.log(i)
-          return (
-          <>
-            <h3>{i.name}</h3>
-            <p>Complete: {i.complete}</p>
-            <p>Assigned: {i.assigned}</p>
-          </>
-        )})}
-      </>
-    );
-  };
 
   const itemsRender = () => {
-    return items.map((item, index) => {
-      return (
-        <div key={item + index}>
-          <Form.Group>
-            {item.label}
-            <ItemIngredients id={item.id} />
-          </Form.Group>
-        </div>
-      );
-    });
+    return items
+      .filter(item => {
+        //filter for matching marker
+        if (item.foodstuff === listType) {
+          return item;
+        }
+      })
+      .map((item, index) => {
+        //render each of those items
+        return (
+          <div key={item + index}>
+            <Form.Group>
+              {item.label}
+            </Form.Group>
+          </div>
+        );
+      });
   };
 
   return (

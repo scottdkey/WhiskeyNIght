@@ -32,6 +32,9 @@ function App() {
           <Form.Group style={styles.foodForm}>
             <ItemList id={session.id} listType="food" />
           </Form.Group>
+          <Form.Group style={styles.foodForm}>
+            <ItemList id={session.id} listType="drinks" />
+          </Form.Group>
         </Form>
       </>
     );
@@ -50,6 +53,7 @@ export default App;
 
 const styles = {
   foodForm: {
-    width: "50%"
+    width: "50%",
+    display: "inline-block"
   }
 }

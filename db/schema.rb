@@ -15,22 +15,6 @@ ActiveRecord::Schema.define(version: 2020_05_15_195003) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "api_attendees", force: :cascade do |t|
-    t.string "name"
-    t.boolean "going"
-    t.bigint "api_session_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["api_session_id"], name: "index_api_attendees_on_api_session_id"
-  end
-
-  create_table "api_sessions", force: :cascade do |t|
-    t.datetime "date"
-    t.string "host"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "attendees", force: :cascade do |t|
     t.string "name"
     t.boolean "going"
@@ -53,7 +37,7 @@ ActiveRecord::Schema.define(version: 2020_05_15_195003) do
   create_table "items", force: :cascade do |t|
     t.string "label"
     t.string "assigned"
-    t.string "type"
+    t.string "foodstuff"
     t.bigint "session_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -67,7 +51,6 @@ ActiveRecord::Schema.define(version: 2020_05_15_195003) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "api_attendees", "api_sessions"
   add_foreign_key "attendees", "sessions"
   add_foreign_key "ingredients", "items"
   add_foreign_key "items", "sessions"
