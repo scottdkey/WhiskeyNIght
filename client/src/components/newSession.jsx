@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Datetime from "react-datetime";
 import axios from "axios";
 import DeleteModal from "./deleteConfirmation";
 import Flatpickr from "react-flatpickr";
@@ -8,13 +7,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./newSession.scss";
 
 const Session = props => {
-  // const [openModal, setOpenModal] = useState(true);
   const [host, setHost] = useState(values.te);
   const [date, setDate] = useState(new Date());
 
-  // const toggleModal = () => {
-  //   setOpenModal(!openModal);
-  // };
 
   const deleteSession = () => {
     axios
