@@ -1,0 +1,65 @@
+.new-session {
+  position: absolute;
+  z-index: 4;
+  background-color: white;
+  border-radius: 10px;
+  text-align: center;
+  margin: auto;
+  width: 100%;
+  max-width: 40%;
+  top: 15%;
+  left: 30%;
+  box-shadow: 0.5px 3px 15px;
+  height: 400px;
+}
+.header {
+  border-bottom: 3px solid gold;
+  width: 80%;
+  margin: auto;
+}
+
+
+.button-container {
+  height: 4em;
+  border-radius: 15px;
+  width: 50%;
+  margin: auto;
+  box-shadow: 0.5px 0.5px 10px;
+  position: relative;
+  top: 100px;
+  border-radius: 15px;
+
+  .leftmost {
+    height: 100%;
+    width: 50%;
+    border-radius: 15px 0px 0px 15px !important;
+    font-weight: 900;
+    border: none;
+    outline: none;
+  }
+  .active{
+    background-color: rgb(139,84,255	);
+    color: white;
+  }
+  .rightmost {
+    height: 100%;
+    width: 50%;
+    border-radius: 0px 15px 15px 0px !important;
+    font-weight: 900;
+    border: none;
+    outline: none;
+  }
+}
+
+#submit {
+  border: none;
+  color: white;
+  background-color: rgb(203, 158, 40);
+  border-radius: 15px;
+  height: 50px;
+  width: 200px;
+  font-weight: bold;
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+}

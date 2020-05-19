@@ -1,20 +1,20 @@
 import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import Dropdown from "react-bootstrap/Dropdown";
 import Datetime from "react-datetime";
 import axios from "axios";
-import DeleteModal from './deleteConfirmation'
+import DeleteModal from "./deleteConfirmation";
+import Flatpickr from "react-flatpickr";
+import "flatpickr/dist/themes/material_green.css";
 import "react-datepicker/dist/react-datepicker.css";
+import "./newSession.scss";
 
 const Session = props => {
-  const [openModal, setOpenModal] = useState(false);
-  const [host, setHost] = useState("");
+  // const [openModal, setOpenModal] = useState(true);
+  const [host, setHost] = useState(values.te);
   const [date, setDate] = useState(new Date());
 
-  const toggleModal = () => {
-    setOpenModal(!openModal);
-  };
+  // const toggleModal = () => {
+  //   setOpenModal(!openModal);
+  // };
 
   const deleteSession = () => {
     axios
@@ -29,24 +29,20 @@ const Session = props => {
 
   const handleSubmit = e => {
     axios
-      .post("api/sessions", {host, date})
+      .post("api/sessions", { host, date })
       .then(res => {
         console.log(res);
         props.setSession({ id: res.data.id, date: res.data.date, host });
         setDate(new Date());
         setHost("");
-        setOpenModal(false);
+        // setOpenModal(false);
       })
       .catch(e => console.log(e));
   };
 
   return (
-    <>
-      {props.session === undefined ? (
-        <Button variant="outline-success" onClick={toggleModal}>
-          Create WN
-        </Button>
-      ) : (
+    <div className="new-session">
+      {props.session === undefined ? null : (
         <DeleteModal
           deleteItemName="This Session"
           deleteFunction={deleteSession}
@@ -55,45 +51,42 @@ const Session = props => {
         </DeleteModal>
       )}
 
-      <Modal show={openModal} animation={false}>
-        <Modal.Header closeButton onClick={toggleModal}>
-          <Modal.Title>Create New Event</Modal.Title>
-        </Modal.Header>
+      <div>
+        <div className="header">
+          <h1>Create New Whiskey Night</h1>
+        </div>
+        <Flatpickr
+          data-enable-time
+          value={date}
+          onChange={date => {
+            setDate(date);
+          }}
+        />
+        {/* <Datetime onChange={date => setDate(date)} value={date} className="datetime"/> */}
+        <div className="button-container">
+          <button
+            className={`leftmost ${host === values.te ? "active" : ""}`}
+            active={values.te}
+            onClick={e => setHost(e.target.name)}
+            name={values.te}
+          >
+            {values.te}
+          </button>
+          <button
+            className={`rightmost ${host === values.kj ? "active" : ""}`}
+            isactive={host === values.kj ? values.kj : null}
+            onClick={e => setHost(e.target.name)}
+            name={values.kj}
+          >
+            {values.kj}
+          </button>
+        </div>
 
-        <Modal.Body>
-          <Dropdown>
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
-              {host === "" ? "Choose Location" : host}
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              <Dropdown.Item
-                onClick={e => setHost(e.target.name)}
-                name={values.te}
-              >
-                {values.te}
-              </Dropdown.Item>
-              <Dropdown.Item
-                onClick={e => setHost(e.target.name)}
-                name={values.kj}
-              >
-                {values.kj}
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-          <Datetime onChange={date => setDate(date)} value={date} />
-        </Modal.Body>
-
-        <Modal.Footer>
-          <Button variant="secondary" onClick={toggleModal}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleSubmit}>
-            Save changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </>
+        <button onClick={handleSubmit} className="button" id="submit">
+          Create New
+        </button>
+      </div>
+    </div>
   );
 };
 

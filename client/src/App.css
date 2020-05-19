@@ -1,38 +1,142 @@
+* {
+  outline: none;
+}
+
 .App {
-  text-align: center;
+  background-color: white;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.no-session {
+  width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#right-triangle {
+  float: right;
+  position: absolute;
+  bottom: 0;
+  shape-outside: polygon(0 70%, 100% 5%, 100% 100%, 0% 100%);
+  clip-path: polygon(0 72%, 100% 41%, 100% 100%, 0% 100%);
+  background: rgb(139, 84, 255);
+  height: 100%;
+  width: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.diamond {
+  background: rgb(214, 194, 255);
+  /* border: solid 2em rgb(214, 194, 255); */
+  /* float: left; */
+  position: absolute;
+  transform: rotate(45deg);
+  shape-outside: inset() padding-box;
+  clip-path: inset() padding-box;
+  padding: 2em;
+  width: 15em;
+  height: 15em;
 }
 
-.App-link {
-  color: #61dafb;
+.small {
+  width: 50px;
+  height: 50px;
+  z-index: 3;
+  background-color: rgb(255, 246, 223);
+}
+.medium-small{
+  width: 70px;
+  height: 70px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.medium {
+  width: 125px;
+  height: 125px;
+  z-index: 2;
+}
+.medium-large{
+  background-color: rgb(255, 246, 223);
+   width: 150px;
+  height: 150px;
+  z-index: 2;
+}
+
+.large {
+  width: 200px;
+  height: 200px;
+  z-index: 1;
+}
+
+.left{
+  float: left;
+  position: absolute;
+  left: 8%;
+  top: 20%;
+}
+.right{
+  float: right;
+  position: relative;
+  right: 17%;
+  top: 200px;
+}
+
+#boxGroupLeft {
+  position: absolute;
+  left: 100px;
+  top: 100px
+}
+
+#one{
+  left: 80px;
+  top: 80px
+}
+#two {
+  position: relative;
+  top: 200px
+}
+#three{
+  position: relative;
+}
+#four {
+  top: 150px;
+  left: 350px
+}
+#five {
+  left: 270px;
+  top: 70px
+}
+#six{
+  right: 375px;
+  top: 100px;
+}
+#seven{
+  right: 535px;
+  bottom: -525px;
+}
+#eight{
+  top: 320px;
+  right: 340px;
+}
+#nine{
+  right: -75px;
+  top: 180px
+}
+#ten { 
+  background-color: rgb(255, 246, 223);
+  right: -20px;
+  top:100px;
+  z-index: 0;
+
+}
+#eleven{
+  right: -50px
+}
+#twelve{
+  right: 175px;
+
+  width: 100px;
+  height: 100px;
+}
+
+
+
+#colors {
+  background-color: rgb(214, 194, 255);
+  background-color: rgb(255, 246, 223);
 }
