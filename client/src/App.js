@@ -21,10 +21,14 @@ function App() {
   return (
     <div className="App">
       {session === undefined ? (
-        <NewSession session={session} setSession={setSession} />
+        <NewSession sesison={session} setSession={setSession} />
       ) : null}
 
-      {session === undefined ? NoSession() : CurrentSession(session)}
+      {session === undefined ? (
+        <NoSession />
+      ) : (
+        <CurrentSession session={session} setSession={setSession} />
+      )}
     </div>
   );
 }

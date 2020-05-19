@@ -4,6 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import './buttonstyles.scss'
 
 const Attendence = ({ id }) => {
   const [show, setShow] = useState(false);
@@ -47,7 +48,7 @@ const Attendence = ({ id }) => {
   return (
     <>
       {attendenceList()}
-      <Button onClick={toggleShow}>GOING</Button>
+      <button className="bttn rsvp" onClick={toggleShow}>RSVP</button>
       <Modal show={show} onHide={toggleShow}>
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>

@@ -1,6 +1,7 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button"
+import "./buttonstyles.scss"
 import { useState } from "react";
 
 const DeleteModal = ({ deleteItemName, deleteFunction }) => {
@@ -10,9 +11,9 @@ const DeleteModal = ({ deleteItemName, deleteFunction }) => {
 
   return (
     <>
-      <Button variant="primary" onClick={toggleShow}>
+      <button className="btn delete" onClick={toggleShow}>
         Delete {deleteItemName}
-      </Button>
+      </button>
       <Modal show={show} onHide={toggleShow}>
           <Modal.Header closeButton>
             <Modal.Title>Delete Confirmation</Modal.Title>

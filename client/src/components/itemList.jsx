@@ -16,6 +16,7 @@ const ItemList = ({ id, listType }) => {
     axios
       .post(`/api/sessions/${id}/items`, item)
       .then(res => {
+        setItems([...items, res.data])
         submitIngredients(res.data.id);
       })
       .catch(e => console.log(e));

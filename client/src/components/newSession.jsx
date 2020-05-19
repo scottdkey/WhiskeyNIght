@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import DeleteModal from "./deleteConfirmation";
 import Flatpickr from "react-flatpickr";
 import "flatpickr/dist/themes/material_green.css";
 import "react-datepicker/dist/react-datepicker.css";
@@ -9,18 +8,6 @@ import "./newSession.scss";
 const Session = props => {
   const [host, setHost] = useState(values.te);
   const [date, setDate] = useState(new Date());
-
-
-  const deleteSession = () => {
-    axios
-      .delete(`/api/sessions/${props.session.id}`)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(e => console.log(e));
-
-    props.setSession();
-  };
 
   const handleSubmit = e => {
     axios
@@ -37,15 +24,6 @@ const Session = props => {
 
   return (
     <div className="new-session">
-      {props.session === undefined ? null : (
-        <DeleteModal
-          deleteItemName="This Session"
-          deleteFunction={deleteSession}
-        >
-          Delete Session
-        </DeleteModal>
-      )}
-
       <div>
         <div className="header">
           <h1>Create New Whiskey Night</h1>

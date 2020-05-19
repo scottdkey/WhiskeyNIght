@@ -1,15 +1,12 @@
-import React from 'react'
-import Attendence from "./attendence";
+import React from "react";
 import ItemList from "./itemList";
 import Form from "react-bootstrap/Form";
-import Header from './Header'
+import Header from "./Header";
 
-const CurrentSession = (session) => {
-
+const CurrentSession = ({session, setSession}) => {
   return (
     <>
-    <Header session={session}/>
-      <Attendence id={session.id} />
+      <Header session={session} setSession={setSession}/>
       <Form>
         <Form.Group style={styles.foodForm}>
           <ItemList id={session.id} listType="food" />
@@ -19,10 +16,10 @@ const CurrentSession = (session) => {
         </Form.Group>
       </Form>
     </>
-  )
+  );
 };
 
-export default CurrentSession
+export default CurrentSession;
 
 const styles = {
   foodForm: {
