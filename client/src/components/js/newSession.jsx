@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Flatpickr from "react-flatpickr";
 import "flatpickr/dist/themes/material_green.css";
-import "react-datepicker/dist/react-datepicker.css";
-import "./newSession.scss";
+import "../scss/newSession.scss";
 
 const Session = props => {
   const [host, setHost] = useState(values.te);

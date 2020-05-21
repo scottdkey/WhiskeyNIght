@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
-import NewSession from "./components/newSession";
+import "../src/components/scss/App.scss";
 import axios from "axios";
-import NoSession from "./components/NoSession";
-import CurrentSession from "./components/CurrentSession";
+import NoSession from "./components/js/NoSession";
+import CurrentSession from "./components/js/CurrentSession";
+import NewSession from "./components/js/newSession";
 
 function App() {
   const [session, setSession] = useState({});

@@ -4,11 +4,12 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import './buttonstyles.scss'
+import "../scss/buttonstyles.scss";
+import "../scss/attendence.scss";
 
-const Attendence = ({ id }) => {
+const Attendence = ({ id, setAttendees}) => {
   const [show, setShow] = useState(false);
-  const [attending, setAttending] = useState([]);
+
   const [names, setNames] = useState("");
 
   const toggleShow = () => setShow(!show);
@@ -17,38 +18,36 @@ const Attendence = ({ id }) => {
     const nameArr = names.split(",");
     nameArr.forEach(name =>
       axios
-        .post(`/api/sessions/${id}/attendees`, {name, going: true}
-        )
+        .post(`/api/sessions/${id}/attendees`, { name, going: true })
         .then(res => {
           setNames("");
-          toggleShow()
+          toggleShow();
           console.log(res);
         })
         .catch(e => console.log(e))
     );
   };
   const handleChange = e => {
-    e.preventDefault()
+    e.preventDefault();
     setNames(e.target.value);
   };
 
-  const attendenceList = () =>
-    attending.map(attendee => <div key={attendee.id}>{attendee.name}</div>);
-
   useEffect(() => {
-    if(id === undefined) {
+    if (id === undefined) {
       //do nothing
-    }else {
-    axios
-      .get(`/api/sessions/${id}/attendees`)
-      .then(res => setAttending(res.data))
-      .catch(e => console.log(e));
+    } else {
+      axios
+        .get(`/api/sessions/${id}/attendees`)
+        .then(res => setAttendees(res.data))
+        .catch(e => console.log(e));
     }
   }, [show, id]);
   return (
     <>
-      {attendenceList()}
-      <button className="bttn rsvp" onClick={toggleShow}>RSVP</button>
+      <button className="bttn rsvp" onClick={toggleShow}>
+        RSVP
+      </button>
+
       <Modal show={show} onHide={toggleShow}>
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>

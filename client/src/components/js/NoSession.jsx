@@ -1,5 +1,5 @@
 import React from 'react'
-import './NoSession.scss'
+import '../scss/NoSession.scss'
 
 const NoSession = () => (
   <div className="no-session">

@@ -115,7 +115,7 @@ const ItemList = ({ id, listType }) => {
 
 
   const itemsRender = () => {
-    return items
+    items
       .filter(item => {
         //filter for matching marker
         if (item.foodstuff === listType) {

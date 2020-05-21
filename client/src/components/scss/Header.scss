@@ -1,0 +1,77 @@
+@import "./App.scss";
+
+.main-header {
+  height: 400px;
+  width: 100%;
+  margin: 0;
+  border-bottom: none;
+  overflow: visible;
+
+}
+.shape {
+  height: 100%;
+  width: 100%;
+  float: left;
+  position: relative;
+  z-index: 0;
+  shape-outside: polygon(0 0, 100% 0, 100% 31%, 0 48%);
+  clip-path:polygon(0 0, 100% 0, 100% 31%, 0 48%);
+  background: $primary-color;
+  overflow: visible;
+}
+
+
+
+.delete-area {
+  position: absolute;
+  z-index: 4;
+  float: right;
+  right: 10px;
+  top: 10px;
+  color: white;
+  width: 200px;
+  font-weight: 500;
+
+}
+.event{
+  z-index: 2;
+  position: absolute;
+  padding-left: 17%;
+  width: 100%;
+  overflow: visible;
+  padding-top: 20px;
+  
+}
+
+#date{
+  font-size: 25px;
+  font-weight: 900;
+  width: 100%;
+}
+
+#host{
+  font-size: 25px;
+  color: $text-color;
+  font-weight: 700;
+}
+
+
+
+#count {
+  font-weight: 600;
+  text-transform: uppercase;
+  color: $text-color;
+  font-size: medium;
+}
+
+#attendees {
+  width: 388px;
+  overflow-wrap: break-word;
+  font-size: 12px;
+  font-weight: 200;
+  opacity: 0.5;
+  color: $text-color;
+  height: 38px;
+  overflow: hidden;
+
+}

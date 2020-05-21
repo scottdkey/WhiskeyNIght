@@ -1,7 +1,9 @@
+@import "./App.scss";
+
 .new-session {
   position: absolute;
   z-index: 4;
-  background-color: white;
+  background-color: $background-color;
   border-radius: 10px;
   text-align: center;
   margin: auto;
@@ -13,7 +15,7 @@
   height: 400px;
 }
 .header {
-  border-bottom: 3px solid gold;
+  border-bottom: 3px solid $bottom-border-color;
   width: 80%;
   margin: auto;
 }
@@ -38,8 +40,8 @@
     outline: none;
   }
   .active{
-    background-color: rgb(139,84,255	);
-    color: white;
+    background-color: $primary-color;
+    color: $text-color;
   }
   .rightmost {
     height: 100%;
@@ -53,8 +55,8 @@
 
 #submit {
   border: none;
-  color: white;
-  background-color: rgb(203, 158, 40);
+  color: $text-color;
+  background-color: $submit-button-color;
   border-radius: 15px;
   height: 50px;
   width: 200px;
