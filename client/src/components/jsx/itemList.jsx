@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
 import axios from "axios";
 import IngredientForm from "./ingredientForm";
+import "../scss/buttonstyles.scss";
+import "../scss/App.scss"
 
 const ItemList = ({ id, listType }) => {
   const [items, setItems] = useState([]);
@@ -11,18 +10,20 @@ const ItemList = ({ id, listType }) => {
   const [ingredients, setIngredients] = useState([]);
   const [openModal, setOpenModal] = useState(false);
 
-  const handleSubmit = () => {
+  const handleSubmit = e => {
+    console.log(e);
+    e.preventDefault();
     const item = { label, foodstuff: listType };
     axios
       .post(`/api/sessions/${id}/items`, item)
       .then(res => {
-        setItems([...items, res.data])
+        setItems([...items, res.data]);
         submitIngredients(res.data.id);
+        //close modal
+        // toggleModal();
       })
       .catch(e => console.log(e));
 
-    //close modal
-    toggleModal();
     //clear the modal info after pushing to Database
     setLabel("");
   };
@@ -37,51 +38,7 @@ const ItemList = ({ id, listType }) => {
     });
   };
 
-  const addItem = () => (
-    <>
-      <Modal.Header closeButton>
-        <Modal.Title>Add {listType}</Modal.Title>
-      </Modal.Header>
-
-      <Modal.Body>
-        <Form>
-          <Form.Label>Name</Form.Label>
-          <Form.Control
-            type="text"
-            name="label"
-            placeholder="babaganoosh or something"
-            value={label}
-            onChange={e => {
-              setLabel(e.target.value);
-            }}
-          />
-          <Form.Label>Ingredients</Form.Label>
-          <Button onClick={addIngredient}>Add Ingredient</Button>
-          {ingredients.map((ingredient, index) => (
-            <IngredientForm
-              key={ingredient + index}
-              ingredient={ingredient}
-              index={index}
-              update={updateIngredients}
-            />
-          ))}
-        </Form>
-      </Modal.Body>
-
-      <Modal.Footer>
-        <Button variant="secondary" onClick={toggleModal}>
-          Close
-        </Button>
-        <Button variant="primary" onClick={handleSubmit}>
-          Save changes
-        </Button>
-      </Modal.Footer>
-    </>
-  );
-
-  const toggleModal = () => {
-    setOpenModal(!openModal);
-  };
+  const toggleModal = () => (setOpenModal(!openModal));
 
   const addIngredient = () => {
     setIngredients([
@@ -112,9 +69,7 @@ const ItemList = ({ id, listType }) => {
     }
   }, [id]);
 
-
-
-  const itemsRender = () => {
+  const itemsRender = () =>
     items
       .filter(item => {
         //filter for matching marker
@@ -124,25 +79,48 @@ const ItemList = ({ id, listType }) => {
       })
       .map((item, index) => {
         //render each of those items
-        return (
-          <div key={item + index}>
-            <Form.Group>
-              {item.label}
-            </Form.Group>
-          </div>
-        );
+        return <div key={item + index}>{item.label}</div>;
       });
-  };
 
   return (
     <>
       <h1>{listType}</h1>
-      <Button onClick={toggleModal}>Add</Button>
-      <Form.Group>{itemsRender()}</Form.Group>
+      <button onClick={toggleModal} className="bttn plus">
+        {String.fromCharCode(65291)}
+      </button>
+      <div>{itemsRender()}</div>
 
-      <Modal show={openModal} onHide={toggleModal}>
-        {addItem()}
-      </Modal>
+      <div className="modal">
+        <div>Add {listType}</div>
+
+        <div id="modal-body">
+          <label>Name</label>
+          <input
+            type="text"
+            placeholder="babaganoosh or something"
+            value={label}
+            onChange={e => {
+              e.preventDefault()
+              setLabel(e.target.value);
+            }}
+          />
+          <label>Ingredients</label>
+          <button onClick={addIngredient}>Add Ingredient</button>
+          {ingredients.map((ingredient, index) => (
+            <IngredientForm
+              key={ingredient + index}
+              ingredient={ingredient}
+              index={index}
+              update={updateIngredients}
+            />
+          ))}
+        </div>
+
+        <div id="modal-footer">
+          <button onClick={toggleModal}>Close</button>
+          <button onClick={handleSubmit}>Save changes</button>
+        </div>
+      </div>
     </>
   );
 };

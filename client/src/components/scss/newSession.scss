@@ -15,7 +15,7 @@
   height: 400px;
 }
 .header {
-  border-bottom: 3px solid $bottom-border-color;
+  border-bottom: 3px solid $accent;
   width: 80%;
   margin: auto;
 }
@@ -56,7 +56,7 @@
 #submit {
   border: none;
   color: $text-color;
-  background-color: $submit-button-color;
+  background-color: $accent;
   border-radius: 15px;
   height: 50px;
   width: 200px;

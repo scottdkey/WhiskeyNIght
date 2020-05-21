@@ -7,7 +7,6 @@
   background-color: transparent;
   font-family: $font-stack;
 }
-
 .rsvp {
   border: 1px;
   z-index: 3;
@@ -23,4 +22,11 @@
   color: $text-color;
   width: 100%;
   z-index: 5;
+}
+.plus {
+  border: none;
+  color: $accent;
+  font-size: 50px;
+  font-weight: 700;
+  fill: $accent;
 }

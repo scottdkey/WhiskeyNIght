@@ -12,7 +12,10 @@ const Attendence = ({ id, setAttendees}) => {
 
   const [names, setNames] = useState("");
 
-  const toggleShow = () => setShow(!show);
+  const toggleShow = (e) => {
+    e.preventDefault()
+    return setShow(!show);
+  };
   const handleSubmit = e => {
     e.preventDefault();
     const nameArr = names.split(",");
@@ -41,7 +44,7 @@ const Attendence = ({ id, setAttendees}) => {
         .then(res => setAttendees(res.data))
         .catch(e => console.log(e));
     }
-  }, [show, id]);
+  }, [show, id, setAttendees]);
   return (
     <>
       <button className="bttn rsvp" onClick={toggleShow}>
