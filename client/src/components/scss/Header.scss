@@ -1,13 +1,19 @@
 @import "./App.scss";
 
 .main-header {
+  position: absolute;
   height: 400px;
   width: 100%;
-  margin: 0;
+  margin: auto;
   border-bottom: none;
   overflow: visible;
-
+  
 }
+.sub-header {
+  padding-left: 15.5%;
+  padding-right: $padding-right;
+}
+
 .shape {
   height: 100%;
   width: 100%;
@@ -16,7 +22,7 @@
   z-index: 0;
   shape-outside: polygon(0 0, 100% 0, 100% 31%, 0 48%);
   clip-path:polygon(0 0, 100% 0, 100% 31%, 0 48%);
-  background: $primary-color;
+  background: $primary;
   overflow: visible;
 }
 
@@ -25,10 +31,12 @@
 .delete-area {
   position: absolute;
   z-index: 4;
+  right: 0px;
   float: right;
-  right: 10px;
+  padding-right: $padding-right;
+  margin-right: 100px;
+  // color: white;
   top: 10px;
-  color: white;
   width: 200px;
   font-weight: 500;
 
@@ -36,7 +44,6 @@
 .event{
   z-index: 2;
   position: absolute;
-  padding-left: 17%;
   width: 100%;
   overflow: visible;
   padding-top: 20px;

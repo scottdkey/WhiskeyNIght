@@ -5,18 +5,17 @@
 }
 
 #right-triangle {
-  float: right;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   shape-outside: polygon(0 70%, 100% 5%, 100% 100%, 0% 100%);
   clip-path: polygon(0 72%, 100% 41%, 100% 100%, 0% 100%);
-  background: $primary-color;
+  background: $primary;
   height: 100%;
   width: 100%;
 }
 
 .diamond {
-  background: $secondary-color;
+  background: $secondary;
   position: absolute;
   transform: rotate(45deg);
   shape-outside: inset() padding-box;
@@ -30,7 +29,7 @@
   width: 50px;
   height: 50px;
   z-index: 3;
-  background-color: $tertiary-color;
+  background-color: $tertiary;
 }
 .medium-small {
   width: 70px;
@@ -43,7 +42,7 @@
   z-index: 2;
 }
 .medium-large {
-  background-color: $tertiary-color;
+  background-color: $tertiary;
   width: 150px;
   height: 150px;
   z-index: 2;
@@ -110,7 +109,7 @@
   top: 180px;
 }
 #ten {
-  background-color: $tertiary-color;
+  background-color: $tertiary;
   right: -20px;
   top: 100px;
   z-index: 0;

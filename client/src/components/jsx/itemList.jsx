@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import IngredientForm from "./ingredientForm";
 import "../scss/buttonstyles.scss";
-import "../scss/App.scss"
+import "../scss/itemList.scss"
+import Modal from "react-bootstrap/Modal";
 
 const ItemList = ({ id, listType }) => {
   const [items, setItems] = useState([]);
@@ -19,8 +20,8 @@ const ItemList = ({ id, listType }) => {
       .then(res => {
         setItems([...items, res.data]);
         submitIngredients(res.data.id);
-        //close modal
-        // toggleModal();
+        // close modal
+        toggleModal();
       })
       .catch(e => console.log(e));
 
@@ -38,7 +39,7 @@ const ItemList = ({ id, listType }) => {
     });
   };
 
-  const toggleModal = () => (setOpenModal(!openModal));
+  const toggleModal = () => setOpenModal(!openModal);
 
   const addIngredient = () => {
     setIngredients([
@@ -81,46 +82,56 @@ const ItemList = ({ id, listType }) => {
         //render each of those items
         return <div key={item + index}>{item.label}</div>;
       });
-
+  const modalContent = () => (
+    <React.Fragment>
+      <div className="modal-header">
+        <h2>Add {listType}</h2>
+      </div>
+      <label>Name</label>
+      <input
+        type="text"
+        placeholder="babaganoosh or something"
+        value={label}
+        onChange={e => {
+          e.preventDefault();
+          setLabel(e.target.value);
+        }}
+      />
+      <label>Ingredients</label>
+      <button onClick={addIngredient}>Add Ingredient</button>
+      {ingredients.map((ingredient, index) => (
+        <IngredientForm
+          key={ingredient + index}
+          ingredient={ingredient}
+          index={index}
+          update={updateIngredients}
+        />
+      ))}
+      <div className="modal-footer">
+        <button onClick={toggleModal}>Close</button>
+        <button onClick={handleSubmit}>Save changes</button>
+      </div>
+    </React.Fragment>
+  );
   return (
     <>
-      <h1>{listType}</h1>
-      <button onClick={toggleModal} className="bttn plus">
-        {String.fromCharCode(65291)}
-      </button>
+      <div className="list-head">
+        <h2 id="list-name">{listType}</h2>
+        <button id="list-add" onClick={toggleModal} className="bttn plus">
+          {String.fromCharCode(65291)}
+        </button>
+      </div>
+
       <div>{itemsRender()}</div>
 
-      <div className="modal">
-        <div>Add {listType}</div>
-
-        <div id="modal-body">
-          <label>Name</label>
-          <input
-            type="text"
-            placeholder="babaganoosh or something"
-            value={label}
-            onChange={e => {
-              e.preventDefault()
-              setLabel(e.target.value);
-            }}
-          />
-          <label>Ingredients</label>
-          <button onClick={addIngredient}>Add Ingredient</button>
-          {ingredients.map((ingredient, index) => (
-            <IngredientForm
-              key={ingredient + index}
-              ingredient={ingredient}
-              index={index}
-              update={updateIngredients}
-            />
-          ))}
-        </div>
-
-        <div id="modal-footer">
-          <button onClick={toggleModal}>Close</button>
-          <button onClick={handleSubmit}>Save changes</button>
-        </div>
-      </div>
+      <Modal
+        show={openModal}
+        onClose={toggleModal}
+        onSubmit={handleSubmit}
+        title={listType}
+      >
+        {modalContent()}
+      </Modal>
     </>
   );
 };

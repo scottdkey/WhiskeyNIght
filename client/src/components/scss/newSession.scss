@@ -3,7 +3,7 @@
 .new-session {
   position: absolute;
   z-index: 4;
-  background-color: $background-color;
+  background-color: $background;
   border-radius: 10px;
   text-align: center;
   margin: auto;
@@ -30,38 +30,7 @@
   position: relative;
   top: 100px;
   border-radius: 15px;
-
-  .leftmost {
-    height: 100%;
-    width: 50%;
-    border-radius: 15px 0px 0px 15px !important;
-    font-weight: 900;
-    border: none;
-    outline: none;
-  }
-  .active{
-    background-color: $primary-color;
-    color: $text-color;
-  }
-  .rightmost {
-    height: 100%;
-    width: 50%;
-    border-radius: 0px 15px 15px 0px !important;
-    font-weight: 900;
-    border: none;
-    outline: none;
-  }
+  display: flex;
 }
 
-#submit {
-  border: none;
-  color: $text-color;
-  background-color: $accent;
-  border-radius: 15px;
-  height: 50px;
-  width: 200px;
-  font-weight: bold;
-  position: absolute;
-  bottom: 25px;
-  right: 25px;
-}
+

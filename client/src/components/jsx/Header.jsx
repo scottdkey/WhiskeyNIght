@@ -36,23 +36,25 @@ const Header = ({ session, setSession }) => {
   };
   return (
     <div className="main-header">
-      <div className="shape"> </div>
-      <div className="event">
-        <div id="date">{event}</div>
-        <div id="host">{session.host}</div>
+      <div className="shape" />
+      <div className="sub-header">
+        <div className="event">
+          <div id="date">{event}</div>
+          <div id="host">{session.host}</div>
           <div id="count">{attending.length} People</div>
           <div id="attendees">
             {attending.map(attendee => attendeeFormat(attendee))}
           </div>
-        <div>
-          <Attendence id={session.id} setAttendees={setAttending} />
+          <div>
+            <Attendence id={session.id} setAttendees={setAttending} />
+          </div>
         </div>
-      </div>
 
-      <div className="delete-area">
-        <DeleteModal deleteItemName="Event" deleteFunction={deleteSession}>
-          Delete Session
-        </DeleteModal>
+        <div className="delete-area">
+          <DeleteModal deleteItemName="Event" deleteFunction={deleteSession}>
+            Delete Session
+          </DeleteModal>
+        </div>
       </div>
     </div>
   );

@@ -37,7 +37,7 @@ const Session = props => {
         {/* <Datetime onChange={date => setDate(date)} value={date} className="datetime"/> */}
         <div className="button-container">
           <button
-            className={`leftmost ${host === values.te ? "active" : ""}`}
+            className={`bttn host left-host ${host === values.te ? "active" : ""}`}
             active={values.te}
             onClick={e => setHost(e.target.name)}
             name={values.te}
@@ -45,7 +45,7 @@ const Session = props => {
             {values.te}
           </button>
           <button
-            className={`rightmost ${host === values.kj ? "active" : ""}`}
+            className={`bttn host right-host ${host === values.kj ? "active" : ""}`}
             isactive={host === values.kj ? values.kj : null}
             onClick={e => setHost(e.target.name)}
             name={values.kj}
@@ -54,7 +54,7 @@ const Session = props => {
           </button>
         </div>
 
-        <button onClick={handleSubmit} className="button" id="submit">
+        <button onClick={handleSubmit} className="bttn" id="submit">
           Create New
         </button>
       </div>

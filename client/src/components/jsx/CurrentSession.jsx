@@ -6,12 +6,12 @@ const CurrentSession = ({session, setSession}) => {
   return (
     <>
       <Header session={session} setSession={setSession}/>
-      <div>
-        <div style={styles.foodForm}>
-          <ItemList id={session.id} listType="food" />
+      <div className="row">
+        <div className="column" style={{paddingRight: "100px"}}>
+          <ItemList id={session.id} listType="Food" />
         </div>
-        <div style={styles.foodForm}>
-          <ItemList id={session.id} listType="drinks" />
+        <div className="column" style={{paddingLeft:"100px"}}>
+          <ItemList id={session.id} listType="Drinks" />
         </div>
       </div>
     </>
@@ -20,9 +20,3 @@ const CurrentSession = ({session, setSession}) => {
 
 export default CurrentSession;
 
-const styles = {
-  foodForm: {
-    width: "50%",
-    display: "inline-block"
-  }
-};

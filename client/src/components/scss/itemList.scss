@@ -1,0 +1,23 @@
+@import "./App.scss";
+
+.list-head{
+  display: inline-block;
+  border-bottom: 2px solid $accent;
+  display: flex;
+  justify-content: space-between;
+}
+
+#list-name{
+ font-size: 32;
+}
+
+#list-add{
+  color: $accent;
+  position: relative;
+  right: 0px;
+  border: none;
+  width: 10%;
+  height: 100%;
+  overflow: hidden;
+  font-weight: 700;
+}
