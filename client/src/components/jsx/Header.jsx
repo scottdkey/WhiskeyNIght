@@ -51,7 +51,12 @@ const Header = ({ session, setSession }) => {
         </div>
 
         <div className="delete-area">
-          <DeleteModal deleteItemName="Event" deleteFunction={deleteSession}>
+          <DeleteModal
+            text="Event"
+            buttonText="Delete Event"
+            deleteFunction={deleteSession}
+            customClass="bttn delete-confirmation"
+          >
             Delete Session
           </DeleteModal>
         </div>

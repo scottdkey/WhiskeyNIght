@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import IngredientForm from "./ingredientForm";
 import "../scss/buttonstyles.scss";
-import "../scss/itemList.scss"
+import "../scss/itemList.scss";
 import Modal from "react-bootstrap/Modal";
+import ItemCard from './itemCard'
 
 const ItemList = ({ id, listType }) => {
   const [items, setItems] = useState([]);
@@ -11,14 +12,17 @@ const ItemList = ({ id, listType }) => {
   const [ingredients, setIngredients] = useState([]);
   const [openModal, setOpenModal] = useState(false);
 
+  const toggleModal = () => setOpenModal(!openModal);
+
   const handleSubmit = e => {
-    console.log(e);
     e.preventDefault();
     const item = { label, foodstuff: listType };
     axios
       .post(`/api/sessions/${id}/items`, item)
       .then(res => {
+        //add the new items to the current state
         setItems([...items, res.data]);
+        //submit the ingredients seperately(different submit method)
         submitIngredients(res.data.id);
         // close modal
         toggleModal();
@@ -31,15 +35,12 @@ const ItemList = ({ id, listType }) => {
 
   const submitIngredients = id => {
     ingredients.forEach(i => {
-      console.log(i);
       axios
         .post(`/api/items/${id}/ingredients`, i)
-        .then(res => console.log(res))
+        .then(res => {return res})
         .catch(e => console.log(e));
     });
   };
-
-  const toggleModal = () => setOpenModal(!openModal);
 
   const addIngredient = () => {
     setIngredients([
@@ -59,17 +60,6 @@ const ItemList = ({ id, listType }) => {
     setIngredients(newArray);
   };
 
-  useEffect(() => {
-    if (id === undefined) {
-      //do nothing
-    } else {
-      axios
-        .get(`/api/sessions/${id}/items`)
-        .then(res => setItems(res.data))
-        .catch(e => console.log(e));
-    }
-  }, [id]);
-
   const itemsRender = () =>
     items
       .filter(item => {
@@ -78,10 +68,11 @@ const ItemList = ({ id, listType }) => {
           return item;
         }
       })
-      .map((item, index) => {
+      .map((item) => {
         //render each of those items
-        return <div key={item + index}>{item.label}</div>;
+        return <ItemCard item={item} key={item.id}/>;
       });
+
   const modalContent = () => (
     <React.Fragment>
       <div className="modal-header">
@@ -113,6 +104,16 @@ const ItemList = ({ id, listType }) => {
       </div>
     </React.Fragment>
   );
+  useEffect(() => {
+    if (id === undefined) {
+      //do nothing
+    } else {
+      axios
+        .get(`/api/sessions/${id}/items`)
+        .then(res => setItems(res.data))
+        .catch(e => console.log(e));
+    }
+  }, [id]);
   return (
     <>
       <div className="list-head">

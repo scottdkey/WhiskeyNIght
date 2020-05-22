@@ -1,8 +1,7 @@
-const ingredients = await getIngredients(item.id);
-  const getIngredients = async itemID => {
-    const res = await axios.get(`/api/items/${itemID}/ingredients`);
-    const newData = res.data;
-    return newData;
-  };
+import React from "react";
 
-  const ingredientFormat = data => data.forEach(<>{data.name}</>);
+const IngredientRender = ({ ingredient }) => {
+  return <div>{ingredient.name}</div>;
+};
+
+export default IngredientRender;

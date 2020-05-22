@@ -1,17 +1,14 @@
-$primary: rgb(139, 84, 255);
-$secondary: rgb(214, 194, 255);
-$tertiary: rgb(255, 246, 223);
-$accent: #CB9E29;
-$background: white;
-$text-color: white;
+$primary: rgb(139, 84, 255) !default;
+$secondary: rgb(214, 194, 255)!default;
+$tertiary: rgb(255, 246, 223)!default;
+$accent: #CB9E29!default;
+$background: white!default;
+$text-color: white!default;
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-$font-stack: Raleway, sans-serif;
-$padding-left: 17%;
-$padding-right: 10%;
+$font-stack: Raleway, sans-serif!default;
+$padding-left: 17%!default;
+$padding-right: 17%!default;
 
-* {
-  outline: none;
-}
 
 .App {
   background-color: $background;
@@ -21,56 +18,3 @@ $padding-right: 10%;
   padding: none;
 }
 
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.row {
-  position: relative;
-  top: 210px;
-  width: 100%;
-  margin: auto;
-  padding-left: $padding-left;
-  padding-right: $padding-right;
-  display: flex;
-  column-gap: 200px;
-  column-count: 2;
-  
-}
-
-.column {
-  flex: 50%;
-}

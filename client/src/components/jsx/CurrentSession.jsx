@@ -1,22 +1,22 @@
 import React from "react";
 import ItemList from "./itemList";
 import Header from "./Header";
+import "../scss/CurrentSession.scss";
 
-const CurrentSession = ({session, setSession}) => {
+const CurrentSession = ({ session, setSession }) => {
   return (
-    <>
-      <Header session={session} setSession={setSession}/>
-      <div className="row">
-        <div className="column" style={{paddingRight: "100px"}}>
+    <div>
+      <Header session={session} setSession={setSession} />
+      <div className="content-container">
+        <div>
           <ItemList id={session.id} listType="Food" />
         </div>
-        <div className="column" style={{paddingLeft:"100px"}}>
+        <div>
           <ItemList id={session.id} listType="Drinks" />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
 export default CurrentSession;
-

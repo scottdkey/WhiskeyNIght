@@ -4,18 +4,17 @@ import Button from "react-bootstrap/Button"
 import "../scss/buttonstyles.scss"
 import { useState } from "react";
 
-const DeleteModal = ({ deleteItemName, deleteFunction }) => {
+const DeleteModal = ({ text, deleteFunction, customClass, buttonText }) => {
   const [show, setShow] = useState(false);
 
   const toggleShow = () => {
-    console.log('working')
     return setShow(!show);
   };
 
   return (
     <>
-      <button className="bttn delete-confirmation" onClick={toggleShow}>
-        Delete {deleteItemName}
+      <button className={customClass} onClick={toggleShow}>
+        {buttonText}
       </button>
       <Modal show={show} onHide={toggleShow}>
         <Modal.Header closeButton>
@@ -23,7 +22,7 @@ const DeleteModal = ({ deleteItemName, deleteFunction }) => {
         </Modal.Header>
 
         <Modal.Body>
-          <p>Are you Sure you want to Delete {deleteItemName}?</p>
+          <p>Are you sure you want to delete {text}?</p>
         </Modal.Body>
 
         <Modal.Footer>
