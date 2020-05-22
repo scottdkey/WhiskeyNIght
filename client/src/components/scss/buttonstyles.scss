@@ -62,5 +62,6 @@
 .delete-item {
   border: none;
   color: $accent;
-  flex: 10%;
+  position: relative;
+  right: 0px;
 }

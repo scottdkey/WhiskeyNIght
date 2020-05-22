@@ -39,7 +39,7 @@ class Api::ItemsController < ApplicationController
   end
 
   def set_item
-    @item = @session.item.find(params[:id])
+    @item = @session.items.find(params[:id])
   end
 
   def set_session

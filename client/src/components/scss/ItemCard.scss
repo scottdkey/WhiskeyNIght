@@ -1,34 +1,40 @@
 @import "./App.scss";
 
 .info-area {
-  position: relative;
   margin-top: 25px;
-  padding: 10px 10px 20px 20px;
   height: 100%;
+  width: 100%;
   min-height: 200px;
-  border: 2px solid black;
   border-radius: 20px;
-}
-.info-head {
-  display: flex;
-  flex-direction: row;
-  margin: auto;
-  width: 100%;
-}
-.delete-area {
-  position: relative;
-  right: 0px;
-  margin: auto;
+  box-shadow: 1px 3px 7px;
+  display: inline-block;
+
+  .head {
+
+    padding-left: 10px;
+    padding-top: 10px;
+    display: block;
+  }
+  .name {
+    position: relative;
+    top: -20px;
+    padding-left: 40px;
+  }
+  .delete-area {
+    margin: 0;
+    position: relative;
+    // right: -150px;
+    float: right;
+    font-size: 50px;
+    top: -85px;
+  }
 }
 
-.item-name {
-  position: relative;
-  margin: auto;
-  // position: absolute;
-}
-.checkbox {
-  margin: auto;
-  position: relative;
-  width: 100%;
-
+.ingredient{
+  padding-left: 20px;
+  .i-name {
+    position: relative;
+    top: -15px;
+    padding-left: 40px;
+  }
 }

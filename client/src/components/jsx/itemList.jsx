@@ -4,7 +4,7 @@ import IngredientForm from "./ingredientForm";
 import "../scss/buttonstyles.scss";
 import "../scss/itemList.scss";
 import Modal from "react-bootstrap/Modal";
-import ItemCard from './itemCard'
+import ItemCard from "./itemCard";
 
 const ItemList = ({ id, listType }) => {
   const [items, setItems] = useState([]);
@@ -37,7 +37,9 @@ const ItemList = ({ id, listType }) => {
     ingredients.forEach(i => {
       axios
         .post(`/api/items/${id}/ingredients`, i)
-        .then(res => {return res})
+        .then(res => {
+          return res;
+        })
         .catch(e => console.log(e));
     });
   };
@@ -60,6 +62,15 @@ const ItemList = ({ id, listType }) => {
     setIngredients(newArray);
   };
 
+  const removeItem = item => {
+    const newItems = items.filter(i => {
+      if (i !== item) {
+        return i;
+      }
+    });
+    setItems(newItems);
+  };
+
   const itemsRender = () =>
     items
       .filter(item => {
@@ -68,9 +79,9 @@ const ItemList = ({ id, listType }) => {
           return item;
         }
       })
-      .map((item) => {
+      .map(item => {
         //render each of those items
-        return <ItemCard item={item} key={item.id}/>;
+        return <ItemCard item={item} key={item.id} removeItem={removeItem} />;
       });
 
   const modalContent = () => (

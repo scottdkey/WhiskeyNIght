@@ -11,6 +11,11 @@ const DeleteModal = ({ text, deleteFunction, customClass, buttonText }) => {
     return setShow(!show);
   };
 
+  const handleSubmit = () => {
+    toggleShow()
+    deleteFunction()
+  }
+
   return (
     <>
       <button className={customClass} onClick={toggleShow}>
@@ -29,7 +34,7 @@ const DeleteModal = ({ text, deleteFunction, customClass, buttonText }) => {
           <Button variant="secondary" onClick={toggleShow}>
             Cancel
           </Button>
-          <Button variant="primary" onClick={deleteFunction}>
+          <Button variant="primary" onClick={handleSubmit}>
             Delete
           </Button>
         </Modal.Footer>

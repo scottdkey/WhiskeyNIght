@@ -2,19 +2,39 @@
 
 .content-container {
   display: flex;
-  flex-direction: row;
+  
   justify-content: space-around;
-  padding-left: $padding-left;
-  padding-right: $padding-right;
   position: relative;
   top: -180px;
+  width: 100%;
   margin: auto;
+
+  @include x-sm {
+    flex-direction: column;
+    padding-left: $mobile-left;
+    padding-right: $mobile-right;
+  }
+
+  @include sm{
+    flex-direction: column;
+  }
+  @include lg{
+    flex-direction: row;
+      padding-left: $padding-left;
+  padding-right: $padding-right;
+  }
 }
 
 .content-container > div {
   width: 50%;
   justify-content: space-evenly;
   margin: auto;
-  padding: 5px;
+  padding: 10px;
   margin-top: 0;
+
+  @include x-sm{
+    padding-top: 60px;
+    width: 100%;
+  }
 }
+
