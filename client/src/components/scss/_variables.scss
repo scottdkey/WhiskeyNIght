@@ -1,0 +1,47 @@
+$primary: rgb(139, 84, 255) !default;
+$secondary: rgb(214, 194, 255)!default;
+$tertiary: rgb(255, 246, 223)!default;
+$accent: #CB9E29!default;
+$background: white!default;
+$text-color: white!default;
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+$font-stack: Raleway, sans-serif!default;
+$padding-left: 17%!default;
+$padding-right: 17%!default;
+$mobile-left: 1%;
+$mobile-right: 1%;
+
+$extra-small: 500px;
+$mobile: 576px;
+$tablet: 768px;
+$desktop: 1200px;
+
+//x-tra small
+
+@mixin x-sm {
+  @media (min-width: #{$extra-small}){
+    @content;
+  }
+}
+
+// Small devices
+@mixin sm {
+   @media (min-width: #{$mobile}) {
+       @content;
+   }
+}
+// Medium devices
+@mixin md {
+   @media (min-width: #{$tablet}) {
+       @content;
+   }
+}
+
+// Large devices
+@mixin lg {
+   @media (min-width: #{$desktop}) {
+       @content;
+   }
+}
+
+

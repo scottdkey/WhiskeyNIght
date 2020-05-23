@@ -1,8 +1,8 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button"
-import "../scss/buttonstyles.scss"
 import { useState } from "react";
+import "../scss/buttonstyles.scss";
 
 const DeleteModal = ({ text, deleteFunction, customClass, buttonText }) => {
   const [show, setShow] = useState(false);

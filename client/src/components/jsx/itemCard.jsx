@@ -31,7 +31,7 @@ const ItemCard = ({ item, removeItem }) => {
 
   const infoHead = () => {
     return (
-      <div className="head">
+      <div className="head" onClick={toggleChecked}>
         <Checkbox
           color={checkboxColor}
           checked={bringAll}

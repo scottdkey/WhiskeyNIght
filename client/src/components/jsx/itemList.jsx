@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import IngredientForm from "./ingredientForm";
-import "../scss/buttonstyles.scss";
-import "../scss/itemList.scss";
 import Modal from "react-bootstrap/Modal";
 import ItemCard from "./itemCard";
+import "../scss/buttonstyles.scss";
+import "../scss/itemList.scss";
 
 const ItemList = ({ id, listType }) => {
   const [items, setItems] = useState([]);
