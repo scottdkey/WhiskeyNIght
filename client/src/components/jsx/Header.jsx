@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import DeleteModal from "./deleteConfirmation";
 import axios from "axios";
 import Attendence from "./attendence";
+import AttendeeFormat from "./AttendeeFormat";
 import moment from "moment";
 import "moment-timezone";
 import "../scss/Header.scss";
@@ -21,19 +22,7 @@ const Header = ({ session, setSession }) => {
       .catch(e => console.log(e));
     setSession();
   };
-  const attendeeFormat = attendee => {
-    //If this is the last item in array don't have a comma
-    if (attending[attending.length - 1] === attendee) {
-      return <React.Fragment key={attendee.id}>{attendee.name}</React.Fragment>;
-      //if this is not the last item have a space and a comma
-    } else {
-      return (
-        <React.Fragment
-          key={attendee.id}
-        >{`${attendee.name}, `}</React.Fragment>
-      );
-    }
-  };
+
   return (
     <div className="main-header">
       <div className="shape" />
@@ -43,7 +32,13 @@ const Header = ({ session, setSession }) => {
           <div id="host">{session.host}</div>
           <div id="count">{attending.length} People</div>
           <div id="attendees">
-            {attending.map(attendee => attendeeFormat(attendee))}
+            {attending.map(attendee => (
+              <AttendeeFormat
+                attendee={attendee}
+                attending={attending}
+                key={attendee.id}
+              />
+            ))}
           </div>
           <div>
             <Attendence id={session.id} setAttendees={setAttending} />
@@ -56,9 +51,7 @@ const Header = ({ session, setSession }) => {
             buttonText="Delete Event"
             deleteFunction={deleteSession}
             customClass="bttn delete-confirmation"
-          >
-            Delete Session
-          </DeleteModal>
+          />
         </div>
       </div>
     </div>

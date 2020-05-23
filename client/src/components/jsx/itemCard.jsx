@@ -31,15 +31,17 @@ const ItemCard = ({ item, removeItem }) => {
 
   const infoHead = () => {
     return (
-      <div className="head" onClick={toggleChecked}>
-        <Checkbox
-          color={checkboxColor}
-          checked={bringAll}
-          borderThickness="3"
-          onChange={toggleChecked}
-          size="4"
-        />
-        <h3 className="name">{item.label}</h3>
+      <div className="head">
+        <div onClick={toggleChecked}>
+          <Checkbox
+            color={checkboxColor}
+            checked={bringAll}
+            borderThickness="3"
+            onChange={toggleChecked}
+            size="4"
+          />
+          <h3 className="name">{item.label}</h3>
+        </div>
         <div className="delete-area">
           <DeleteModal
             customClass="bttn delete-item"
@@ -56,7 +58,13 @@ const ItemCard = ({ item, removeItem }) => {
     return (
       <>
         {ingredients.map(i => (
-          <IngredientRender key={i.id} ingredient={i} item={item} />
+          <IngredientRender
+            key={i.id}
+            ingredient={i}
+            item={item}
+            ingredients={ingredients}
+            setIngredients={setIngredients}
+          />
         ))}
       </>
     );

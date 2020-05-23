@@ -1,7 +1,7 @@
 @import "./_variables";
 
 #people-container {
-  color: white;
+  color: $text-color;
 }
 
 #count {
@@ -15,5 +15,14 @@
   font-size: 12px;
   font-weight: 200;
   opacity: 0.5;
+}
 
+.attendee {
+  // background-color: blue;
+  padding-left: 3px;
+  height: 50%;
+}
+#selected {
+  background-color: grey;
+  z-index: 10;
 }

@@ -12,9 +12,8 @@ const Attendence = ({ id, setAttendees}) => {
 
   const [names, setNames] = useState("");
 
-  const toggleShow = (e) => {
-    e.preventDefault()
-    return setShow(!show);
+  const toggleShow = () => {
+    setShow(!show);
   };
   const handleSubmit = e => {
     e.preventDefault();
@@ -52,9 +51,9 @@ const Attendence = ({ id, setAttendees}) => {
       </button>
 
       <Modal show={show} onHide={toggleShow}>
-        <Modal.Header closeButton>
+        {/* <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
+        </Modal.Header> */}
         <Form>
           <Modal.Body>
             <Form.Text>Who is Attending?(Seperate with Commas)</Form.Text>

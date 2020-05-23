@@ -5,17 +5,19 @@
 
   justify-content: space-around;
   position: relative;
-  top: -180px;
+  
   width: 100%;
   margin: auto;
 
   @include x-sm {
+    top: -230px;
     flex-direction: column;
     padding-left: $mobile-left;
     padding-right: $mobile-right;
   }
 
   @include lg {
+    top: -220px;
     flex-direction: row;
     padding-left: $padding-left;
     padding-right: $padding-right;

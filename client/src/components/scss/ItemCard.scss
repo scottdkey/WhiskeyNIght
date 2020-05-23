@@ -14,17 +14,20 @@
     padding-left: 10px;
     padding-top: 10px;
     display: block;
+    width: 100%
   }
   .name {
     position: relative;
     top: -20px;
     padding-left: 40px;
+    width: 50%;
   }
   .delete-area {
     margin: 0;
     position: relative;
-    // right: -150px;
+    width: 20%;
     float: right;
+    right: -20px;
     font-size: 50px;
     top: -85px;
   }

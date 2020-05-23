@@ -1,23 +1,55 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Checkbox from "react-simple-checkbox";
-import "../scss/ItemCard.scss"
+import "../scss/ItemCard.scss";
+import {UserContext} from '../../App'
+import axios from "axios";
 
-const IngredientRender = ({ ingredient }) => {
-  const [checked, setChecked] = useState(false)
+const IngredientRender = ({ ingredient, ingredients, setIngredients }) => {
+  const [checked, setChecked] = useState(false);
+  const [user, setUser] = useContext(UserContext);
 
-  const handleChange = () =>{
-    console.log('handling change')
+  const addRemoveAssigned = (checked ? "" : user)
+
+  const toggleChecked = () => {
+    const newIngredient = ({...ingredient, assigned: addRemoveAssigned});
+    const newArray = ingredients.filter(i =>{ 
+      if(i.id !== ingredient.id){
+        return i
+      }
+      
+    });
+    axios
+      .patch(
+        `/api/items/${ingredient.item_id}/ingredients/${ingredient.id}`,
+        newIngredient
+      )
+      .then(res => {
+        setIngredients([...newArray, newIngredient]);
+        setChecked(!checked)
+      })
+      .catch(e => console.log(e));
+  };
+
+  useEffect(() =>{
+    checkAssigned()
+  },[])
+
+  const checkAssigned = () => {
+    if(ingredient.assigned === '' | null){
+      setChecked(false)
+    }else {
+      setChecked(true)
+    }
   }
-  const toggleChecked = () =>{
-    setChecked(!checked)
-  }
+
+
   return (
     <div className="ingredient" onClick={toggleChecked}>
       <Checkbox
         color={checkboxColor}
         checked={checked}
         borderThickness="3"
-        onChange={handleChange}
+        // onChange={handleChange}
         size="4"
       />
       <div className="i-name">{ingredient.name}</div>
