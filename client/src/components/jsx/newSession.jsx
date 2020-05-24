@@ -12,11 +12,9 @@ const Session = props => {
     axios
       .post("api/sessions", { host, date })
       .then(res => {
-        console.log(res);
-        props.setSession({ id: res.data.id, date: res.data.date, host });
+        props.setSession({ id: res.data.id, date, host });
         setDate(new Date());
         setHost("");
-        // setOpenModal(false);
       })
       .catch(e => console.log(e));
   };
