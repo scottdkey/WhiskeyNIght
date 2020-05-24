@@ -24,11 +24,10 @@ const ItemList = ({ id, listType }) => {
         setItems([...items, res.data]);
         //submit the ingredients seperately(different submit method)
         submitIngredients(res.data.id);
-        // close modal
-        toggleModal();
       })
       .catch(e => console.log(e));
-
+    // close modal
+    toggleModal();
     //clear the modal info after pushing to Database
     setLabel("");
   };
@@ -52,11 +51,11 @@ const ItemList = ({ id, listType }) => {
   };
 
   const updateIngredients = (newIngredient, i) => {
-    const newArray = ingredients.map((ingredient, index) => {
+    const newArray = ingredients.map((ing, index) => {
       if (index === i) {
         return newIngredient;
       } else {
-        return ingredient;
+        return ing;
       }
     });
     setIngredients(newArray);
@@ -124,7 +123,7 @@ const ItemList = ({ id, listType }) => {
         .then(res => setItems(res.data))
         .catch(e => console.log(e));
     }
-  }, [id]);
+  }, [id, ingredients]);
   return (
     <>
       <div className="list-head">

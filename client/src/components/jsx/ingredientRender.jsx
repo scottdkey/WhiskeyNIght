@@ -1,47 +1,54 @@
 import React, { useState, useContext, useEffect } from "react";
 import Checkbox from "react-simple-checkbox";
 import "../scss/ItemCard.scss";
-import {UserContext} from '../../App'
+import { UserContext } from "../../App";
 import axios from "axios";
 
-const IngredientRender = ({ ingredient, ingredients, setIngredients }) => {
+const IngredientRender = ({
+  ingredient,
+  ingredients,
+  setIngredients,
+  index
+}) => {
   const [checked, setChecked] = useState(false);
-  const [user, setUser] = useContext(UserContext);
+  const [user] = useContext(UserContext);
 
-  const addRemoveAssigned = (checked ? "" : user)
+  const addRemoveAssigned = checked ? "" : user;
 
   const toggleChecked = () => {
-    const newIngredient = ({...ingredient, assigned: addRemoveAssigned});
-    const newArray = ingredients.filter(i =>{ 
-      if(i.id !== ingredient.id){
-        return i
+    const newIngredient = {
+      name: ingredient.name,
+      assigned: addRemoveAssigned
+    };
+    const newArray = ingredients.filter(i => {
+      if (i.id !== ingredient.id) {
+        return i;
+      } else{
+        //return nothing. NOTHING I SAY
       }
-      
-    });
+      return
+    })
+
     axios
       .patch(
         `/api/items/${ingredient.item_id}/ingredients/${ingredient.id}`,
         newIngredient
       )
       .then(res => {
-        setIngredients([...newArray, newIngredient]);
-        setChecked(!checked)
+        newArray.splice(index, 0, res.data);
+        setIngredients([...newArray]);
+        setChecked(!checked);
       })
       .catch(e => console.log(e));
   };
 
-  useEffect(() =>{
-    checkAssigned()
-  },[])
-
-  const checkAssigned = () => {
-    if(ingredient.assigned === '' | null){
-      setChecked(false)
-    }else {
-      setChecked(true)
+  useEffect(() => {
+    if ((ingredient.assigned === "") | null) {
+      setChecked(false);
+    } else {
+      setChecked(true);
     }
-  }
-
+  }, [ingredient.assigned]);
 
   return (
     <div className="ingredient" onClick={toggleChecked}>

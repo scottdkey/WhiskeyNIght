@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
+import { UserContext } from "../../App";
 import DeleteModal from "./deleteConfirmation";
 import IngredientRender from "./ingredientRender";
-import AssignModal from "./AssignModal";
+import Modal from "react-bootstrap/Modal";
 import Checkbox from "react-simple-checkbox";
 import "../scss/ItemCard.scss";
 
 const ItemCard = ({ item, removeItem }) => {
   const [ingredients, setIngredients] = useState([]);
   const [openModal, setOpenModal] = useState(false);
+  const [bringAll, setBringAll] = useState(false);
+  const [user] = useContext(UserContext);
 
   const deleteItem = () => {
     axios
@@ -16,28 +19,19 @@ const ItemCard = ({ item, removeItem }) => {
       .then(res => removeItem(item))
       .catch(e => console.log(e));
   };
-  const toggleChecked = () => {
+
+  const toggleModal = () => {
     setOpenModal(!openModal);
   };
-
-  const bringAll = item.assigned === null ? false : true;
-
-  useEffect(() => {
-    axios
-      .get(`/api/items/${item.id}/ingredients`)
-      .then(res => setIngredients(res.data))
-      .catch(e => console.log(e));
-  }, [item.id]);
 
   const infoHead = () => {
     return (
       <div className="head">
-        <div onClick={toggleChecked}>
+        <div onClick={toggleModal}>
           <Checkbox
             color={checkboxColor}
             checked={bringAll}
             borderThickness="3"
-            onChange={toggleChecked}
             size="4"
           />
           <h3 className="name">{item.label}</h3>
@@ -57,25 +51,88 @@ const ItemCard = ({ item, removeItem }) => {
   const infoBody = () => {
     return (
       <>
-        {ingredients.map(i => (
+        {ingredients.map((i, index) => (
           <IngredientRender
-            key={i.id}
+            key={i.id + i}
             ingredient={i}
             item={item}
             ingredients={ingredients}
             setIngredients={setIngredients}
+            index={index}
           />
         ))}
       </>
     );
   };
+  const assigned = bringAll ? "" : user;
+
+  const handleSubmit = () => {
+    const newIngredients = ingredients.map(i => {
+      return { name: i.name, assigned: assigned, id: i.id };
+    });
+    axios
+      .patch(`/api/sessions/${item.session_id}/items/${item.id}`, {
+        assigned: assigned
+      })
+      .then(res => {})
+      .catch(e => console.log(e));
+    newIngredients.forEach(i => {
+      axios
+        .patch(`/api/items/${item.id}/ingredients/${i.id}`, {
+          name: i.name,
+          assigned: assigned
+        })
+        .then(res => {
+          toggleModal();
+          setBringAll(!bringAll);
+        })
+        .catch(e => console.log(e));
+    });
+    setIngredients([...newIngredients]);
+  };
+
+  const checkIngredients = ing => {
+    const newArray = ing.filter(i => {
+      return i.assigned !== "";
+    });
+    if (newArray.length === ing.length) {
+      setBringAll(true);
+    } else {
+      setBringAll(false);
+    }
+  };
+
+  useEffect(() => {
+    axios
+      .get(`/api/items/${item.id}/ingredients`)
+      .then(res => {
+        setIngredients(res.data);
+        checkIngredients(res.data);
+      })
+      .catch(e => console.log(e));
+  }, [item.id, item.assigned]);
 
   return (
     <div className="info-area">
       {infoHead()}
       {infoBody()}
 
-      <AssignModal open={openModal} toggleModal={toggleChecked} item={item} />
+      <Modal show={openModal} onHide={toggleModal}>
+        <div className="custom-modal">
+          <div className="head">{bringAll ? "Uncheck All?" : "Bring All?"}</div>
+          <div className="body">
+            {bringAll
+              ? `Remove your name from ${item.label}?`
+              : `Bring everything from the item ${item.label}?`}
+          </div>
+          <button className="bttn cancel" onClick={toggleModal}>
+            Cancel
+          </button>
+          <button className="bttn submit" onClick={handleSubmit}>
+            Yes!
+          </button>
+        </div>
+      </Modal>
     </div>
   );
 };
