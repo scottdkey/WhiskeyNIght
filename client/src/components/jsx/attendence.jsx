@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { UserContext } from "../../App";
 import "../scss/buttonstyles.scss";
 import "../scss/attendence.scss";
 
-const Attendence = ({ id, setAttendees}) => {
+const Attendence = ({ id, setAttendees }) => {
   const [show, setShow] = useState(false);
-
+  const [user, setUser] = useContext(UserContext);
   const [names, setNames] = useState("");
 
   const toggleShow = () => {
@@ -17,7 +17,8 @@ const Attendence = ({ id, setAttendees}) => {
   };
   const handleSubmit = e => {
     e.preventDefault();
-    const nameArr = names.split(",");
+    const nameArr = names.split(",").map(item => item.trim());
+    setUser(names)
     nameArr.forEach(name =>
       axios
         .post(`/api/sessions/${id}/attendees`, { name, going: true })
@@ -54,7 +55,7 @@ const Attendence = ({ id, setAttendees}) => {
         {/* <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header> */}
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Modal.Body>
             <Form.Text>Who is Attending?(Seperate with Commas)</Form.Text>
             <Form.Control value={names} onChange={handleChange}></Form.Control>
@@ -63,7 +64,7 @@ const Attendence = ({ id, setAttendees}) => {
             <Button variant="secondary" onClick={toggleShow}>
               Close
             </Button>
-            <Button variant="primary" onClick={handleSubmit}>
+            <Button variant="primary" type="submit">
               Save Changes
             </Button>
           </Modal.Footer>

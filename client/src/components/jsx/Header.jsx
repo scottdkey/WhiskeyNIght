@@ -16,8 +16,7 @@ const Header = ({ session, setSession }) => {
   const deleteSession = () => {
     axios
       .delete(`/api/sessions/${session.id}`)
-      .then(res => {
-      })
+      .then(res => {})
       .catch(e => console.log(e));
     setSession();
   };

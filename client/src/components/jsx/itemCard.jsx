@@ -84,7 +84,7 @@ const ItemCard = ({ item, removeItem }) => {
         })
         .then(res => {
           toggleModal();
-          setBringAll(!bringAll);
+          checkIngredients(res.data)
         })
         .catch(e => console.log(e));
     });

@@ -8,6 +8,7 @@ import NewSession from "./components/jsx/newSession";
 
 
 export const UserContext = React.createContext();
+export const EventContext = React.createContext();
 
 function App() {
   const [session, setSession] = useState({});
