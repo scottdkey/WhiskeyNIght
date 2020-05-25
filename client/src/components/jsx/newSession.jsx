@@ -32,7 +32,6 @@ const Session = props => {
             setDate(date);
           }}
         />
-        {/* <Datetime onChange={date => setDate(date)} value={date} className="datetime"/> */}
         <div className="button-container">
           <button
             className={`bttn host left-host ${host === values.te ? "active" : ""}`}

@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import Checkbox from "react-simple-checkbox";
+import Checkbox from "./Checkbox";
 import "../scss/ItemCard.scss";
 import { UserContext } from "../../App";
 import axios from "axios";
@@ -53,14 +53,10 @@ const IngredientRender = ({
   return (
     <div className="ingredient" onClick={toggleChecked}>
       <Checkbox
-        color={checkboxColor}
         checked={checked}
-        borderThickness="3"
-        // onChange={handleChange}
-        size="4"
       />
       <div className="i-name">{ingredient.name}</div>
-      <div>{ingredient.assigned}</div>
+      <div className="assigned">{ingredient.assigned}</div>
     </div>
   );
 };

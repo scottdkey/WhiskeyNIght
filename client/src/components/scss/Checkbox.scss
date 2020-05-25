@@ -1,0 +1,21 @@
+@import "./variables";
+
+.checkbox {
+  z-index: 5;
+  color: $text-color;
+  border-radius: 4px;
+}
+.checked {
+  text-align: center;
+  width: 18px;
+  height: 18px;
+  border-radius: inherit;
+  background-color: $primary;
+}
+
+.unchecked {
+  width: 18px;
+  height: 18px;
+  border-radius: inherit;
+  background-color: $tertiary;
+}

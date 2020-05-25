@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DeleteModal from "./deleteConfirmation";
+import DeleteModal from "./DeleteModal";
 import axios from "axios";
 import Attendence from "./attendence";
 import AttendeeFormat from "./AttendeeFormat";

@@ -29,8 +29,8 @@ const AttendeeFormat = ({ attendee, attending }) => {
       <>
         <div
           className="attendee"
-          id={attendee.name === user ? "selected" : null}
-          onClick={chooseUser}
+          // id={attendee.name === user ? "selected" : null}
+          // onClick={chooseUser}
         >
           {`${attendee.name}, `}{" "}
         </div>

@@ -1,11 +1,15 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { UserContext } from "../../App";
-import DeleteModal from "./deleteConfirmation";
+import DeleteModal from "./DeleteModal";
 import IngredientRender from "./ingredientRender";
 import Modal from "react-bootstrap/Modal";
-import Checkbox from "react-simple-checkbox";
+import Checkbox from "./Checkbox";
 import "../scss/ItemCard.scss";
+import "../scss/buttonstyles.scss";
+
+//TODO: Make the ingredients populate on submit
+//TODO: Make the Top level checkbox go when ingredients are all checked/uncheck if one is unchecked
 
 const ItemCard = ({ item, removeItem }) => {
   const [ingredients, setIngredients] = useState([]);
@@ -28,20 +32,15 @@ const ItemCard = ({ item, removeItem }) => {
     return (
       <div className="head">
         <div onClick={toggleModal}>
-          <Checkbox
-            color={checkboxColor}
-            checked={bringAll}
-            borderThickness="3"
-            size="4"
-          />
+          <Checkbox checked={bringAll} />
           <h3 className="name">{item.label}</h3>
         </div>
-        <div className="delete-area">
+        <div className="delete-ingredient bttn ingredient-delete">
           <DeleteModal
-            customClass="bttn delete-item"
+            customClass="bttn ingredient-delete"
             deleteFunction={deleteItem}
-            buttonText={String.fromCharCode(8722)}
             text={item.label}
+            buttonText={String.fromCharCode(8722)}
           />
         </div>
       </div>
@@ -84,7 +83,7 @@ const ItemCard = ({ item, removeItem }) => {
         })
         .then(res => {
           toggleModal();
-          checkIngredients(res.data)
+          checkIngredients(res.data);
         })
         .catch(e => console.log(e));
     });
@@ -138,10 +137,3 @@ const ItemCard = ({ item, removeItem }) => {
 };
 
 export default ItemCard;
-
-const checkboxColor = {
-  backgroundColor: "purple",
-  tickColor: "white",
-  borderColor: "purple",
-  uncheckedBorderColor: "yellow"
-};

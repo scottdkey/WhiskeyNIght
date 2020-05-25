@@ -7,37 +7,41 @@
   min-height: 200px;
   border-radius: 20px;
   box-shadow: 1px 3px 7px;
-  display: inline-block;
-
-  .head {
-
-    padding-left: 10px;
-    padding-top: 10px;
-    display: block;
-    width: 100%
-  }
-  .name {
-    position: relative;
-    top: -20px;
-    padding-left: 40px;
-    width: 50%;
-  }
-  .delete-area {
-    margin: 0;
-    position: relative;
-    width: 20%;
-    float: right;
-    right: -20px;
-    font-size: 50px;
-    top: -85px;
-  }
+}
+.head {
+  padding-left: 10px;
+  padding-top: 20px;
+  display: flex;
+  flex: row;
+  width: 100%;
+}
+.name {
+  position: relative;
+  bottom: 25px;
+  padding-left: 30px;
+  width: 80%;
+}
+.delete-ingredient {
+  position: relative;
+  font-size: 50px;
+  margin-left: auto;
+  float: right;
+  bottom: 30px;
 }
 
-.ingredient{
+.ingredient {
   padding-left: 20px;
-  .i-name {
-    position: relative;
-    top: -15px;
-    padding-left: 40px;
-  }
+  display: flex;
+}
+.i-name {
+  width: 100%;
+  position: relative;
+  // top: -20px;
+  padding-left: 15px;
+}
+.assigned {
+  text-align: right;
+  position: relative;
+  right: 20px;
+  color: $primary;
 }

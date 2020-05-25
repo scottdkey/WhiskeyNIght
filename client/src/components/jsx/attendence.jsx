@@ -52,9 +52,6 @@ const Attendence = ({ id, setAttendees }) => {
       </button>
 
       <Modal show={show} onHide={toggleShow}>
-        {/* <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header> */}
         <Form onSubmit={handleSubmit}>
           <Modal.Body>
             <Form.Text>Who is Attending?(Seperate with Commas)</Form.Text>

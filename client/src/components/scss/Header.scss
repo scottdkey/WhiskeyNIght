@@ -16,7 +16,7 @@
     top: 12px;
   }
   @include lg {
-    top: 30px;
+    top: 15px;
   }
 }
 
@@ -43,28 +43,36 @@
     top: -164px;
     right: -20px;
   }
+  @include md {
+    top: 0px;
+  }
   @include lg {
-    top: -190px;
+    top: -5px;
     right: 0px;
   }
 }
 .event {
   z-index: 2;
   position: relative;
-  
-  overflow: visible;
+  float: left;
   top: -4px;
+  margin-right: auto;
   @include x-sm {
     font-size: 20px;
     width: 100%;
     left: -20px;
   }
+  @include sm{
+    left: -35px;
+  }
   @include md {
     font-size: 20px;
+    width: 75%;
+    left: -60px;
   }
   @include lg {
     font-size: 25px;
-    width: 30%;
+    width: 50%;
     left: 5px;
   }
 }
@@ -92,12 +100,13 @@
 }
 
 #attendees {
-  width: 388px;
+  width: 100%;
   display: flex;
+  flex-wrap: wrap;
   font-size: 12px;
   font-weight: 200;
   opacity: 0.5;
   color: $text-color;
   height: 38px;
-  overflow: hidden;
+  // overflow: hidden;
 }
