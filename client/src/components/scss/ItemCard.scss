@@ -20,6 +20,9 @@
   bottom: 25px;
   padding-left: 30px;
   width: 80%;
+  font-weight: 600;
+  font-size: 18px;
+  top: -19px;
 }
 .delete-ingredient {
   position: relative;
@@ -30,18 +33,22 @@
 }
 
 .ingredient {
+  padding: 10px;
   padding-left: 20px;
   display: flex;
 }
 .i-name {
   width: 100%;
   position: relative;
-  // top: -20px;
-  padding-left: 15px;
+  font-size: 12px;
+  padding-left: 10px;
+  top: 1px;
 }
 .assigned {
   text-align: right;
   position: relative;
   right: 20px;
+  font-size: 16px;
   color: $primary;
+  top: -3px;
 }

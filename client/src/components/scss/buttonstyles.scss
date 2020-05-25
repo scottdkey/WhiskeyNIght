@@ -83,3 +83,21 @@
   border: none;
   color: $accent;
 }
+.delete {
+  background-color: #df3d3d;
+  border: none;
+  color: $text-color;
+  float: right;
+  margin-left: auto;
+  width: 179px;
+  height: 50px;
+}
+.cancel {
+  background-color: $accent;
+  border: none;
+  color: $text-color;
+  float: left;
+  margin-right: auto;
+  width: 179px;
+  height: 50px;
+}

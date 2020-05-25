@@ -1,0 +1,46 @@
+@import "./variables";
+
+.modal-content {
+  border-radius: 20px !important;
+ 
+}
+.custom-modal {
+  position: relative;
+  width: 561px;
+  height: 308px;
+  padding-left: 25px;
+  padding-right: 25px;
+  .header {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    position: relative;
+    border-bottom: solid $accent;
+    text-align: center;
+    .title {
+      font-size: 32px;
+    }
+  }
+  .body {
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: center;
+    position: relative;
+    .text {
+      font-size: 18px;
+    }
+    .item-name {
+      font-size: 32px;
+    }
+  }
+  .footer {
+    width: 100%;
+    display: flex;
+    position: relative;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 20px;
+  }
+}

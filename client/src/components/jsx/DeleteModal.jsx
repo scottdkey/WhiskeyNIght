@@ -1,8 +1,9 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button"
+
 import { useState } from "react";
 import "../scss/buttonstyles.scss";
+import "../scss/Modal.scss";
 
 const DeleteModal = ({ text, deleteFunction, customClass, buttonText }) => {
   const [show, setShow] = useState(false);
@@ -12,9 +13,9 @@ const DeleteModal = ({ text, deleteFunction, customClass, buttonText }) => {
   };
 
   const handleSubmit = () => {
-    toggleShow()
-    deleteFunction()
-  }
+    toggleShow();
+    deleteFunction();
+  };
 
   return (
     <>
@@ -22,22 +23,29 @@ const DeleteModal = ({ text, deleteFunction, customClass, buttonText }) => {
         {buttonText}
       </button>
       <Modal show={show} onHide={toggleShow}>
-        <Modal.Header closeButton>
-          <Modal.Title>Delete Confirmation</Modal.Title>
-        </Modal.Header>
+        <div
+          className="custom-modal modal-content"
+          style={{ borderRadius: "20px" }}
+        >
+          <div className="header" closeButton>
+            <div className="title">Delete</div>
+          </div>
 
-        <Modal.Body>
-          <p>Are you sure you want to delete {text}?</p>
-        </Modal.Body>
+          <div className="body">
+            <p className="text">Are you sure you want to delete</p>
+            <h3 className="item-name">{text}</h3>
+          </div>
 
-        <Modal.Footer>
-          <Button variant="secondary" onClick={toggleShow}>
-            Cancel
-          </Button>
-          <Button variant="primary" onClick={handleSubmit}>
-            Delete
-          </Button>
-        </Modal.Footer>
+          <div className="footer">
+            <button className="bttn cancel" onClick={toggleShow}>
+              Cancel
+            </button>
+
+            <button className="bttn delete" onClick={handleSubmit}>
+              Delete
+            </button>
+          </div>
+        </div>
       </Modal>
     </>
   );
