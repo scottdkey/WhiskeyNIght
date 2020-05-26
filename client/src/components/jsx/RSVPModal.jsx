@@ -6,7 +6,7 @@ import "../scss/buttonstyles.scss";
 import "../scss/Modal.scss";
 
 const RSVPModal = ({ id, setAttendees }) => {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const [user, setUser] = useContext(UserContext);
   const [names, setNames] = useState("");
 
