@@ -32,10 +32,10 @@ const ItemCard = ({ item, removeItem }) => {
     return (
       <div className="head">
         <div onClick={toggleModal}>
-          <Checkbox checked={bringAll} />
+            <Checkbox checked={bringAll} />
           <h3 className="name">{item.label}</h3>
         </div>
-        <div className="delete-ingredient bttn ingredient-delete">
+        <div className="delete-ingredient">
           <DeleteModal
             customClass="bttn ingredient-delete"
             deleteFunction={deleteItem}
@@ -49,7 +49,7 @@ const ItemCard = ({ item, removeItem }) => {
 
   const infoBody = () => {
     return (
-      <>
+      <div className="body">
         {ingredients.map((i, index) => (
           <IngredientRender
             key={i.id + i}
@@ -60,7 +60,7 @@ const ItemCard = ({ item, removeItem }) => {
             index={index}
           />
         ))}
-      </>
+      </div>
     );
   };
   const assigned = bringAll ? "" : user;

@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import IngredientForm from "./ingredientForm";
 import Modal from "react-bootstrap/Modal";
+import NewCardModal from "./NewCardModal"
 import ItemCard from "./itemCard";
 import "../scss/buttonstyles.scss";
 import "../scss/itemList.scss";
 
 const ItemList = ({ id, listType }) => {
   const [items, setItems] = useState([]);
-  const [label, setLabel] = useState("");
+  const [label, setLabel] = useState(null);
   const [ingredients, setIngredients] = useState([]);
   const [openModal, setOpenModal] = useState(false);
 
-  const toggleModal = () => setOpenModal(!openModal);
+  const toggleModal = () => {
+    setOpenModal(!openModal);
+    setLabel("");
+    setIngredients([]);
+  };
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -29,7 +33,6 @@ const ItemList = ({ id, listType }) => {
     // close modal
     toggleModal();
     //clear the modal info after pushing to Database
-    setLabel("");
   };
 
   const submitIngredients = id => {
@@ -83,37 +86,6 @@ const ItemList = ({ id, listType }) => {
         return <ItemCard item={item} key={item.id} removeItem={removeItem} />;
       });
 
-  const modalContent = () => (
-    <React.Fragment>
-      <div className="modal-header">
-        <h2>Add {listType}</h2>
-      </div>
-      <label>Name</label>
-      <input
-        type="text"
-        placeholder="babaganoosh or something"
-        value={label}
-        onChange={e => {
-          e.preventDefault();
-          setLabel(e.target.value);
-        }}
-      />
-      <label>Ingredients</label>
-      <button onClick={addIngredient}>Add Ingredient</button>
-      {ingredients.map((ingredient, index) => (
-        <IngredientForm
-          key={ingredient + index}
-          ingredient={ingredient}
-          index={index}
-          update={updateIngredients}
-        />
-      ))}
-      <div className="modal-footer">
-        <button onClick={toggleModal}>Close</button>
-        <button onClick={handleSubmit}>Save changes</button>
-      </div>
-    </React.Fragment>
-  );
   useEffect(() => {
     if (id === undefined) {
       //do nothing
@@ -141,7 +113,16 @@ const ItemList = ({ id, listType }) => {
         onSubmit={handleSubmit}
         title={listType}
       >
-        {modalContent()}
+        <NewCardModal
+          listType={listType}
+          ingredients={ingredients}
+          addIngredient={addIngredient}
+          toggleModal={toggleModal}
+          handleSubmit={handleSubmit}
+          updateIngredients={updateIngredients}
+          setLabel={setLabel}
+          label={label}
+        />
       </Modal>
     </>
   );

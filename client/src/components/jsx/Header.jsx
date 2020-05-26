@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import DeleteModal from "./DeleteModal";
 import axios from "axios";
-import Attendence from "./attendence";
 import AttendeeFormat from "./AttendeeFormat";
 import moment from "moment";
 import "moment-timezone";
 import "../scss/Header.scss";
+import RSVPModal from "./RSVPModal";
 
 const Header = ({ session, setSession }) => {
   const [attending, setAttending] = useState([]);
@@ -28,7 +28,7 @@ const Header = ({ session, setSession }) => {
         <div className="event">
           <div id="date">{event}</div>
           <div id="host">{session.host}</div>
-          <div id="count">{attending.length} People</div>
+          <div id="count">{attending.length} {attending.length === 1 ? "Person" : "People"}</div>
           <div id="attendees">
             {attending.map(attendee => (
               <AttendeeFormat
@@ -39,7 +39,7 @@ const Header = ({ session, setSession }) => {
             ))}
           </div>
           <div>
-            <Attendence id={session.id} setAttendees={setAttending} />
+            <RSVPModal id={session.id} setAttendees={setAttending} />
           </div>
         </div>
 

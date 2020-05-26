@@ -1,12 +1,16 @@
 @import "./variables";
 
+// .modal{
+//   // all: unset;
+//   z-index: 1000;
+// }
+
 .modal-content {
-  border-radius: 20px !important;
- 
+  border-radius: 20px;
 }
 .custom-modal {
   position: relative;
-  width: 561px;
+  width: 100%;
   height: 308px;
   padding-left: 25px;
   padding-right: 25px;
@@ -18,8 +22,26 @@
     position: relative;
     border-bottom: solid $accent;
     text-align: center;
-    .title {
-      font-size: 32px;
+    .rsvp-header {
+      position: relative;
+      .title {
+        font-size: 32px;
+        position: relative;
+      }
+      .cancel-rsvp {
+        position: absolute;
+        border: none;
+        color: $accent;
+        font-size: 100%;
+        font-weight: 600;
+        line-height: 68px;
+        transform: rotate(-45deg);
+        right: -4px;
+        top: -8px;
+        width: 25px;
+        height: 68px;
+        padding: 0px;
+      }
     }
   }
   .body {
@@ -33,6 +55,34 @@
     .item-name {
       font-size: 32px;
     }
+    .rsvp-label {
+      margin-top: 24px;
+      font-size: 18px;
+      line-height: 21px;
+    }
+    .name-input-container {
+      width: 354px;
+      height: 42px;
+      background: #f7f7f7;
+      margin: 12px auto 0px auto;
+      border-radius: 4px !important;
+      border: none;
+      .name-input {
+        padding-top: 10px;
+        margin: auto;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 21px;
+        opacity: 0.3;
+        border: inherit;
+      }
+    }
+
+    .name-support {
+      font-size: 10px;
+      line-height: 12px;
+      margin-top: 10.5px;
+    }
   }
   .footer {
     width: 100%;
@@ -42,5 +92,44 @@
     margin-left: auto;
     margin-right: auto;
     bottom: 20px;
+    .save-changes {
+      color: $text-color;
+      font-size: 18px;
+      line-height: 21px;
+      font-weight: 800;
+      position: absolute;
+      bottom: -114px;
+      right: 0px;
+      border: none;
+      width: 242px;
+      height: 50px;
+      background-color: $accent;
+    }
   }
+}
+
+#people-container {
+  color: $text-color;
+}
+
+#count {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+#attendees {
+  width: 388px;
+  overflow-wrap: break-word;
+  font-size: 12px;
+  font-weight: 200;
+  opacity: 0.5;
+}
+
+.attendee {
+  padding-left: 3px;
+  height: 50%;
+}
+#selected {
+  background-color: grey;
+  z-index: 10;
 }

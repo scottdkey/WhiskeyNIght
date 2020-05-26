@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { UserContext } from "../../App.js";
-import "../scss/attendence.scss";
+import "../scss/Modal.scss";
 
 const AttendeeFormat = ({ attendee, attending }) => {
   const [user, setUser] = useContext(UserContext);

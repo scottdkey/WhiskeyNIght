@@ -2,11 +2,11 @@
 
 .content-container {
   display: flex;
-
-  justify-content: space-around;
-  position: relative;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 1920px;
   
-  width: 100%;
+  position: relative;
   margin: auto;
 
   @include x-sm {
@@ -25,11 +25,7 @@
 }
 
 .content-container > div {
-  width: 50%;
-  justify-content: space-evenly;
   margin: auto;
-  padding: 10px;
-  margin-top: 0;
 
   @include x-sm {
     padding-top: 60px;
@@ -37,6 +33,19 @@
   }
   @include lg {
     width: 50%;
-  justify-content: space-evenly;
+    justify-content: space-evenly;
+  }
+}
+
+.content-container > div:last-child {
+  @include sm {
+    margin: auto;
+  }
+  @include md {
+    margin: auto;
+  }
+  @include lg {
+    margin-top: 0;
+    margin-left: 170px;
   }
 }

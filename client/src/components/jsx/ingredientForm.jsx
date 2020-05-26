@@ -12,7 +12,7 @@ const IngredientForm = ({ ingredient, index, update }) => {
 
   return (
     <>
-      <Form.Control value={name} onChange={handleChange} />
+      <Form.Control required="true" value={name} onChange={handleChange} />
     </>
   );
 };
