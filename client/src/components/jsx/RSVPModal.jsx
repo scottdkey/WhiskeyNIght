@@ -55,7 +55,7 @@ const RSVPModal = ({ id, setAttendees }) => {
             <div className="rsvp-header">
               <div className="title">RSVP</div>
               <button
-                className="bttn cancel-rsvp"
+                className="bttn cancel"
                 type="button"
                 onClick={toggleShow}
               >

@@ -23,7 +23,7 @@ const Session = props => {
     <div className="new-session">
       <div>
         <div className="header">
-          <h1>Create New Whiskey Night</h1>
+          Create New Whiskey Night
         </div>
         <Flatpickr
           data-enable-time

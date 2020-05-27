@@ -11,9 +11,16 @@ const IngredientForm = ({ ingredient, index, update }) => {
   };
 
   return (
-    <>
-      <Form.Control required="true" value={name} onChange={handleChange} />
-    </>
+    <div className="ingredient-item">
+      <div className="symbol lead"/>
+      <input
+        className="ingredient-form"
+        required="true"
+        value={name}
+        onChange={handleChange}
+        placeholder="ingredient of the thing"
+      />
+    </div>
   );
 };
 

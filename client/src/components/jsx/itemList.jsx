@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Modal from "react-bootstrap/Modal";
-import NewCardModal from "./NewCardModal"
+import NewItemModal from "./NewItemModal"
 import ItemCard from "./itemCard";
 import "../scss/buttonstyles.scss";
 import "../scss/itemList.scss";
@@ -113,7 +113,7 @@ const ItemList = ({ id, listType }) => {
         onSubmit={handleSubmit}
         title={listType}
       >
-        <NewCardModal
+        <NewItemModal
           listType={listType}
           ingredients={ingredients}
           addIngredient={addIngredient}

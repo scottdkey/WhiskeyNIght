@@ -1,5 +1,7 @@
 @import "./_variables";
 
+$small-head-top: 25px;
+
 .main-header {
   position: relative;
   height: 400px;
@@ -10,8 +12,10 @@
 }
 .sub-header {
   position: relative;
+  
 
   @include xsm {
+    padding-top: $small-head-top;
   }
   @include sm {
   }
@@ -23,7 +27,6 @@
     margin-left: $padding-left;
     margin-right: $padding-right;
   }
-  padding-top: 2%;
 }
 
 .shape {
@@ -43,10 +46,10 @@
   z-index: 4;
   float: right;
   font-weight: 500;
-  padding-top: 3%;
   @include xsm {
     right: -5px;
-    top: -5px;
+    top: -7px;
+    padding-top: $small-head-top;
   }
   @include sm {
     top: -170px;
@@ -68,6 +71,7 @@
     z-index: 5;
     @include xsm {
       font-size: 17px;
+      padding-top: 10px;
     }
     @include md {
       font-size: 20px;

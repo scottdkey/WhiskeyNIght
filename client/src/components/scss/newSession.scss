@@ -1,36 +1,44 @@
 @import "./_variables";
 
 .new-session {
-  position: absolute;
+  position: relative;
   z-index: 4;
   background-color: $background;
   border-radius: 10px;
   text-align: center;
   margin: auto;
   width: 100%;
+  min-width: 450px;
   max-width: 40%;
-  top: 15%;
-  left: 30%;
-  box-shadow: 0.5px 3px 15px;
   height: 400px;
+  top: 200px;
+  // left: 30%;
+  box-shadow: 0.5px 3px 15px;
+  .header {
+    border-bottom: 3px solid $accent;
+    width: 80%;
+    height: 100%;
+    line-height: 38px;
+    margin: auto;
+    // @include sm {
+    //   font-size: 15px;
+    // }
+    @include md {
+      font-size: 28px;
+    }
+    @include lg {
+      font-size: 32px;
+    }
+  }
+  .button-container {
+    height: 4em;
+    border-radius: 15px;
+    width: 50%;
+    margin: auto;
+    box-shadow: 0.5px 0.5px 10px;
+    position: relative;
+    top: 100px;
+    border-radius: 15px;
+    display: flex;
+  }
 }
-.header {
-  border-bottom: 3px solid $accent;
-  width: 80%;
-  margin: auto;
-}
-
-
-.button-container {
-  height: 4em;
-  border-radius: 15px;
-  width: 50%;
-  margin: auto;
-  box-shadow: 0.5px 0.5px 10px;
-  position: relative;
-  top: 100px;
-  border-radius: 15px;
-  display: flex;
-}
-
-
