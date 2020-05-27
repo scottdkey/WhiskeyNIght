@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Form from "react-bootstrap/Form";
 
 const IngredientForm = ({ ingredient, index, update }) => {
   const [name, setName] = useState("");
@@ -15,7 +14,7 @@ const IngredientForm = ({ ingredient, index, update }) => {
       <div className="symbol lead"/>
       <input
         className="ingredient-form"
-        required="true"
+        required
         value={name}
         onChange={handleChange}
         placeholder="ingredient of the thing"

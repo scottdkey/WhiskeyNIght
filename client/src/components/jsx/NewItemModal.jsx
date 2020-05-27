@@ -12,7 +12,7 @@ const ModalContent = ({
   label,
   setLabel
 }) => (
-  <div className="custom-modal">
+  <form className="custom-modal">
     <div className="header">
       <div className="title">Add {listType}</div>
       <button className="cancel" type="button" onClick={toggleModal}>
@@ -47,15 +47,17 @@ const ModalContent = ({
         </div>
         <div className="add-ingredient" onClick={addIngredient}>
           <div className="symbol filled">{String.fromCharCode(65291)}</div>
-          <button className="bttn add-button">Add Ingredient</button>
+          <button type="button" className="bttn add-button">
+            Add Ingredient
+          </button>
         </div>
       </div>
     </div>
     <div className="footer">
-      <button className="bttn add-item" onClick={handleSubmit}>
+      <button className="bttn add-item" type="submit">
         Add {listType}
       </button>
     </div>
-  </div>
+  </form>
 );
 export default ModalContent;

@@ -38,14 +38,18 @@
 }
 
 .content-container > div:last-child {
+
   @include sm {
     margin: auto;
   }
   @include md {
+   
     margin: auto;
   }
   @include lg {
+    position: relative;
     margin-top: 0;
     margin-left: 170px;
+    // top: -6px;
   }
 }

@@ -12,6 +12,7 @@ const RSVPModal = ({ id, setAttendees }) => {
 
   const toggleShow = () => {
     setShow(!show);
+    setNames("");
   };
   const handleSubmit = e => {
     e.preventDefault();
@@ -73,6 +74,8 @@ const RSVPModal = ({ id, setAttendees }) => {
                 value={names}
                 onChange={handleChange}
                 placeholder="Name(s)"
+                required
+                autoFocus
               />
             </div>
             <div className="name-support">Supports comma seperated names</div>
