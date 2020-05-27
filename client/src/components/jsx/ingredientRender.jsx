@@ -10,15 +10,15 @@ const IngredientRender = ({
   setIngredients,
   index
 }) => {
-  const [checked, setChecked] = useState(false);
   const [user] = useContext(UserContext);
 
-  const addRemoveAssigned = checked ? "" : user;
+  const addRemoveAssigned = ingredient.complete ? "" : user;
 
   const toggleChecked = () => {
     const newIngredient = {
       name: ingredient.name,
-      assigned: addRemoveAssigned
+      assigned: addRemoveAssigned,
+      complete: !ingredient.complete
     };
     const newArray = ingredients.filter(i => {
       if (i.id !== ingredient.id) {
@@ -37,23 +37,22 @@ const IngredientRender = ({
       .then(res => {
         newArray.splice(index, 0, res.data);
         setIngredients([...newArray]);
-        setChecked(!checked);
       })
       .catch(e => console.log(e));
   };
 
-  useEffect(() => {
-    if ((ingredient.assigned === "") | null) {
-      setChecked(false);
-    } else {
-      setChecked(true);
-    }
-  }, [ingredient.assigned]);
+  // useEffect(() => {
+  //   if ((ingredient.complete === "") | null) {
+  //     setChecked(false);
+  //   } else {
+  //     setChecked(true);
+  //   }
+  // }, [ingredient.complete]);
 
   return (
     <div className="ingredient" onClick={toggleChecked}>
       <Checkbox
-        checked={checked}
+        checked={ingredient.complete}
       />
       <div className="i-name">{ingredient.name}</div>
       <div className="assigned">{ingredient.assigned}</div>

@@ -9,7 +9,7 @@
   position: relative;
   margin: auto;
 
-  @include x-sm {
+  @include xsm{
     top: -230px;
     flex-direction: column;
     padding-left: $mobile-left;
@@ -27,7 +27,7 @@
 .content-container > div {
   margin: auto;
 
-  @include x-sm {
+  @include xsm {
     padding-top: 60px;
     width: 80%;
   }

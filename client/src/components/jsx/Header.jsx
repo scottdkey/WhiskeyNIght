@@ -48,7 +48,7 @@ const Header = ({ session, setSession }) => {
             text="Event"
             buttonText="Delete Event"
             deleteFunction={deleteSession}
-            customClass="bttn delete-confirmation"
+            customClass="bttn delete-button"
           />
         </div>
       </div>
