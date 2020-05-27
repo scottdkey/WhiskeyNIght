@@ -8,7 +8,7 @@ const CurrentSession = ({ session, setSession }) => {
     <div>
       <Header session={session} setSession={setSession} />
       <div className="content-container">
-        <div>
+        <div className="offset">
           <ItemList id={session.id} listType="Food" />
         </div>
         <div>

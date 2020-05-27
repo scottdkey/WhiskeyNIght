@@ -5,11 +5,11 @@
   flex-direction: row;
   justify-content: space-between;
   max-width: 1920px;
-  
+
   position: relative;
   margin: auto;
 
-  @include xsm{
+  @include xsm {
     top: -230px;
     flex-direction: column;
     padding-left: $mobile-left;
@@ -22,13 +22,17 @@
     padding-left: $padding-left;
     padding-right: $padding-right;
   }
+  .offset {
+    margin-top: 0px;
+  }
 }
 
 .content-container > div {
   margin: auto;
+  padding-top: 60px;
+  height: 100%;
 
   @include xsm {
-    padding-top: 60px;
     width: 80%;
   }
   @include lg {
@@ -38,17 +42,14 @@
 }
 
 .content-container > div:last-child {
-
   @include sm {
     margin: auto;
   }
   @include md {
-   
     margin: auto;
   }
   @include lg {
     position: relative;
-    margin-top: 0;
     margin-left: 170px;
     // top: -6px;
   }

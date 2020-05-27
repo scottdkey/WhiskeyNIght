@@ -12,7 +12,6 @@ $small-head-top: 25px;
 }
 .sub-header {
   position: relative;
-  
 
   @include xsm {
     padding-top: $small-head-top;
@@ -35,10 +34,23 @@ $small-head-top: 25px;
   float: left;
   position: absolute;
   z-index: 0;
-  shape-outside: polygon(0 0, 100% 0, 100% 31%, 0 48%);
-  clip-path: polygon(0 0, 100% 0, 100% 31%, 0 48%);
   background: $primary;
   overflow: visible;
+  @include sm {
+    shape-outside: polygon(0 0, 100% 0, 100% 37%, 0 48%);
+    clip-path: polygon(0 0, 100% 0, 100% 37%, 0 48%);
+    transition-timing-function: ease
+  }
+  @include md {
+    shape-outside: polygon(0 0, 100% 0, 100% 34%, 0 48%);
+    clip-path: polygon(0 0, 100% 0, 100% 34%, 0 48%);
+    transition-timing-function: ease
+  }
+  @include lg {
+    shape-outside: polygon(0 0, 100% 0, 100% 31%, 0 48%);
+    clip-path: polygon(0 0, 100% 0, 100% 31%, 0 48%);
+    transition-timing-function: ease
+  }
 }
 
 .delete-area {
@@ -136,21 +148,5 @@ $small-head-top: 25px;
     color: $text-color;
     height: 38px;
     // overflow: hidden;
-  }
-
-  .rsvp {
-    border: 1px;
-    z-index: 3;
-    background-color: $secondary;
-    color: $text-color;
-    position: relative;
-
-    @include xsm {
-      top: 22px;
-    }
-    @include lg {
-      top: 10px;
-      font-size: 20px;
-    }
   }
 }

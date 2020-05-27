@@ -11,7 +11,24 @@
     outline: none;
   }
 }
+.rsvp {
+  border: 1px;
+  z-index: 3;
+  background-color: $secondary;
+  color: $text-color;
+  position: relative;
+  width: 98px;
+  height: 39px;
 
+  font-size: 20px;
+
+  @include xsm {
+    top: 22px;
+  }
+  @include lg {
+    top: -5px;
+  }
+}
 
 .host {
   font-weight: 900;
@@ -69,4 +86,3 @@
   width: 179px;
   height: 50px;
 }
-
