@@ -1,13 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "../scss/Checkbox.scss";
 
 const Checkbox = ({checked}) => {
 
   const className = checked ? "checked" : "unchecked";
-
-  useEffect(() => {
-    // className();
-  }, [checked]);
 
   return (
     <>

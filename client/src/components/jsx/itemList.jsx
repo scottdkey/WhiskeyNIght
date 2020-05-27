@@ -15,7 +15,7 @@ const ItemList = ({ id, listType }) => {
   const toggleModal = () => {
     setOpenModal(!openModal);
     setLabel("");
-    setIngredients([]);
+    setIngredients([])
   };
 
   const handleSubmit = e => {
@@ -44,6 +44,7 @@ const ItemList = ({ id, listType }) => {
         })
         .catch(e => console.log(e));
     });
+
   };
 
   const addIngredient = () => {
@@ -69,8 +70,10 @@ const ItemList = ({ id, listType }) => {
       if (i !== item) {
         return i;
       }
+      return null
     });
     setItems(newItems);
+    return null
   };
 
   const itemsRender = () =>
@@ -80,6 +83,7 @@ const ItemList = ({ id, listType }) => {
         if (item.foodstuff === listType) {
           return item;
         }
+        return null
       })
       .map(item => {
         //render each of those items

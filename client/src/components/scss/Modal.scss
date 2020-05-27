@@ -1,13 +1,10 @@
 @import "./variables";
 
-// .modal{
-//   // all: unset;
-//   z-index: 1000;
-// }
+
 
 .modal-content {
   border-radius: 20px;
-  min-width: 470px;
+  min-width: 400px;
   &:focus {
     outline: none;
   }
@@ -91,7 +88,7 @@
 
     .items-body {
       height: 100%;
-      width: 399px;
+      width: 100%;
       margin: 39px auto 0px auto;
       padding: 9px 10px 27px 13px;
       box-shadow: 0px 5px 20px rgba(31, 11, 73, 0.15);
@@ -216,10 +213,12 @@
     .add-item {
       position: relative;
       // top: 27px;
-      left: 45%;
+      color: $text-color;
       width: 242px;
       height: 50px;
       background-color: $accent;
+      float: right;
+      margin-left: auto;
     }
   }
 }

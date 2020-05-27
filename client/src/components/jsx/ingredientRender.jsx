@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import Checkbox from "./Checkbox";
 import "../scss/ItemCard.scss";
 import { UserContext } from "../../App";
@@ -8,7 +8,8 @@ const IngredientRender = ({
   ingredient,
   ingredients,
   setIngredients,
-  index
+  index,
+  checkIngredients
 }) => {
   const [user] = useContext(UserContext);
 
@@ -23,11 +24,9 @@ const IngredientRender = ({
     const newArray = ingredients.filter(i => {
       if (i.id !== ingredient.id) {
         return i;
-      } else{
-        //return nothing. NOTHING I SAY
       }
-      return
-    })
+      return null
+    });
 
     axios
       .patch(
@@ -41,19 +40,13 @@ const IngredientRender = ({
       .catch(e => console.log(e));
   };
 
-  // useEffect(() => {
-  //   if ((ingredient.complete === "") | null) {
-  //     setChecked(false);
-  //   } else {
-  //     setChecked(true);
-  //   }
-  // }, [ingredient.complete]);
+  useEffect(() => {
+    checkIngredients();
+  }, [ingredients, checkIngredients]);
 
   return (
     <div className="ingredient" onClick={toggleChecked}>
-      <Checkbox
-        checked={ingredient.complete}
-      />
+      <Checkbox checked={ingredient.complete} />
       <div className="i-name">{ingredient.name}</div>
       <div className="assigned">{ingredient.assigned}</div>
     </div>
@@ -61,10 +54,3 @@ const IngredientRender = ({
 };
 
 export default IngredientRender;
-
-const checkboxColor = {
-  backgroundColor: "#8b55ff",
-  tickColor: "white",
-  borderColor: "purple",
-  uncheckedBorderColor: "yellow"
-};

@@ -7,6 +7,7 @@ import Modal from "react-bootstrap/Modal";
 import Checkbox from "./Checkbox";
 import "../scss/ItemCard.scss";
 import "../scss/buttonstyles.scss";
+import BringModal from "./BringModal";
 
 //TODO: Make the ingredients populate on submit
 //TODO: Make the Top level checkbox go when ingredients are all checked/uncheck if one is unchecked
@@ -57,6 +58,7 @@ const ItemCard = ({ item, removeItem }) => {
             item={item}
             ingredients={ingredients}
             setIngredients={setIngredients}
+            checkIngredients={checkIngredients}
             index={index}
           />
         ))}
@@ -90,26 +92,31 @@ const ItemCard = ({ item, removeItem }) => {
     setIngredients([...newIngredients]);
   };
 
-  const checkIngredients = ing => {
-    const newArray = ing.filter(i => {
-      return i.assigned !== "";
-    });
-    if (newArray.length === ing.length) {
-      setBringAll(true);
-    } else {
-      setBringAll(false);
+  const checkIngredients = () => {
+    const length = ingredients.length
+    const complete = ingredients.filter(i => i.complete === true).length
+    if(length === 0){
+      setBringAll(false)
+    } else if(length === complete){
+      setBringAll(true)
+    } else{
+      setBringAll(false)
     }
   };
 
+    const getIngredients = async () => {
+      const res = await axios.get(`/api/items/${item.id}/ingredients`);
+
+      setIngredients(res.data);
+    };
+
+
   useEffect(() => {
-    axios
-      .get(`/api/items/${item.id}/ingredients`)
-      .then(res => {
-        setIngredients(res.data);
-        checkIngredients(res.data);
-      })
-      .catch(e => console.log(e));
-  }, [item.id, item.assigned]);
+    getIngredients()
+  }, [item.id, item.assigned, getIngredients]);
+
+
+
 
   return (
     <div className="info-area">
@@ -117,20 +124,12 @@ const ItemCard = ({ item, removeItem }) => {
       {infoBody()}
 
       <Modal show={openModal} onHide={toggleModal}>
-        <div className="custom-modal">
-          <div className="head">{bringAll ? "Uncheck All?" : "Bring All?"}</div>
-          <div className="body">
-            {bringAll
-              ? `Remove your name from ${item.label}?`
-              : `Bring everything from the item ${item.label}?`}
-          </div>
-          <button className="bttn cancel" onClick={toggleModal}>
-            Cancel
-          </button>
-          <button className="bttn submit" onClick={handleSubmit}>
-            Yes!
-          </button>
-        </div>
+      <BringModal 
+        bringAll={bringAll}
+        item={item}
+        toggleModal={toggleModal}
+        handleSubmit={handleSubmit}
+      />
       </Modal>
     </div>
   );
