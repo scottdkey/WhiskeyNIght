@@ -28,7 +28,7 @@ const RSVPModal = ({ id, setAttendees, toggleShow, show }) => {
     setNames("");
   };
   const handleChange = e => {
-    e.preventDefault();
+    // e.preventDefault();
     setNames(e.target.value);
   };
 

@@ -41,20 +41,21 @@
       position: relative;
       display: flex;
       height: 28px;
-
-      .i-name {
-        position: relative;
-        width: 100%;
-        font-size: 14px;
-        left: 8px;
-      }
-      .assigned {
-        position: relative;
-        z-index: 6;
-        width: 100%;
-        text-align: right;
-        font-size: 10px;
-        color: $primary;
+      .check-area {
+        .i-name {
+          position: relative;
+          width: 100%;
+          font-size: 14px;
+          left: 8px;
+        }
+        .assigned {
+          position: relative;
+          z-index: 6;
+          width: 100%;
+          text-align: right;
+          font-size: 10px;
+          color: $primary;
+        }
       }
     }
   }

@@ -1,8 +1,10 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Checkbox from "./Checkbox";
-import "../scss/ItemCard.scss";
 import { UserContext } from "../../App";
 import axios from "axios";
+import BringModal from "./BringModal";
+
+import "../scss/ItemCard.scss";
 
 const IngredientRender = ({
   ingredient,
@@ -12,10 +14,13 @@ const IngredientRender = ({
   checkIngredients
 }) => {
   const [user] = useContext(UserContext);
+  const [show, setShow] = useState(false);
 
-  const addRemoveAssigned = ingredient.complete ? "" : user;
+  const toggleModal = () => {
+    setShow(!show);
+  };
 
-  const toggleChecked = () => {
+  const handleSubmit = () => {
     const newIngredient = {
       name: ingredient.name,
       assigned: addRemoveAssigned,
@@ -25,7 +30,7 @@ const IngredientRender = ({
       if (i.id !== ingredient.id) {
         return i;
       }
-      return null
+      return null;
     });
 
     axios
@@ -40,15 +45,28 @@ const IngredientRender = ({
       .catch(e => console.log(e));
   };
 
+  const whichSubmit = ingredient.complete ? handleSubmit : toggleModal;
+
+  const addRemoveAssigned = ingredient.complete ? "" : user;
+
   useEffect(() => {
     checkIngredients();
   }, [ingredients, checkIngredients]);
 
   return (
-    <div className="ingredient" onClick={toggleChecked}>
-      <Checkbox checked={ingredient.complete} />
-      <div className="i-name">{ingredient.name}</div>
-      <div className="assigned">{ingredient.assigned}</div>
+    <div className="ingredient">
+      <div className="check-area" onClick={whichSubmit}>
+        <Checkbox checked={ingredient.complete} />
+        <div className="i-name">{ingredient.name}</div>
+        <div className="assigned">{ingredient.assigned}</div>
+      </div>
+
+      <BringModal
+        ingredient={ingredient}
+        toggleShow={toggleModal}
+        handleSubmit={handleSubmit}
+        show={show}
+      />
     </div>
   );
 };

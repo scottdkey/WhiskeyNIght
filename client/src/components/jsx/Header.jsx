@@ -29,15 +29,7 @@ const Header = ({ session, setSession }) => {
 
   return (
     <div className="main-header">
-      <div className="shape">
-        {/* <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-          >
-            <polygon fill="white" points="0,0 100%,0 100%,21% 0,39%" />
-          </svg> */}
-      </div>
+      <div className="shape"/>
       <div className="sub-header">
         <div className="event">
           <div className="date">{event}</div>

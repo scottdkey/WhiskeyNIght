@@ -69,18 +69,7 @@
   background-color: $primary;
   color: $text-color;
 }
-#submit {
-  border: none;
-  color: $text-color;
-  background-color: $accent;
-  border-radius: 15px;
-  height: 50px;
-  width: 200px;
-  font-weight: bold;
-  position: absolute;
-  bottom: 25px;
-  right: 25px;
-}
+
 .ingredient-delete {
   margin-bottom: 50%;
   padding: 0;
@@ -105,4 +94,16 @@
   margin-right: auto;
   width: 179px;
   height: 50px;
+}
+.submit {
+  position: absolute;
+  border: none;
+  color: $text-color;
+  background-color: $accent;
+  border-radius: 14px;
+  height: 50px;
+  width: 242px;
+  font-weight: bold;
+  bottom: 0px;
+  right: 0px;
 }

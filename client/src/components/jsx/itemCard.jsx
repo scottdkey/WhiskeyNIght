@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext, useCallback } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { UserContext } from "../../App";
 import DeleteModal from "./DeleteModal";
@@ -32,7 +32,7 @@ const ItemCard = ({ item, removeItem }) => {
   const infoHead = () => {
     return (
       <div className="head">
-        <div onClick={toggleModal}>
+        <div>
           <Checkbox checked={bringAll} />
           <h3 className="name">{item.label}</h3>
         </div>
@@ -104,15 +104,14 @@ const ItemCard = ({ item, removeItem }) => {
     }
   };
 
-  const getIngredients = useCallback(async () => {
-    const res = await axios.get(`/api/items/${item.id}/ingredients`);
-
-    setIngredients(res.data);
-  }, [item.id]);
-
   useEffect(() => {
+    const getIngredients = async () => {
+      const res = await axios.get(`/api/items/${item.id}/ingredients`);
+
+      setIngredients(res.data);
+    };
     getIngredients();
-  }, [item.id, item.assigned, getIngredients]);
+  }, [item.id, item.assigned]);
 
   return (
     <div className="info-area">
