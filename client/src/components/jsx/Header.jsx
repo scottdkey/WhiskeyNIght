@@ -13,7 +13,7 @@ const Header = ({ session, setSession }) => {
   const [attending, setAttending] = useState([]);
   const event = moment(session.date)
     .tz("America/Boise")
-    .format("MMM Do hh:mm a");
+    .format("MMM Do hh a");
 
   const deleteSession = () => {
     axios

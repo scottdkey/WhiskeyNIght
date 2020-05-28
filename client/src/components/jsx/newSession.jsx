@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Flatpickr from "react-flatpickr";
 import "flatpickr/dist/themes/material_green.css";
+import "../scss/buttonstyles.scss";
 import "../scss/newSession.scss";
 
 const Session = props => {
@@ -9,6 +10,7 @@ const Session = props => {
   const [date, setDate] = useState(new Date());
 
   const handleSubmit = e => {
+    console.log(date);
     axios
       .post("api/sessions", { host, date })
       .then(res => {
@@ -22,19 +24,30 @@ const Session = props => {
   return (
     <div className="new-session">
       <div>
-        <div className="header">
-          Create New Whiskey Night
+        <div className="header">Create New Whiskey Night</div>
+        <div className="date-area">
+          <Flatpickr
+            className="picker"
+            data-enable-time
+            value={date}
+            options={{
+              minDate: "today",
+              dateFormat: "F J\\, h K",
+              enableTime: true,
+              minTime: "16:00",
+              maxTime: "22:00"
+            }}
+            onChange={date => {
+              setDate(...date);
+            }}
+          />
+          <div className="info">Pick Date</div>
         </div>
-        <Flatpickr
-          data-enable-time
-          value={date}
-          onChange={date => {
-            setDate(date);
-          }}
-        />
         <div className="button-container">
           <button
-            className={`bttn host left-host ${host === values.te ? "active" : ""}`}
+            className={`bttn host left-host ${
+              host === values.te ? "active" : ""
+            }`}
             active={values.te}
             onClick={e => setHost(e.target.name)}
             name={values.te}
@@ -42,7 +55,9 @@ const Session = props => {
             {values.te}
           </button>
           <button
-            className={`bttn host right-host ${host === values.kj ? "active" : ""}`}
+            className={`bttn host right-host ${
+              host === values.kj ? "active" : ""
+            }`}
             isactive={host === values.kj ? values.kj : null}
             onClick={e => setHost(e.target.name)}
             name={values.kj}
@@ -50,10 +65,11 @@ const Session = props => {
             {values.kj}
           </button>
         </div>
-
-        <button onClick={handleSubmit} className="bttn" id="submit">
-          Create New
-        </button>
+        <div className="create-new">
+          <button onClick={handleSubmit} className="bttn submit">
+            Create New
+          </button>
+        </div>
       </div>
     </div>
   );

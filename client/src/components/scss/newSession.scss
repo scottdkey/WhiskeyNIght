@@ -1,22 +1,26 @@
 @import "./_variables";
 
 .new-session {
+  width: 100%;
+  height: 100%;
   position: relative;
   z-index: 4;
   background-color: $background;
   border-radius: 10px;
   text-align: center;
   margin: auto;
-  width: 100%;
+
   min-width: 350px;
-  max-width: 40%;
-  height: 400px;
+  max-width: 701px;
+  min-height: 400px;
+  max-height: 430px;
+
   top: 200px;
-  // left: 30%;
   box-shadow: 0.5px 3px 15px;
+  padding: 31px 21px 25px 21px;
   .header {
     border-bottom: 3px solid $accent;
-    width: 80%;
+    width: 100%;
     height: 100%;
     line-height: 38px;
     margin: auto;
@@ -30,15 +34,36 @@
       font-size: 32px;
     }
   }
+  .date-area {
+    margin-top: 34px;
+    .picker {
+      border: none;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 900;
+      line-height: 28px;
+      &:focus {
+        outline: none;
+      }
+    }
+    .info {
+      color: $primary;
+    }
+  }
   .button-container {
+    position: relative;
+    display: flex;
     height: 4em;
     border-radius: 15px;
     width: 50%;
     margin: auto;
     box-shadow: 0.5px 0.5px 10px;
-    position: relative;
-    top: 100px;
     border-radius: 15px;
-    display: flex;
+    margin-top: 41px;
+  }
+  .create-new {
+    position: absolute;
+    right: 21px;
+    bottom: 25px;
   }
 }
