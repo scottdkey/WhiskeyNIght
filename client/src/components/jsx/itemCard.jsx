@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useCallback } from "react";
 import axios from "axios";
 import { UserContext } from "../../App";
 import DeleteModal from "./DeleteModal";
@@ -33,7 +33,7 @@ const ItemCard = ({ item, removeItem }) => {
     return (
       <div className="head">
         <div onClick={toggleModal}>
-            <Checkbox checked={bringAll} />
+          <Checkbox checked={bringAll} />
           <h3 className="name">{item.label}</h3>
         </div>
         <div className="delete-ingredient">
@@ -93,30 +93,26 @@ const ItemCard = ({ item, removeItem }) => {
   };
 
   const checkIngredients = () => {
-    const length = ingredients.length
-    const complete = ingredients.filter(i => i.complete === true).length
-    if(length === 0){
-      setBringAll(false)
-    } else if(length === complete){
-      setBringAll(true)
-    } else{
-      setBringAll(false)
+    const length = ingredients.length;
+    const complete = ingredients.filter(i => i.complete === true).length;
+    if (length === 0) {
+      setBringAll(false);
+    } else if (length === complete) {
+      setBringAll(true);
+    } else {
+      setBringAll(false);
     }
   };
 
-    const getIngredients = async () => {
-      const res = await axios.get(`/api/items/${item.id}/ingredients`);
+  const getIngredients = useCallback(async () => {
+    const res = await axios.get(`/api/items/${item.id}/ingredients`);
 
-      setIngredients(res.data);
-    };
-
+    setIngredients(res.data);
+  }, [item.id]);
 
   useEffect(() => {
-    getIngredients()
+    getIngredients();
   }, [item.id, item.assigned, getIngredients]);
-
-
-
 
   return (
     <div className="info-area">
@@ -124,12 +120,12 @@ const ItemCard = ({ item, removeItem }) => {
       {infoBody()}
 
       <Modal show={openModal} onHide={toggleModal}>
-      <BringModal 
-        bringAll={bringAll}
-        item={item}
-        toggleModal={toggleModal}
-        handleSubmit={handleSubmit}
-      />
+        <BringModal
+          bringAll={bringAll}
+          item={item}
+          toggleModal={toggleModal}
+          handleSubmit={handleSubmit}
+        />
       </Modal>
     </div>
   );

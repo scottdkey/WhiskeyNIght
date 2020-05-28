@@ -4,9 +4,11 @@ body {
   margin: 0;
   font-family: $font-stack;
   color: #000000;
-  min-width: 417px;
+  min-width: 250px;
+  margin: 0px;
+  padding: 0px;
 }
-.modal-backdrop{
+.modal-backdrop {
   width: 100%;
   height: 100%;
 }

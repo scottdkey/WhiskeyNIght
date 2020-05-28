@@ -5,19 +5,17 @@
   flex-direction: row;
   justify-content: space-between;
   max-width: 1920px;
-
   position: relative;
   margin: auto;
+  padding-top: 40px;
 
   @include xsm {
-    top: -230px;
     flex-direction: column;
     padding-left: $mobile-left;
     padding-right: $mobile-right;
   }
 
   @include lg {
-    top: -220px;
     flex-direction: row;
     padding-left: $padding-left;
     padding-right: $padding-right;
@@ -29,7 +27,7 @@
 
 .content-container > div {
   margin: auto;
-  padding-top: 60px;
+  
   height: 100%;
 
   @include xsm {
@@ -49,8 +47,7 @@
     margin: auto;
   }
   @include lg {
-    position: relative;
     margin-left: 170px;
-    // top: -6px;
+    margin-top: 0px;
   }
 }

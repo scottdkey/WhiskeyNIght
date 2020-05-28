@@ -3,150 +3,152 @@
 $small-head-top: 25px;
 
 .main-header {
-  position: relative;
-  height: 400px;
-  width: 100%;
-  margin: auto;
+  display: flex;
   border-bottom: none;
   overflow: visible;
-}
-.sub-header {
   position: relative;
-
-  @include xsm {
-    padding-top: $small-head-top;
-  }
-  @include sm {
-  }
-  @include md {
-    margin-left: 11%;
-    margin-right: 11%;
-  }
-  @include lg {
-    margin-left: $padding-left;
-    margin-right: $padding-right;
-  }
-}
-
-.shape {
   height: 100%;
   width: 100%;
-  float: left;
-  position: absolute;
-  z-index: 0;
-  background: $primary;
-  overflow: visible;
-  @include sm {
-    shape-outside: polygon(0 0, 100% 0, 100% 37%, 0 48%);
-    clip-path: polygon(0 0, 100% 0, 100% 37%, 0 48%);
-    transition-timing-function: ease
-  }
-  @include md {
-    shape-outside: polygon(0 0, 100% 0, 100% 34%, 0 48%);
-    clip-path: polygon(0 0, 100% 0, 100% 34%, 0 48%);
-    transition-timing-function: ease
-  }
-  @include lg {
-    shape-outside: polygon(0 0, 100% 0, 100% 31%, 0 48%);
-    clip-path: polygon(0 0, 100% 0, 100% 31%, 0 48%);
-    transition-timing-function: ease
-  }
-}
 
-.delete-area {
-  position: absolute;
-  z-index: 4;
-  float: right;
-  font-weight: 500;
-  @include xsm {
-    right: -5px;
-    top: -7px;
-    padding-top: $small-head-top;
-  }
-  @include sm {
-    top: -170px;
-  }
-  @include md {
-    top: -10px;
-    right: 2px;
-  }
-  @include lg {
-    top: -10px;
-    right: 0px;
-  }
-  .delete-button {
-    content: "Delete Event";
-    font-weight: 400;
-    opacity: 0.7;
-    color: $text-color;
+  .shape {
+    position: absolute;
+    bottom: 0;
     width: 100%;
-    z-index: 5;
-    @include xsm {
-      font-size: 17px;
-      padding-top: 10px;
+
+    background-color: $primary;
+    height: 100%;
+    @include md {
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    }
+    @include lg {
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+    }
+  }
+  .sub-header {
+    position: relative;
+    padding-top: 20px;
+    width: 100%;
+
+    @include sm {
+      padding-left: 11%;
+      padding-right: 11%;
     }
     @include md {
-      font-size: 20px;
     }
     @include lg {
-      font-size: 22px;
-    }
-  }
-}
-.event {
-  z-index: 2;
-  position: relative;
-  float: left;
-  top: -4px;
-  margin-right: auto;
-  @include xsm {
-    font-size: 20px;
-    width: 100%;
-  }
-  @include sm {
-    // left: -35px;
-  }
-  @include md {
-    font-size: 20px;
-    width: 75%;
-    // left: -60px;
-  }
-  @include lg {
-    font-size: 25px;
-    width: 50%;
-    // left: 5px;
-  }
-  #date {
-    font-weight: 900;
-    width: 100%;
-  }
-
-  #host {
-    color: $text-color;
-    font-weight: 700;
-  }
-
-  #count {
-    font-weight: 600;
-    text-transform: uppercase;
-    color: $text-color;
-    @include xsm {
-      font-size: 15px;
+      padding-left: $padding-left;
+      padding-right: $padding-right;
     }
 
-    @include lg {
-      font-size: 20px;
+    .event {
+      z-index: 2;
+      float: left;
+      top: -4px;
+
+      .attendees {
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 12px;
+        font-weight: 200;
+        opacity: 0.5;
+        color: $text-color;
+        height: 100%;
+      }
+
+      @include xsm {
+        font-size: 20px;
+        max-width: 200px;
+        width: 60%;
+      }
+      @include sm {
+        max-width: 250px;
+        width: 65%;
+      }
+      @include md {
+        font-size: 20px;
+        max-width: 400px;
+        width: 90%;
+      }
+      @include lg {
+        font-size: 25px;
+        max-width: 500px;
+        width: 100%;
+      }
+      .date {
+        font-weight: 900;
+        width: 100%;
+      }
+
+      .host {
+        color: $text-color;
+        font-weight: 700;
+      }
+      .button-position {
+        @include xsm {
+          top: 10px;
+        }
+        @include lg {
+          top: 10px;
+        }
+      }
+
+      #count {
+        font-weight: 600;
+        text-transform: uppercase;
+        color: $text-color;
+        @include xsm {
+          font-size: 15px;
+        }
+
+        @include lg {
+          font-size: 20px;
+        }
+      }
     }
-  }
-  #attendees {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    font-size: 12px;
-    font-weight: 200;
-    opacity: 0.5;
-    color: $text-color;
-    height: 38px;
-    // overflow: hidden;
+    .delete-area {
+      position: absolute;
+      z-index: 4;
+      font-weight: 500;
+      right: 0px;
+      @include xsm {
+        top: -7px;
+        padding-top: 20px;
+        padding-right: 8%;
+      }
+      @include sm {
+        top: -170px;
+        padding-right: 10%;
+      }
+      @include md {
+        top: -10px;
+      }
+      @include lg {
+        top: -10px;
+        padding-right: $padding-right;
+      }
+      .delete-button {
+        content: "Delete Event";
+        font-weight: 400;
+        opacity: 0.7;
+        color: $text-color;
+        z-index: 5;
+        width: 100%;
+        @include xsm {
+          font-size: 10px;
+          padding-top: 10px;
+        }
+        @include sm {
+          font-size: 10px;
+        }
+        @include md {
+          font-size: 20px;
+        }
+        @include lg {
+          font-size: 22px;
+        }
+      }
+    }
   }
 }

@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
-
-import { useState } from "react";
+import deleteIcon from "../../images/trash-can.svg";
 import "../scss/buttonstyles.scss";
 import "../scss/Modal.scss";
 
@@ -20,14 +19,15 @@ const DeleteModal = ({ text, deleteFunction, customClass, buttonText }) => {
   return (
     <>
       <button className={customClass} onClick={toggleShow}>
-        {buttonText}
+        <div className="delete-text">{buttonText}</div>
+        <img className="delete-icon" src={deleteIcon} alt="trash can"/>
       </button>
       <Modal show={show} onHide={toggleShow}>
         <div
           className="custom-modal modal-content"
           style={{ borderRadius: "20px" }}
         >
-          <div className="header" closeButton>
+          <div className="header" closebutton="true">
             <div className="title">Delete</div>
           </div>
 

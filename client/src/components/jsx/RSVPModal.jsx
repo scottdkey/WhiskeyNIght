@@ -5,15 +5,12 @@ import { UserContext } from "../../App";
 import "../scss/buttonstyles.scss";
 import "../scss/Modal.scss";
 
-const RSVPModal = ({ id, setAttendees }) => {
-  const [show, setShow] = useState(false);
+const RSVPModal = ({ id, setAttendees, toggleShow, show }) => {
+ 
   const [user, setUser] = useContext(UserContext);
   const [names, setNames] = useState("");
 
-  const toggleShow = () => {
-    setShow(!show);
-    setNames("");
-  };
+
   const handleSubmit = e => {
     e.preventDefault();
     const nameArr = names.split(",").map(item => item.trim());
@@ -28,6 +25,7 @@ const RSVPModal = ({ id, setAttendees }) => {
         })
         .catch(e => console.log(e))
     );
+    setNames("");
   };
   const handleChange = e => {
     e.preventDefault();
@@ -46,10 +44,6 @@ const RSVPModal = ({ id, setAttendees }) => {
   }, [show, id, setAttendees]);
   return (
     <>
-      <button className="bttn rsvp" onClick={toggleShow}>
-        RSVP
-      </button>
-
       <Modal show={show} onHide={toggleShow}>
         <form className="custom-modal" onSubmit={handleSubmit}>
           <div className="header">

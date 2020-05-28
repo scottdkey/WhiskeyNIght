@@ -59,3 +59,10 @@ $lg-max: 1600px;
   //   @content;
   // }
 }
+
+:export{
+  xsm: xsm; 
+  sm: sm;
+  md: md;
+  lg: lg;
+}

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4f, 2020-05-01)"
+   sodipodi:docname="header.svg"
+   id="svg100"
+   height="190"
+   width="1920"
+   viewBox="-1 -0.9999999999999929 1924 194"
+   preserveAspectRatio="xMidYMid meet"
+   version="1.1">
+  <metadata
+     id="metadata104">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     inkscape:current-layer="g96"
+     inkscape:window-maximized="0"
+     inkscape:window-y="121"
+     inkscape:window-x="0"
+     inkscape:cy="95"
+     inkscape:cx="960"
+     inkscape:zoom="0.54791667"
+     showgrid="false"
+     id="namedview102"
+     inkscape:window-height="934"
+     inkscape:window-width="1534"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <defs
+     id="defs92">
+    <path
+       id="a8VolWva84"
+       d="M0 0L1920 0C1920 61.05 1920 99.21 1920 114.47C1920 114.57 1919.92 114.66 1919.82 114.66C1663.84 124.71 1023.9 149.82 0 190L0 0Z" />
+  </defs>
+  <g
+     id="g98">
+    <g
+       id="g96">
+      <use
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         transform="matrix(1.0361537,0,0,1.3859443,-39.598908,-73.329425)"
+         id="use94"
+         fill-opacity="1"
+         fill="#8b54ff"
+         opacity="1"
+         xlink:href="#a8VolWva84" />
+    </g>
+  </g>
+</svg>

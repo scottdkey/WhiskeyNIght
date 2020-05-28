@@ -10,6 +10,34 @@
   &:focus {
     outline: none;
   }
+  .delete-text {
+    @include xsm {
+      visibility: hidden;
+    }
+    @include sm {
+      visibility: hidden;
+    }
+    @include md {
+      visibility: visible;
+    }
+    @include lg {
+      visibility: visible;
+    }
+  }
+  .delete-icon {
+    @include xsm {
+      visibility: visible;
+    }
+    @include sm {
+      visibility: visible;
+    }
+    @include md {
+      visibility: hidden;
+    }
+    @include lg {
+      visibility: hidden;
+    }
+  }
 }
 .rsvp {
   border: 1px;
@@ -19,15 +47,7 @@
   position: relative;
   width: 98px;
   height: 39px;
-
   font-size: 20px;
-
-  @include xsm {
-    top: 22px;
-  }
-  @include lg {
-    top: -5px;
-  }
 }
 
 .host {
