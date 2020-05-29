@@ -34,11 +34,15 @@ const Session = () => {
             data-enable-time
             value={date}
             options={{
+              disableMobile: true,
+              defaultMinute: 0,
+              defaultHour: 16,
               minDate: "today",
               dateFormat: "F J\\, h K",
               enableTime: true,
               minTime: "16:00",
-              maxTime: "22:00"
+              maxTime: "22:00",
+              minuteIncrement: "60"
             }}
             onChange={date => {
               setDate(...date);
