@@ -29,10 +29,19 @@ const ItemCard = ({ item, removeItem }) => {
     setOpenModal(!openModal);
   };
 
+  const ingredientLengthCheck = () => {
+    if(ingredients.length >= 0){
+      setBringAll(!bringAll)
+    }else if(ingredients.length > 0){
+      return
+    }
+  }
+
+
   const infoHead = () => {
     return (
       <div className="head">
-        <div>
+        <div onClick={ingredientLengthCheck}>
           <Checkbox checked={bringAll} />
           <h3 className="name">{item.label}</h3>
         </div>
@@ -105,10 +114,11 @@ const ItemCard = ({ item, removeItem }) => {
   };
 
   useEffect(() => {
-    const getIngredients = async () => {
-      const res = await axios.get(`/api/items/${item.id}/ingredients`);
-
-      setIngredients(res.data);
+    const getIngredients = () => {
+      axios
+        .get(`/api/items/${item.id}/ingredients`)
+        .then(res => setIngredients(res.data))
+        .catch(e => console.log(e));
     };
     getIngredients();
   }, [item]);

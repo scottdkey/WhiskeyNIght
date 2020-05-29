@@ -1,12 +1,13 @@
 @import "./variables";
 
 .checkbox {
+  text-align: center;
   z-index: 5;
   color: $text-color;
   border-radius: 4px;
 }
 .checked {
-  text-align: center;
+  line-height: 18px;
   width: 18px;
   height: 18px;
   border-radius: inherit;

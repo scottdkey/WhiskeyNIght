@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Checkbox from "./Checkbox";
-import { UserContext } from "../../App";
 import axios from "axios";
 import BringModal from "./BringModal";
 
@@ -13,14 +12,14 @@ const IngredientRender = ({
   index,
   checkIngredients
 }) => {
-  const [user] = useContext(UserContext);
   const [show, setShow] = useState(false);
 
   const toggleModal = () => {
     setShow(!show);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (user) => {
+    const addRemoveAssigned = ingredient.complete ? "" : user;
     const newIngredient = {
       name: ingredient.name,
       assigned: addRemoveAssigned,
@@ -46,8 +45,6 @@ const IngredientRender = ({
   };
 
   const whichSubmit = ingredient.complete ? handleSubmit : toggleModal;
-
-  const addRemoveAssigned = ingredient.complete ? "" : user;
 
   useEffect(() => {
     checkIngredients();

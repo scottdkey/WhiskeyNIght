@@ -21,7 +21,7 @@ const BringAllModal = ({
     e.preventDefault();
     const fullNames = names;
     setUser(fullNames);
-    handleSubmit();
+    handleSubmit(fullNames);
     toggleShow()
   };
 

@@ -20,18 +20,17 @@ const ItemList = ({ listType }) => {
     setIngredients([]);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     const item = { label, foodstuff: listType };
-    axios
-      .post(`/api/sessions/${session.id}/items`, item)
-      .then(res => {
-        //add the new items to the current state
-        setItems([...items, res.data]);
-        //submit the ingredients seperately(different submit method)
-        submitIngredients(res.data.id);
-      })
-      .catch(e => console.log(e));
+    const res = await axios.post(`/api/sessions/${session.id}/items`, item);
+
+    //seperate function to seperate and submit all ingredients to database
+    submitIngredients(res.data.id);
+
+    //don't set items before ingredients have been submitted so card will include all ingredients
+    await setItems([...items, res.data]);
+
     //clear and close the modal info after pushing to Database
     toggleModal();
   };
@@ -99,7 +98,7 @@ const ItemList = ({ listType }) => {
         .then(res => setItems(res.data))
         .catch(e => console.log(e));
     }
-  },[session]);
+  }, [session]);
   return (
     <>
       <div className="list-head">
