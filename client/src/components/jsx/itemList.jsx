@@ -1,28 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { SessionContext } from "../../App";
 import axios from "axios";
 import Modal from "react-bootstrap/Modal";
-import NewItemModal from "./NewItemModal"
+import NewItemModal from "./NewItemModal";
 import ItemCard from "./itemCard";
 import "../scss/buttonstyles.scss";
 import "../scss/itemList.scss";
 
-const ItemList = ({ id, listType }) => {
+const ItemList = ({ listType }) => {
   const [items, setItems] = useState([]);
   const [label, setLabel] = useState(null);
   const [ingredients, setIngredients] = useState([]);
   const [openModal, setOpenModal] = useState(false);
+  const [session, setSession] = useContext(SessionContext);
 
   const toggleModal = () => {
     setOpenModal(!openModal);
     setLabel("");
-    setIngredients([])
+    setIngredients([]);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
     const item = { label, foodstuff: listType };
     axios
-      .post(`/api/sessions/${id}/items`, item)
+      .post(`/api/sessions/${session.id}/items`, item)
       .then(res => {
         //add the new items to the current state
         setItems([...items, res.data]);
@@ -30,9 +32,8 @@ const ItemList = ({ id, listType }) => {
         submitIngredients(res.data.id);
       })
       .catch(e => console.log(e));
-    // close modal
+    //clear and close the modal info after pushing to Database
     toggleModal();
-    //clear the modal info after pushing to Database
   };
 
   const submitIngredients = id => {
@@ -44,7 +45,6 @@ const ItemList = ({ id, listType }) => {
         })
         .catch(e => console.log(e));
     });
-
   };
 
   const addIngredient = () => {
@@ -70,10 +70,10 @@ const ItemList = ({ id, listType }) => {
       if (i !== item) {
         return i;
       }
-      return null
+      return null;
     });
     setItems(newItems);
-    return null
+    return null;
   };
 
   const itemsRender = () =>
@@ -83,7 +83,7 @@ const ItemList = ({ id, listType }) => {
         if (item.foodstuff === listType) {
           return item;
         }
-        return null
+        return null;
       })
       .map(item => {
         //render each of those items
@@ -91,15 +91,15 @@ const ItemList = ({ id, listType }) => {
       });
 
   useEffect(() => {
-    if (id === undefined) {
-      //do nothing
+    if (session.id === undefined) {
+      //nothing
     } else {
       axios
-        .get(`/api/sessions/${id}/items`)
+        .get(`/api/sessions/${session.id}/items`)
         .then(res => setItems(res.data))
         .catch(e => console.log(e));
     }
-  }, [id, ingredients]);
+  },[session]);
   return (
     <>
       <div className="list-head">

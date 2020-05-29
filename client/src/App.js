@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "../src/components/scss/App.scss";
 import axios from "axios";
-import NoSession from "./components/jsx/NoSession";
-import {useLocalState} from './components/jsx/hooks'
-import CurrentSession from "./components/jsx/CurrentSession";
+import { useLocalState } from "./components/jsx/hooks";
+import Session from "./components/jsx/Session";
 import NewSession from "./components/jsx/newSession";
 
-
 export const UserContext = React.createContext();
-export const EventContext = React.createContext();
+export const SessionContext = React.createContext();
 
 function App() {
   const [session, setSession] = useState({});
-  const [user, setUser] = useLocalState('user')
+  const [user, setUser] = useLocalState("user");
 
   useEffect(() => {
     axios
@@ -26,17 +24,12 @@ function App() {
 
   return (
     <div className="App">
-      <UserContext.Provider value={[user, setUser]}>
-        {session === undefined ? (
-          <NewSession sesison={session} setSession={setSession} />
-        ) : null}
-
-        {session === undefined ? (
-          <NoSession />
-        ) : (
-          <CurrentSession session={session} setSession={setSession} />
-        )}
-      </UserContext.Provider>
+      <SessionContext.Provider value={[session, setSession]}>
+        <UserContext.Provider value={[user, setUser]}>
+          {session === undefined ? <NewSession /> : null}
+          <Session />
+        </UserContext.Provider>
+      </SessionContext.Provider>
     </div>
   );
 }

@@ -111,7 +111,7 @@ const ItemCard = ({ item, removeItem }) => {
       setIngredients(res.data);
     };
     getIngredients();
-  }, [item.id, item.assigned]);
+  }, [item]);
 
   return (
     <div className="info-area">

@@ -8,7 +8,7 @@ const NoSession = () => (
       <div className="diamond medium" id="one" />
       <div className="diamond medium" id="four" />
       <div className="diamond small" id="five" />
-      <div id="boxGroupLeft">
+      <div className="boxGroupLeft">
         <div className="diamond large" id="two" />
         <div className="diamond small" id="three" />
       </div>

@@ -1,20 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import Flatpickr from "react-flatpickr";
+import {SessionContext} from "../../App"
 import "flatpickr/dist/themes/material_green.css";
 import "../scss/buttonstyles.scss";
 import "../scss/newSession.scss";
 
-const Session = props => {
+const Session = () => {
   const [host, setHost] = useState(values.te);
   const [date, setDate] = useState(new Date());
+  const [session, setSession] = useContext(SessionContext)
+  
 
   const handleSubmit = e => {
-    console.log(date);
+    e.preventDefault()
     axios
       .post("api/sessions", { host, date })
       .then(res => {
-        props.setSession({ id: res.data.id, date, host });
+        setSession({ id: res.data.id, date, host });
         setDate(new Date());
         setHost("");
       })

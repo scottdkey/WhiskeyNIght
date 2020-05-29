@@ -11,9 +11,10 @@ import RSVPModal from "./RSVPModal";
 const Header = ({ session, setSession }) => {
   const [show, setShow] = useState(false);
   const [attending, setAttending] = useState([]);
+   
   const event = moment(session.date)
     .tz("America/Boise")
-    .format("MMM Do hh a");
+    .format("MMM Do h a");
 
   const deleteSession = () => {
     axios
