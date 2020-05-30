@@ -3,7 +3,6 @@ import "../src/components/scss/App.scss";
 import axios from "axios";
 import { useLocalState } from "./components/jsx/hooks";
 import Session from "./components/jsx/Session";
-import NewSession from "./components/jsx/newSession";
 
 export const UserContext = React.createContext();
 export const SessionContext = React.createContext();
@@ -26,7 +25,6 @@ function App() {
     <div className="App">
       <SessionContext.Provider value={[session, setSession]}>
         <UserContext.Provider value={[user, setUser]}>
-          {session === undefined ? <NewSession /> : null}
           <Session />
         </UserContext.Provider>
       </SessionContext.Provider>

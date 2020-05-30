@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import ItemList from "./itemList";
 import Header from "./Header";
 import NoSession from "./NoSession";
+import NewSession from "./newSession"
 import { SessionContext } from "../../App";
 import "../scss/Session.scss";
 
@@ -10,13 +11,14 @@ const Session = () => {
   if (session === undefined) {
     return (
       <>
+        <NewSession />
         <NoSession />
       </>
     );
   } else {
     return (
-      <div>
-        <Header session={session} setSession={setSession}/>
+      <>
+        <Header session={session} setSession={setSession} />
         <div className="content-container">
           <div className="offset">
             <ItemList id={session.id} listType="Food" />
@@ -25,7 +27,7 @@ const Session = () => {
             <ItemList id={session.id} listType="Drinks" />
           </div>
         </div>
-      </div>
+      </>
     );
   }
 };

@@ -14,6 +14,16 @@
     padding-left: $mobile-left;
     padding-right: $mobile-right;
   }
+  @include sm {
+    flex-direction: column;
+    padding-left: $mobile-left;
+    padding-right: $mobile-right;
+  }
+  @include md {
+    flex-direction: column;
+    padding-left: $mobile-left;
+    padding-right: $mobile-right;
+  }
 
   @include lg {
     flex-direction: row;
@@ -27,7 +37,7 @@
 
 .content-container > div {
   margin: auto;
-  
+
   height: 100%;
 
   @include xsm {

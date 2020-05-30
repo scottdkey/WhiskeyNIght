@@ -55,14 +55,4 @@ $lg-max: 1600px;
   @media (min-width: $lg-min) {
     @content;
   }
-  // @media (max-width: $lg-max) {
-  //   @content;
-  // }
-}
-
-:export{
-  xsm: xsm; 
-  sm: sm;
-  md: md;
-  lg: lg;
 }

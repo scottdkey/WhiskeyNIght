@@ -4,115 +4,112 @@
   max-height: 400px;
   height: 100%;
   width: 100%;
+
   #right-triangle {
     position: absolute;
     bottom: 0;
     shape-outside: polygon(0 70%, 100% 5%, 100% 100%, 0% 100%);
-    clip-path: polygon(0 72%, 100% 41%, 100% 100%, 0% 100%);
+    clip-path: polygon(0 72%, 100% 25%, 100% 100%, 0% 100%);
     background: $primary;
     height: 100%;
     width: 100%;
+    background-image: url("../../images/DesktopGroup.svg");
   }
 
   .diamond {
-    background-color: blue;
-    color: red;
-    background: purple;
-    transform: rotate(45deg);
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-    // min-width: 100px;
-    // min-height: 100px;
+    position: absolute;
+    width: auto;
+    height: auto;
+    transform: rotate(-45deg);
   }
-
-  // .small {
-  //   z-index: 3;
-  //   background-color: $tertiary;
-  //   width: 100%;
-  // }
-  // .medium-small {
-  // }
-
-  // .medium {
-  //   z-index: 2;
-  //   width: 100%;
-  //   height: 100%;
-  // }
-  // .medium-large {
-  //   background-color: $tertiary;
-  //   z-index: 2;
-  // }
-
-  // .large {
-  //   width: 100%;
-  //   z-index: 1;
-  // }
-
-  // .left {
-  //   float: left;
-  //   position: relative;
-  //   left: 8%;
-    // .boxGroupLeft {
-    //   position: absolute;
-    //   left: 100px;
-    //   top: 100px;
-    //   #two {
-    //     position: relative;
-    //     top: 200px;
-    //   }
-    //   #three {
-    //     position: relative;
-    //   }
-    // }
-    // #one {
-    //   left: 80px;
-    //   top: 80px;
-    // }
-
-    // #four {
-    //   top: 150px;
-    //   left: 350px;
-    // }
-    // #five {
-    //   left: 270px;
-    //   top: 70px;
-    // }
-  // }
-  // .right {
-  //   float: right;
-  //   position: relative;
-  //   right: 17%;
-
-    // #six {
-    //   right: 375px;
-    //   top: 100px;
-    // }
-    // #seven {
-    //   right: 535px;
-    //   bottom: -525px;
-    // }
-    // #eight {
-    //   top: 320px;
-    //   right: 340px;
-    // }
-    // #nine {
-    //   right: -75px;
-    //   top: 180px;
-    // }
-    // #ten {
-    //   background-color: $tertiary;
-    //   right: -20px;
-    //   top: 100px;
-    //   z-index: 0;
-    // }
-    // #eleven {
-    //   right: -50px;
-    // }
-    // #twelve {
-    //   right: 175px;
-    //   width: 100px;
-    //   height: 100px;
-    // }
-  // }
+  #one {
+    left: 10%;
+    bottom: 24%;
+  }
+  #two {
+    left: 10%;
+    bottom: 41%;
+  }
+  #three {
+    bottom: 70%;
+    left: 5%;
+  }
+  #four {
+    bottom: 77%;
+    left: 15%;
+  }
+  #five {
+    bottom: 60%;
+    left: 18%;
+  }
+  #six{
+    bottom: 15%;
+    left: 55%;
+  }
+  #seven{
+    bottom: 20%;
+    left: 65%;
+  }
+  #eight{
+    left: 72%;
+    bottom: 39%;
+  }
+  #nine{
+    background-color: $tertiary;
+    left: 75.5%;
+    bottom: 69%;
+    z-index: -1;
+  }
+  #ten{
+    left: 85%;
+    bottom: 81%;
+  }
+  #eleven{
+    left: 66%;
+    bottom: 80%;
+  }
+  #twelve{
+    left: 50%;
+    bottom: 75%;
+  }
+  .x-small {
+    height: 2.9vw;
+    width: 2.9vw;
+    background-color: $tertiary;
+  }
+  .small {
+    height: 4.62vw;
+    width: 4.62vw;
+    background-color: $secondary;
+    // width: 88.62px;
+    // height: 88.62px;
+  }
+  .medium-small {
+    height: 6.065vw;
+    width: 6.065vw;
+    background-color: $secondary;
+    // width: 116.43px;
+    // height: 116.43px;
+  }
+  .medium {
+    // width: 156.51px;
+    // height: 156.51px;
+    background-color: $tertiary;
+    height: 8.15vw;
+    width: 8.15vw;
+  }
+  .medium-large {
+    background-color: $secondary;
+    height: 10.78vw;
+    width: 10.78vw;
+    // width: 206.95px;
+    // height: 206.95px;
+  }
+  .large {
+    // width: 292.74px;
+    // height: 292.74px;
+    background-color: $secondary;
+    height: 15.2473vw;
+    width: 15.2473vw;
+  }
 }

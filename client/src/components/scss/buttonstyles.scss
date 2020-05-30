@@ -56,6 +56,19 @@
   outline: none;
   height: 100%;
   flex: 50%;
+  @include xsm{
+    font-size: 3px;
+  }
+  @include sm{
+    font-size: 6px;
+  }
+  @include md{
+    font-size: 16px;
+  }
+  @include lg{
+    font-size: 17px;
+  }
+  
 }
 
 .left-host {

@@ -12,7 +12,7 @@ const ItemList = ({ listType }) => {
   const [label, setLabel] = useState(null);
   const [ingredients, setIngredients] = useState([]);
   const [openModal, setOpenModal] = useState(false);
-  const [session, setSession] = useContext(SessionContext);
+  const [session] = useContext(SessionContext);
 
   const toggleModal = () => {
     setOpenModal(!openModal);
