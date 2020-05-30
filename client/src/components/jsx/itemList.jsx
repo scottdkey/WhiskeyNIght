@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { SessionContext } from "../../App";
 import axios from "axios";
-import Modal from "react-bootstrap/Modal";
 import NewItemModal from "./NewItemModal";
 import ItemCard from "./itemCard";
 import "../scss/buttonstyles.scss";
@@ -9,60 +8,14 @@ import "../scss/itemList.scss";
 
 const ItemList = ({ listType }) => {
   const [items, setItems] = useState([]);
-  const [label, setLabel] = useState(null);
-  const [ingredients, setIngredients] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [session] = useContext(SessionContext);
 
   const toggleModal = () => {
     setOpenModal(!openModal);
-    setLabel("");
-    setIngredients([]);
   };
 
-  const handleSubmit = async e => {
-    e.preventDefault();
-    const item = { label, foodstuff: listType };
-    const res = await axios.post(`/api/sessions/${session.id}/items`, item);
 
-    //seperate function to seperate and submit all ingredients to database
-    submitIngredients(res.data.id);
-
-    //don't set items before ingredients have been submitted so card will include all ingredients
-    await setItems([...items, res.data]);
-
-    //clear and close the modal info after pushing to Database
-    toggleModal();
-  };
-
-  const submitIngredients = id => {
-    ingredients.forEach(i => {
-      axios
-        .post(`/api/items/${id}/ingredients`, i)
-        .then(res => {
-          return res;
-        })
-        .catch(e => console.log(e));
-    });
-  };
-
-  const addIngredient = () => {
-    setIngredients([
-      ...ingredients,
-      { name: "", assigned: "", complete: false }
-    ]);
-  };
-
-  const updateIngredients = (newIngredient, i) => {
-    const newArray = ingredients.map((ing, index) => {
-      if (index === i) {
-        return newIngredient;
-      } else {
-        return ing;
-      }
-    });
-    setIngredients(newArray);
-  };
 
   const removeItem = item => {
     const newItems = items.filter(i => {
@@ -87,7 +40,7 @@ const ItemList = ({ listType }) => {
       .map(item => {
         //render each of those items
         return <ItemCard item={item} key={item.id} removeItem={removeItem} />;
-      });
+      },[items]);
 
   useEffect(() => {
     if (session.id === undefined) {
@@ -109,24 +62,14 @@ const ItemList = ({ listType }) => {
       </div>
 
       <div>{itemsRender()}</div>
-
-      <Modal
-        show={openModal}
-        onClose={toggleModal}
-        onSubmit={handleSubmit}
-        title={listType}
-      >
-        <NewItemModal
-          listType={listType}
-          ingredients={ingredients}
-          addIngredient={addIngredient}
-          toggleModal={toggleModal}
-          handleSubmit={handleSubmit}
-          updateIngredients={updateIngredients}
-          setLabel={setLabel}
-          label={label}
-        />
-      </Modal>
+      <NewItemModal
+        open={openModal}
+        listType={listType}
+        toggle={toggleModal}
+        setItems={setItems}
+        items={items}
+        session_id={session.id}
+      />
     </>
   );
 };
