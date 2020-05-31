@@ -22,7 +22,7 @@ const ItemCard = ({ item_id, setItems, items, session_id }) => {
   const getIngredients = async () => {
     const res = await axios.get(`/api/items/${item_id}/ingredients/`);
     setIngredients(res.data);
-    allCompleteCheck(res.data)
+    allCompleteCheck(res.data);
   };
 
   const alterItem = async payloadObject => {
@@ -33,13 +33,13 @@ const ItemCard = ({ item_id, setItems, items, session_id }) => {
     setItem(res.data);
   };
 
-  const allCompleteCheck = async (ing) => {
+  const allCompleteCheck = async ing => {
     const length = ing.length;
     const completedLength = ing.filter(i => {
-      if(i.complete){
-        return i
+      if (i.complete) {
+        return i;
       }
-      return null
+      return null;
     }).length;
     if (length === completedLength) {
       alterItem({ complete: true });
@@ -56,37 +56,40 @@ const ItemCard = ({ item_id, setItems, items, session_id }) => {
     console.log(res.data);
     //Remove this item from items array
     const newItems = items.filter(i => {
-      return i.id != item.id
+      return i.id !== item.id;
     });
-    console.log(newItems)
+    console.log(newItems);
     setItems(newItems);
   };
 
   const bringItem = async () => {
     const assigned = item.complete ? "" : user;
     alterItem({ assigned, complete: !item.complete });
-    if (ingredients.length > 0) {
-      bringAllIngredients();
-    }
-    getItem();
+    bringAllIngredients();
   };
 
   const bringAllIngredients = () => {
-    const newIngredients = [];
-    ingredients.forEach(async ingredient => {
-      const assigned = ingredient.complete ? ingredient.assigned : user;
-      const res = await axios.patch(
-        `/api/items/${ingredient.item_id}/ingredients/${ingredient.id}`,
-        {
-          assigned,
-          complete: !ingredient.complete
-        }
-      );
-      newIngredients.push(...res.data);
+    //change the values of each object in array
+    const newIngredients = ingredients.map(ing => {
+      //check if its already complete and hold on to assigned name
+      const assigned = ing.complete ? ing.assigned : user;
+      ing.assigned = assigned;
+      ing.complete = true;
+      return ing
     });
-    setIngredients(...newIngredients);
-    getIngredients();
-    allCompleteCheck();
+    //send new array to state
+    setIngredients(newIngredients);
+
+    //push array to database
+    newIngredients.forEach(async ingredient => {
+      const res = await axios.patch(
+        `/api/items/${item_id}/ingredients/${ingredient.id}`,
+        ingredient
+      );
+      return res
+    });
+    //check if the top level should be marked off
+    allCompleteCheck(newIngredients);
   };
 
   //check if item boolean is complete
