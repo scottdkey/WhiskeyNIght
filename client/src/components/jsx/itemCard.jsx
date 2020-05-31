@@ -3,49 +3,120 @@ import axios from "axios";
 import { UserContext } from "../../App";
 import DeleteModal from "./DeleteModal";
 import IngredientRender from "./ingredientRender";
-import Modal from "react-bootstrap/Modal";
 import Checkbox from "./Checkbox";
 import "../scss/ItemCard.scss";
 import "../scss/buttonstyles.scss";
 import BringModal from "./BringModal";
 
-//TODO: Make the ingredients populate on submit
-//TODO: Make the Top level checkbox go when ingredients are all checked/uncheck if one is unchecked
-
-const ItemCard = ({ item, removeItem }) => {
+const ItemCard = ({ item_id, setItems, items, session_id }) => {
   const [ingredients, setIngredients] = useState([]);
   const [openModal, setOpenModal] = useState(false);
-  const [bringAll, setBringAll] = useState(false);
   const [user] = useContext(UserContext);
+  const [item, setItem] = useState({});
 
-  const deleteItem = () => {
-    axios
-      .delete(`/api/sessions/${item.session_id}/items/${item.id}`)
-      .then(res => removeItem(item))
-      .catch(e => console.log(e));
+  const getItem = async () => {
+    const res = await axios.get(`/api/sessions/${session_id}/items/${item_id}`);
+    setItem(res.data);
   };
 
-  const toggleModal = () => {
-    setOpenModal(!openModal);
+  const getIngredients = async () => {
+    const res = await axios.get(`/api/items/${item_id}/ingredients/`);
+    setIngredients(res.data);
+    allCompleteCheck(res.data)
   };
 
-  const ingredientLengthCheck = () => {
-    if(ingredients.length >= 0){
-      setBringAll(!bringAll)
-    }else if(ingredients.length > 0){
-      return
+  const alterItem = async payloadObject => {
+    const res = await axios.patch(
+      `/api/sessions/${session_id}/items/${item_id}`,
+      payloadObject
+    );
+    setItem(res.data);
+  };
+
+  const allCompleteCheck = async (ing) => {
+    const length = ing.length;
+    const completedLength = ing.filter(i => {
+      if(i.complete){
+        return i
+      }
+      return null
+    }).length;
+    if (length === completedLength) {
+      alterItem({ complete: true });
+    } else {
+      alterItem({ complete: false });
     }
-  }
+  };
 
+  const deleteItem = async () => {
+    //delete item from database
+    const res = await axios.delete(
+      `/api/sessions/${item.session_id}/items/${item.id}`
+    );
+    console.log(res.data);
+    //Remove this item from items array
+    const newItems = items.filter(i => {
+      return i.id != item.id
+    });
+    console.log(newItems)
+    setItems(newItems);
+  };
 
-  const infoHead = () => {
-    return (
+  const bringItem = async () => {
+    const assigned = item.complete ? "" : user;
+    alterItem({ assigned, complete: !item.complete });
+    if (ingredients.length > 0) {
+      bringAllIngredients();
+    }
+    getItem();
+  };
+
+  const bringAllIngredients = () => {
+    const newIngredients = [];
+    ingredients.forEach(async ingredient => {
+      const assigned = ingredient.complete ? ingredient.assigned : user;
+      const res = await axios.patch(
+        `/api/items/${ingredient.item_id}/ingredients/${ingredient.id}`,
+        {
+          assigned,
+          complete: !ingredient.complete
+        }
+      );
+      newIngredients.push(...res.data);
+    });
+    setIngredients(...newIngredients);
+    getIngredients();
+    allCompleteCheck();
+  };
+
+  //check if item boolean is complete
+  const bringItemModal = () => {
+    if (item.complete) {
+      bringItem();
+    } else {
+      setOpenModal(true);
+    }
+  };
+
+  useEffect(() => {
+    getItem();
+    getIngredients();
+  }, [item_id]);
+
+  return (
+    <div className="info-area">
       <div className="head">
-        <div onClick={ingredientLengthCheck}>
-          <Checkbox checked={bringAll} />
+        <div onClick={bringItemModal}>
+          <Checkbox checked={item.complete} />
           <h3 className="name">{item.label}</h3>
         </div>
         <div className="delete-ingredient">
+          <BringModal
+            name={item.label}
+            toggleShow={() => setOpenModal(!openModal)}
+            handleSubmit={bringItem}
+            show={openModal}
+          />
           <DeleteModal
             customClass="bttn ingredient-delete"
             deleteFunction={deleteItem}
@@ -54,88 +125,20 @@ const ItemCard = ({ item, removeItem }) => {
           />
         </div>
       </div>
-    );
-  };
-
-  const infoBody = () => {
-    return (
       <div className="body">
         {ingredients.map((i, index) => (
           <IngredientRender
             key={i.id + i}
-            ingredient={i}
-            item={item}
+            id={i.id}
+            item_id={item_id}
             ingredients={ingredients}
             setIngredients={setIngredients}
-            checkIngredients={checkIngredients}
+            allCompleteCheck={allCompleteCheck}
+            user={user}
             index={index}
           />
         ))}
       </div>
-    );
-  };
-  const assigned = bringAll ? "" : user;
-
-  const handleSubmit = () => {
-    const newIngredients = ingredients.map(i => {
-      return { name: i.name, assigned: assigned, id: i.id };
-    });
-    axios
-      .patch(`/api/sessions/${item.session_id}/items/${item.id}`, {
-        assigned: assigned
-      })
-      .then(res => {})
-      .catch(e => console.log(e));
-    newIngredients.forEach(i => {
-      axios
-        .patch(`/api/items/${item.id}/ingredients/${i.id}`, {
-          name: i.name,
-          assigned: assigned
-        })
-        .then(res => {
-          toggleModal();
-          checkIngredients(res.data);
-        })
-        .catch(e => console.log(e));
-    });
-    setIngredients([...newIngredients]);
-  };
-
-  const checkIngredients = () => {
-    const length = ingredients.length;
-    const complete = ingredients.filter(i => i.complete === true).length;
-    if (length === 0) {
-      setBringAll(false);
-    } else if (length === complete) {
-      setBringAll(true);
-    } else {
-      setBringAll(false);
-    }
-  };
-
-  useEffect(() => {
-    const getIngredients = () => {
-      axios
-        .get(`/api/items/${item.id}/ingredients`)
-        .then(res => setIngredients(res.data))
-        .catch(e => console.log(e));
-    };
-    getIngredients();
-  }, [item]);
-
-  return (
-    <div className="info-area">
-      {infoHead()}
-      {infoBody()}
-
-      <Modal show={openModal} onHide={toggleModal}>
-        <BringModal
-          bringAll={bringAll}
-          item={item}
-          toggleModal={toggleModal}
-          handleSubmit={handleSubmit}
-        />
-      </Modal>
     </div>
   );
 };

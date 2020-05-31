@@ -1,33 +1,13 @@
-import React, { useState, useEffect, useContext } from "react";
-import { SessionContext } from "../../App";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import NewItemModal from "./NewItemModal";
 import ItemCard from "./itemCard";
 import "../scss/buttonstyles.scss";
 import "../scss/itemList.scss";
 
-const ItemList = ({ listType }) => {
+const ItemList = ({ listType, session_id }) => {
   const [items, setItems] = useState([]);
   const [openModal, setOpenModal] = useState(false);
-  const [session] = useContext(SessionContext);
-
-  const toggleModal = () => {
-    setOpenModal(!openModal);
-  };
-
-
-
-  const removeItem = item => {
-    const newItems = items.filter(i => {
-      if (i !== item) {
-        return i;
-      }
-      return null;
-    });
-    setItems(newItems);
-    return null;
-  };
-
   const itemsRender = () =>
     items
       .filter(item => {
@@ -37,26 +17,39 @@ const ItemList = ({ listType }) => {
         }
         return null;
       })
-      .map(item => {
-        //render each of those items
-        return <ItemCard item={item} key={item.id} removeItem={removeItem} />;
-      },[items]);
+      .map(
+        (item, index) => {
+          //render each of those items
+          return (
+            <ItemCard
+              item_id={item.id}
+              key={item.id}
+              items={items}
+              setItems={setItems}
+              session_id={session_id}
+              index={index}
+            />
+          );
+        },
+        [items]
+      );
 
   useEffect(() => {
-    if (session.id === undefined) {
-      //nothing
-    } else {
-      axios
-        .get(`/api/sessions/${session.id}/items`)
-        .then(res => setItems(res.data))
-        .catch(e => console.log(e));
-    }
-  }, [session]);
+    axios
+      .get(`/api/sessions/${session_id}/items`)
+      .then(res => setItems(res.data))
+      .catch(e => console.log(e));
+  }, [session_id]);
+
   return (
     <>
       <div className="list-head">
         <h2 id="list-name">{listType}</h2>
-        <button id="list-add" onClick={toggleModal} className="bttn plus">
+        <button
+          id="list-add"
+          onClick={() => setOpenModal(!openModal)}
+          className="bttn plus"
+        >
           {String.fromCharCode(65291)}
         </button>
       </div>
@@ -65,10 +58,10 @@ const ItemList = ({ listType }) => {
       <NewItemModal
         open={openModal}
         listType={listType}
-        toggle={toggleModal}
+        toggle={() => setOpenModal(!openModal)}
         setItems={setItems}
         items={items}
-        session_id={session.id}
+        session_id={session_id}
       />
     </>
   );

@@ -7,7 +7,7 @@ import { SessionContext } from "../../App";
 import "../scss/Session.scss";
 
 const Session = () => {
-  const [session, setSession] = useContext(SessionContext);
+  const [session] = useContext(SessionContext);
   if (session === undefined) {
     return (
       <>
@@ -18,13 +18,13 @@ const Session = () => {
   } else {
     return (
       <>
-        <Header session={session} setSession={setSession} />
+        <Header/>
         <div className="content-container">
           <div className="offset">
-            <ItemList id={session.id} listType="Food" />
+            <ItemList session_id={session.id} listType="Food" />
           </div>
           <div>
-            <ItemList id={session.id} listType="Drinks" />
+            <ItemList session_id={session.id} listType="Drinks" />
           </div>
         </div>
       </>

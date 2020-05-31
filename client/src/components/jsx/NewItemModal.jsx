@@ -12,10 +12,10 @@ const NewItemModal = ({
   setItems,
   session_id
 }) => {
-  const [label, setLabel] = useState(null);
+  const [label, setLabel] = useState("");
   const [ingredients, setIngredients] = useState([]);
 
-  const toggleModal = () => {
+  const closeModal = () => {
     setLabel("");
     setIngredients([]);
     toggle()
@@ -44,14 +44,12 @@ const NewItemModal = ({
     await setItems([...items, res.data]);
 
     //clear and close the modal info after pushing to Database
-    toggleModal();
+    closeModal();
   };
 
   const submitIngredients = id => {
-    ingredients.forEach(async i => {
-      const res = await axios.post(`/api/items/${id}/ingredients`, i)
-
-      console.log(res)
+    ingredients.forEach(i => {
+      axios.post(`/api/items/${id}/ingredients`, i)
     });
   };
 
@@ -64,14 +62,14 @@ const NewItemModal = ({
   return (
     <Modal
       show={open}
-      onClose={toggleModal}
+      onClose={closeModal}
       onSubmit={handleSubmit}
       title={listType}
     >
       <form className="custom-modal">
         <div className="header">
           <div className="title">Add {listType}</div>
-          <button className="cancel" type="button" onClick={toggleModal}>
+          <button className="cancel" type="button" onClick={closeModal}>
             {String.fromCharCode(65291)}
           </button>
         </div>

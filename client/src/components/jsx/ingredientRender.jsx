@@ -6,49 +6,48 @@ import BringModal from "./BringModal";
 import "../scss/ItemCard.scss";
 
 const IngredientRender = ({
-  ingredient,
+  item_id,
+  id,
+  allCompleteCheck,
+  user,
   ingredients,
   setIngredients,
-  index,
-  checkIngredients
+  index
 }) => {
   const [show, setShow] = useState(false);
+  const [ingredient, setIngredient] = useState({});
 
   const toggleModal = () => {
     setShow(!show);
   };
 
-  const handleSubmit = (user) => {
-    const addRemoveAssigned = ingredient.complete ? "" : user;
-    const newIngredient = {
-      name: ingredient.name,
-      assigned: addRemoveAssigned,
-      complete: !ingredient.complete
-    };
-    const newArray = ingredients.filter(i => {
-      if (i.id !== ingredient.id) {
-        return i;
+  const handleSubmit = async () => {
+    const assigned = ingredient.complete ? "" : user;
+    const res = await axios.patch(
+      `/api/items/${ingredient.item_id}/ingredients/${ingredient.id}`,
+      {
+        assigned,
+        complete: !ingredient.complete
       }
-      return null;
-    });
-
-    axios
-      .patch(
-        `/api/items/${ingredient.item_id}/ingredients/${ingredient.id}`,
-        newIngredient
-      )
-      .then(res => {
-        newArray.splice(index, 0, res.data);
-        setIngredients([...newArray]);
-      })
-      .catch(e => console.log(e));
+    );
+    setIngredient(res.data);
+    const newIngredients = ingredients;
+    newIngredients[index] = res.data;
+    setIngredients(newIngredients);
+    allCompleteCheck(newIngredients)
+    setShow(false);
   };
 
   const whichSubmit = ingredient.complete ? handleSubmit : toggleModal;
 
+  const getIngredient = async () => {
+    const res = await axios.get(`/api/items/${item_id}/ingredients/${id}`);
+    setIngredient(res.data);
+  };
+
   useEffect(() => {
-    checkIngredients();
-  }, [ingredients, checkIngredients]);
+    getIngredient();
+  }, [item_id, id]);
 
   return (
     <div className="ingredient">
@@ -59,7 +58,7 @@ const IngredientRender = ({
       </div>
 
       <BringModal
-        ingredient={ingredient}
+        name={ingredient.name}
         toggleShow={toggleModal}
         handleSubmit={handleSubmit}
         show={show}

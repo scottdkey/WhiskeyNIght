@@ -3,8 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import { UserContext } from "../../App";
 
 const BringAllModal = ({
-  bringAll,
-  ingredient,
+  name,
   toggleShow,
   handleSubmit,
   show
@@ -45,7 +44,7 @@ const BringAllModal = ({
           </div>
           <div className="body">
             <div className="bringing">
-              <div className="question">Who is bringing {ingredient.name}?</div>
+              <div className="question">Who is bringing {name}?</div>
               <div className="name-input-container">
                 <input
                   style={{ textAlign: "center" }}

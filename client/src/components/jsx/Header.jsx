@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { SessionContext } from "../../App";
 import DeleteModal from "./DeleteModal";
 import axios from "axios";
 import AttendeeFormat from "./AttendeeFormat";
@@ -8,10 +9,11 @@ import "../scss/Header.scss";
 import "../scss/buttonstyles.scss";
 import RSVPModal from "./RSVPModal";
 
-const Header = ({ session, setSession }) => {
+const Header = () => {
   const [show, setShow] = useState(false);
   const [attending, setAttending] = useState([]);
-   
+  const [session, setSession] = useContext(SessionContext);
+
   const event = moment(session.date)
     .tz("America/Boise")
     .format("MMM Do h a");
@@ -30,7 +32,7 @@ const Header = ({ session, setSession }) => {
 
   return (
     <div className="main-header">
-      <div className="shape"/>
+      <div className="shape" />
       <div className="sub-header">
         <div className="event">
           <div className="date">{event}</div>

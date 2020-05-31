@@ -35,7 +35,7 @@ class Api::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:label, :assigned, :foodstuff)
+    params.require(:item).permit(:label, :assigned, :foodstuff, :complete)
   end
 
   def set_item
