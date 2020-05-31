@@ -22,9 +22,7 @@ const ItemCard = ({ item_id, setItems, items, session_id }) => {
   const getIngredients = async () => {
     const res = await axios.get(`/api/items/${item_id}/ingredients/`);
     const sortedIngredients = res.data.sort((a, b) => a.id - b.id);
-    allCompleteCheck(res.data);
     setIngredients(sortedIngredients);
-    
   };
 
   const alterItem = async payloadObject => {
@@ -35,14 +33,15 @@ const ItemCard = ({ item_id, setItems, items, session_id }) => {
     setItem(res.data);
   };
 
-  const allCompleteCheck = async () => {
+  const allCompleteCheck = () => {
     const length = ingredients.length;
-    const completedLength = await ingredients.filter(i => {
+    const completedLength = ingredients.filter(i => {
       if (i.complete) {
         return i;
       }
       return null;
     }).length;
+    console.log(length, completedLength)
     if (length === completedLength) {
       alterItem({ complete: true });
     } else{
