@@ -47,7 +47,7 @@ const IngredientRender = ({
 
   useEffect(() => {
     getIngredient();
-  }, [item_id, id]);
+  }, [item_id, id, ingredients]);
 
   return (
     <div className="ingredient">

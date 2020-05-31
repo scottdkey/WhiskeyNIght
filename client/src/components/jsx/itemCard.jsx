@@ -21,8 +21,10 @@ const ItemCard = ({ item_id, setItems, items, session_id }) => {
 
   const getIngredients = async () => {
     const res = await axios.get(`/api/items/${item_id}/ingredients/`);
-    setIngredients(res.data);
+    const sortedIngredients = res.data.sort((a, b) => a.id - b.id);
     allCompleteCheck(res.data);
+    setIngredients(sortedIngredients);
+    
   };
 
   const alterItem = async payloadObject => {
@@ -33,9 +35,9 @@ const ItemCard = ({ item_id, setItems, items, session_id }) => {
     setItem(res.data);
   };
 
-  const allCompleteCheck = async ing => {
-    const length = ing.length;
-    const completedLength = ing.filter(i => {
+  const allCompleteCheck = async () => {
+    const length = ingredients.length;
+    const completedLength = await ingredients.filter(i => {
       if (i.complete) {
         return i;
       }
@@ -43,8 +45,8 @@ const ItemCard = ({ item_id, setItems, items, session_id }) => {
     }).length;
     if (length === completedLength) {
       alterItem({ complete: true });
-    } else {
-      alterItem({ complete: false });
+    } else{
+      alterItem({complete: false})
     }
   };
 
@@ -63,8 +65,12 @@ const ItemCard = ({ item_id, setItems, items, session_id }) => {
   };
 
   const bringItem = async () => {
-    const assigned = item.complete ? "" : user;
-    alterItem({ assigned, complete: !item.complete });
+    if (item.complete) {
+      alterItem({ assigned: "", complete: false });
+    } else {
+      alterItem({ assigned: user, complete: true });
+    }
+    allCompleteCheck(ingredients)
     bringAllIngredients();
   };
 
@@ -75,7 +81,7 @@ const ItemCard = ({ item_id, setItems, items, session_id }) => {
       const assigned = ing.complete ? ing.assigned : user;
       ing.assigned = assigned;
       ing.complete = true;
-      return ing
+      return ing;
     });
     //send new array to state
     setIngredients(newIngredients);
@@ -84,21 +90,25 @@ const ItemCard = ({ item_id, setItems, items, session_id }) => {
     newIngredients.forEach(async ingredient => {
       const res = await axios.patch(
         `/api/items/${item_id}/ingredients/${ingredient.id}`,
-        ingredient
+        { assigned: ingredient.assigned, complete: ingredient.complete }
       );
-      return res
+      return res;
     });
+    getIngredients();
     //check if the top level should be marked off
-    allCompleteCheck(newIngredients);
+    allCompleteCheck(ingredients);
   };
 
   //check if item boolean is complete
   const bringItemModal = () => {
     if (item.complete) {
-      bringItem();
+      bringItem(true);
+
+      
     } else {
       setOpenModal(true);
     }
+    
   };
 
   useEffect(() => {

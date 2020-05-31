@@ -1,45 +1,47 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import NewItemModal from "./NewItemModal";
 import ItemCard from "./itemCard";
 import "../scss/buttonstyles.scss";
 import "../scss/itemList.scss";
+import { SessionContext } from "../../App";
 
-const ItemList = ({ listType, session_id }) => {
+const ItemList = ({ listType }) => {
   const [items, setItems] = useState([]);
   const [openModal, setOpenModal] = useState(false);
+  const [session] = useContext(SessionContext);
   const itemsRender = () =>
-    items
-      .filter(item => {
+    items.map(
+      (item, index) => {
+        //render each of those items
+        return (
+          <ItemCard
+            item_id={item.id}
+            key={item.id}
+            items={items}
+            setItems={setItems}
+            session_id={session.id}
+            index={index}
+          />
+        );
+      }
+    );
+
+  const getItems = async () => {
+    const res = await axios.get(`/api/sessions/${session.id}/items`);
+    const currentItems = res.data.filter(item => {
         //filter for matching marker
         if (item.foodstuff === listType) {
           return item;
         }
         return null;
-      })
-      .map(
-        (item, index) => {
-          //render each of those items
-          return (
-            <ItemCard
-              item_id={item.id}
-              key={item.id}
-              items={items}
-              setItems={setItems}
-              session_id={session_id}
-              index={index}
-            />
-          );
-        },
-        [items]
-      );
+      }).sort((a, b) => a.id > b.id)
+    setItems(currentItems);
+  };
 
   useEffect(() => {
-    axios
-      .get(`/api/sessions/${session_id}/items`)
-      .then(res => setItems(res.data))
-      .catch(e => console.log(e));
-  }, [session_id]);
+    getItems();
+  }, [session.id]);
 
   return (
     <>
@@ -61,7 +63,7 @@ const ItemList = ({ listType, session_id }) => {
         toggle={() => setOpenModal(!openModal)}
         setItems={setItems}
         items={items}
-        session_id={session_id}
+        session_id={session.id}
       />
     </>
   );

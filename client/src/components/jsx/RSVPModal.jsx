@@ -21,7 +21,7 @@ const RSVPModal = ({ id, setAttendees, toggleShow, show }) => {
         .then(res => {
           setNames("");
           toggleShow();
-          console.log(res);
+          return res
         })
         .catch(e => console.log(e))
     );
