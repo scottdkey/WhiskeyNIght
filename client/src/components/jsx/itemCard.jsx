@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { UserContext } from "../../App";
 import DeleteModal from "./DeleteModal";
 import IngredientRender from "./ingredientRender";
 import Checkbox from "./Checkbox";
@@ -11,7 +10,6 @@ import BringModal from "./BringModal";
 const ItemCard = ({ item_id, setItems, items, session_id }) => {
   const [ingredients, setIngredients] = useState([]);
   const [openModal, setOpenModal] = useState(false);
-  const [user] = useContext(UserContext);
   const [item, setItem] = useState({});
 
   const getItem = async () => {
@@ -41,7 +39,6 @@ const ItemCard = ({ item_id, setItems, items, session_id }) => {
       }
       return null;
     }).length;
-    console.log(length, completedLength)
     if (length === completedLength) {
       alterItem({ complete: true });
     } else{
@@ -63,21 +60,21 @@ const ItemCard = ({ item_id, setItems, items, session_id }) => {
     setItems(newItems);
   };
 
-  const bringItem = async () => {
+  const bringItem = async (assignedName) => {
     if (item.complete) {
       alterItem({ assigned: "", complete: false });
     } else {
-      alterItem({ assigned: user, complete: true });
+      alterItem({ assigned: assignedName, complete: true });
     }
     allCompleteCheck(ingredients)
-    bringAllIngredients();
+    bringAllIngredients(assignedName);
   };
 
-  const bringAllIngredients = () => {
+  const bringAllIngredients = (assignedName) => {
     //change the values of each object in array
     const newIngredients = ingredients.map(ing => {
       //check if its already complete and hold on to assigned name
-      const assigned = ing.complete ? ing.assigned : user;
+      const assigned = ing.complete ? ing.assigned : assignedName;
       ing.assigned = assigned;
       ing.complete = true;
       return ing;
@@ -146,7 +143,6 @@ const ItemCard = ({ item_id, setItems, items, session_id }) => {
             ingredients={ingredients}
             setIngredients={setIngredients}
             allCompleteCheck={allCompleteCheck}
-            user={user}
             index={index}
           />
         ))}

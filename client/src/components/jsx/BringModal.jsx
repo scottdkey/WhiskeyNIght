@@ -9,24 +9,18 @@ const BringAllModal = ({
   show
 }) => {
   const [user, setUser] = useContext(UserContext);
-  const [names, setNames] = useState("");
+  const [names, setNames] = useState(user);
 
   const handleChange = e => {
-    e.preventDefault();
     setNames(e.target.value);
   };
 
   const contextSubmit = e => {
     e.preventDefault();
-    const fullNames = names;
-    setUser(fullNames);
-    handleSubmit(fullNames);
+    setUser(names);
+    handleSubmit(names);
     toggleShow()
   };
-
-  useEffect(() => {
-    setNames(user)
-  },[user])
 
   return (
     <>
