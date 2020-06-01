@@ -1,37 +1,4 @@
 @import "./variables";
-
-
-.symbol {
-  position: relative;
-  width: 18px;
-  height: 18px;
-  text-align: center;
-  border-radius: 4px;
-  background-color: #fff6df;
-  color: $text-color;
-  line-height: 19px;
-  top: 10px;
-}
-.filled {
-  background-color: $primary;
-}
-.add-ingredient {
-  display: flex;
-  line-height: 20px;
-  height: 18px;
-  margin-left: 9px;
-
-  .add-button {
-    color: $primary;
-    opacity: 1 !important;
-    font-size: 14px;
-    width: 110px;
-    &:focus {
-      outline: none;
-    }
-  }
-}
-
 .items-body {
   height: 100%;
   width: 100%;
@@ -59,6 +26,48 @@
       &:focus {
         outline: none;
       }
+    }
+  }
+  .symbol {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    border-radius: 4px;
+    background-color: #fff6df;
+    color: $text-color;
+    line-height: 19px;
+    top: 10px;
+  }
+  .filled {
+    background-color: $primary;
+  }
+}
+
+.add-item {
+  position: relative;
+  // top: 27px;
+  color: $text-color;
+  width: 242px;
+  height: 50px;
+  background-color: $accent;
+  float: right;
+  margin-left: auto;
+}
+
+.add-ingredient {
+  display: flex;
+  line-height: 20px;
+  height: 18px;
+  margin-left: 9px;
+
+  .add-button {
+    color: $primary;
+    opacity: 1 !important;
+    font-size: 14px;
+    width: 110px;
+    &:focus {
+      outline: none;
     }
   }
 }

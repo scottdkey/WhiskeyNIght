@@ -71,11 +71,9 @@ const NewItemModal = ({
       <form className="custom-modal">
         <div className="header">
           <div className="title">Add {listType}</div>
-          <button className="cancel" type="button" onClick={closeModal}>
-            {String.fromCharCode(65291)}
-          </button>
+          <button className="cancel" type="button" onClick={closeModal}/>
         </div>
-        <div className="body">
+        <div className="body new-item">
           <div className="items-body">
             <div className="head">
               <div className="symbol head-float" />

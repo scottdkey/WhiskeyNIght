@@ -55,6 +55,9 @@ $small-head-top: 25px;
         opacity: 0.5;
         color: $text-color;
         height: 100%;
+        .attendee{
+          padding-right: 2px;
+        }
       }
 
       @include xsm {

@@ -11,44 +11,52 @@
   position: relative;
   width: 100%;
   height: 100%;
+  margin-top: 4px;
   padding-left: 25px;
   padding-right: 25px;
-  padding-bottom: 20px;
+  padding-top: 15px;
+  padding-bottom: 26px;
   .header {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 15px;
     position: relative;
-    border-bottom: solid $accent;
+    border-bottom: 0.5px solid $accent;
+
     text-align: center;
     .title {
       font-size: 32px;
       position: relative;
+      margin-bottom: 11px;
     }
     .cancel {
+      background-image: url("../../images/x_icon.svg");
+      background-repeat: no-repeat;
       position: absolute;
-      border: none;
       color: $accent;
-      font-size: 100%;
-      font-weight: 600;
-      line-height: 68px;
-      transform: rotate(-45deg);
-      right: -4px;
-      top: -8px;
-      width: 25px;
-      height: 68px;
+      width: 20px;
+      height: 20px;
+      right: 0px;
+      top: 13px;
       padding: 0px;
-      fill: none;
+      margin: auto;
+      border-radius: 0px;
       background-color: transparent;
       &:focus {
         outline: none;
       }
     }
+    .border-bottom {
+      height: 1px;
+      width: 100%;
+      background: $accent;
+      background-color: $accent;
+      border: none;
+    }
   }
   .body {
-    margin-top: auto;
-    margin-bottom: auto;
+    margin-top: 30px;
+    margin-bottom: 71px;
     text-align: center;
     position: relative;
 
@@ -59,27 +67,19 @@
       font-size: 32px;
     }
   }
+  .new-item {
+    padding-left: 56px;
+    padding-right: 56px;
+  }
   .footer {
     width: 100%;
+    height: 100%;
+    min-height: 50px;
     display: flex;
     position: relative;
-    margin-top: 41px;
     margin-left: auto;
     margin-right: auto;
-    .save-changes {
-      color: $text-color;
-      font-size: 18px;
-      line-height: 21px;
-      font-weight: 800;
-      position: relative;
-      bottom: 5px;
-      margin-left: auto;
-      right: 0px;
-      border: none;
-      width: 242px;
-      height: 50px;
-      background-color: $accent;
-    }
+    margin-top: 45px;
     .add-item {
       position: relative;
       // top: 27px;
