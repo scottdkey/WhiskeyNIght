@@ -1,15 +1,17 @@
 import React from "react";
+import CheckMark from "../../images/check_icon.svg";
 import "../scss/Checkbox.scss";
 
-const Checkbox = ({checked}) => {
-
+const Checkbox = ({ checked }) => {
   const className = checked ? "checked" : "unchecked";
 
   return (
     <>
       <div className="checkbox">
         {/* actual checkbox shape */}
-        <div className={className}>{checked ? "\u2713" : null}</div>
+        <div className={className}>
+          {checked ? <img src={CheckMark} alt="checkmark"/> : null}
+        </div>
       </div>
     </>
   );

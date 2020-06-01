@@ -8,9 +8,11 @@ import "moment-timezone";
 import "../scss/Header.scss";
 import "../scss/buttonstyles.scss";
 import RSVPModal from "./RSVPModal";
+import deleteIcon from "../../images/trash-can.svg";
 
 const Header = () => {
   const [show, setShow] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
   const [attending, setAttending] = useState([]);
   const [session, setSession] = useContext(SessionContext);
 
@@ -63,11 +65,18 @@ const Header = () => {
         </div>
 
         <div className="delete-area">
+          <button
+            className="bttn delete-button"
+            onClick={() => setShowDelete(true)}
+          >
+            <div className="delete-text">Delete Event</div>
+            <img className="delete-icon" src={deleteIcon} alt="trash can" />
+          </button>
           <DeleteModal
             text="Event"
-            buttonText="Delete Event"
             deleteFunction={deleteSession}
-            customClass="bttn delete-button"
+            show={showDelete}
+            toggleModal={() => setShowDelete(!showDelete)}
           />
         </div>
       </div>

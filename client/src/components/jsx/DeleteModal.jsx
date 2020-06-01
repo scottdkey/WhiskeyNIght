@@ -1,53 +1,40 @@
-import React, { useState } from "react";
+import React from "react";
 import Modal from "react-bootstrap/Modal";
-import deleteIcon from "../../images/trash-can.svg";
+
 import "../scss/buttonstyles.scss";
 import "../scss/Modal.scss";
+import "../scss/DeleteModal.scss";
 
-const DeleteModal = ({ text, deleteFunction, customClass, buttonText }) => {
-  const [show, setShow] = useState(false);
-
-  const toggleShow = () => {
-    return setShow(!show);
-  };
-
+const DeleteModal = ({ text, deleteFunction, toggleModal, show }) => {
   const handleSubmit = () => {
-    toggleShow();
+    toggleModal();
     deleteFunction();
   };
 
   return (
-    <>
-      <button className={customClass} onClick={toggleShow}>
-        <div className="delete-text">{buttonText}</div>
-        <img className="delete-icon" src={deleteIcon} alt="trash can"/>
-      </button>
-      <Modal show={show} onHide={toggleShow}>
-        <div
-          className="custom-modal modal-content"
-          style={{ borderRadius: "20px" }}
-        >
-          <div className="header" closebutton="true">
-            <div className="title">Delete</div>
-          </div>
-
-          <div className="body">
-            <p className="text">Are you sure you want to delete</p>
-            <h3 className="item-name">{text}</h3>
-          </div>
-
-          <div className="footer">
-            <button className="bttn cancel" onClick={toggleShow}>
-              Cancel
-            </button>
-
-            <button className="bttn delete" onClick={handleSubmit}>
-              Delete
-            </button>
-          </div>
+    <Modal show={show} onHide={toggleModal}>
+      <div className="custom-modal">
+        <div className="header">
+          <div className="title">Delete</div>
+          <button className="bttn cancel" type="button" onClick={toggleModal} />
         </div>
-      </Modal>
-    </>
+
+        <div className="body">
+            <div className="question">Are you sure you want to delete</div>
+            <h3 className="item-name">{text}</h3>
+        </div>
+
+        <div className="footer">
+          <button className="bttn cancel" onClick={toggleModal}>
+            Cancel
+          </button>
+
+          <button className="bttn delete" onClick={handleSubmit}>
+            Delete
+          </button>
+        </div>
+      </div>
+    </Modal>
   );
 };
 

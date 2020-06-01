@@ -6,10 +6,12 @@ import Checkbox from "./Checkbox";
 import "../scss/ItemCard.scss";
 import "../scss/buttonstyles.scss";
 import BringModal from "./BringModal";
+import deleteIcon from "../../images/trash-can.svg";
 
 const ItemCard = ({ item_id, setItems, items, session_id }) => {
   const [ingredients, setIngredients] = useState([]);
   const [openModal, setOpenModal] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
   const [item, setItem] = useState({});
 
   const getItem = async () => {
@@ -41,8 +43,8 @@ const ItemCard = ({ item_id, setItems, items, session_id }) => {
     }).length;
     if (length === completedLength) {
       alterItem({ complete: true });
-    } else{
-      alterItem({complete: false})
+    } else {
+      alterItem({ complete: false });
     }
   };
 
@@ -60,17 +62,17 @@ const ItemCard = ({ item_id, setItems, items, session_id }) => {
     setItems(newItems);
   };
 
-  const bringItem = async (assignedName) => {
+  const bringItem = async assignedName => {
     if (item.complete) {
       alterItem({ assigned: "", complete: false });
     } else {
       alterItem({ assigned: assignedName, complete: true });
     }
-    allCompleteCheck(ingredients)
+    allCompleteCheck(ingredients);
     bringAllIngredients(assignedName);
   };
 
-  const bringAllIngredients = (assignedName) => {
+  const bringAllIngredients = assignedName => {
     //change the values of each object in array
     const newIngredients = ingredients.map(ing => {
       //check if its already complete and hold on to assigned name
@@ -99,12 +101,9 @@ const ItemCard = ({ item_id, setItems, items, session_id }) => {
   const bringItemModal = () => {
     if (item.complete) {
       bringItem(true);
-
-      
     } else {
       setOpenModal(true);
     }
-    
   };
 
   useEffect(() => {
@@ -126,11 +125,18 @@ const ItemCard = ({ item_id, setItems, items, session_id }) => {
             handleSubmit={bringItem}
             show={openModal}
           />
+          <button
+            className="bttn ingredient-delete"
+            onClick={() => setShowDelete(!showDelete)}
+          >
+            <div className="delete-text">{String.fromCharCode(8722)}</div>
+            <img className="delete-icon" src={deleteIcon} alt="trash can" />
+          </button>
           <DeleteModal
-            customClass="bttn ingredient-delete"
             deleteFunction={deleteItem}
+            show={showDelete}
             text={item.label}
-            buttonText={String.fromCharCode(8722)}
+            toggleModal={() => setShowDelete(!showDelete)}
           />
         </div>
       </div>

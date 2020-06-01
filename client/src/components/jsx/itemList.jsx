@@ -4,6 +4,7 @@ import NewItemModal from "./NewItemModal";
 import ItemCard from "./itemCard";
 import "../scss/buttonstyles.scss";
 import "../scss/itemList.scss";
+import xIcon from "../../images/x_icon.svg"
 import { SessionContext } from "../../App";
 
 const ItemList = ({ listType }) => {
@@ -48,11 +49,10 @@ const ItemList = ({ listType }) => {
       <div className="list-head">
         <h2 id="list-name">{listType}</h2>
         <button
-          id="list-add"
           onClick={() => setOpenModal(!openModal)}
           className="bttn plus"
         >
-          {String.fromCharCode(65291)}
+          <img src={xIcon}/>
         </button>
       </div>
 
