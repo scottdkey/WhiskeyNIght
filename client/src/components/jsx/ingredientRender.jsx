@@ -21,7 +21,7 @@ const IngredientRender = ({
     setShow(!show);
   };
 
-  const handleSubmit = async (user) => {
+  const handleSubmit = async () => {
     const assigned = ingredient.complete ? "" : user;
     const res = await axios.patch(
       `/api/items/${ingredient.item_id}/ingredients/${ingredient.id}`,

@@ -3,6 +3,8 @@ import IngredientForm from "./ingredientForm";
 import Modal from "react-bootstrap/Modal"
 import axios from "axios";
 import "../scss/Modal.scss";
+import "../scss/NewItemModal.scss"
+import "../scss/buttonstyles.scss"
 
 const NewItemModal = ({
   listType,

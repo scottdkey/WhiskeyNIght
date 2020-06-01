@@ -4,6 +4,7 @@ import axios from "axios";
 import { UserContext } from "../../App";
 import "../scss/buttonstyles.scss";
 import "../scss/Modal.scss";
+import "../scss/RSVPModal.scss"
 
 const RSVPModal = ({ id, setAttendees, toggleShow, show }) => {
  
@@ -47,7 +48,6 @@ const RSVPModal = ({ id, setAttendees, toggleShow, show }) => {
       <Modal show={show} onHide={toggleShow}>
         <form className="custom-modal" onSubmit={handleSubmit}>
           <div className="header">
-            <div className="rsvp-header">
               <div className="title">RSVP</div>
               <button
                 className="bttn cancel"
@@ -57,7 +57,6 @@ const RSVPModal = ({ id, setAttendees, toggleShow, show }) => {
                 {String.fromCharCode(65291)}
               </button>
             </div>
-          </div>
           <div className="body">
             <div className="rsvp-label">Who is coming?</div>
             <div className="name-input-container">

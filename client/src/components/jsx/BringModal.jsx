@@ -1,6 +1,8 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import Modal from "react-bootstrap/Modal";
 import { UserContext } from "../../App";
+import "../scss/BringModal.scss"
+import "../scss/Modal.scss"
 
 const BringAllModal = ({
   name,
