@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import Flatpickr from "react-flatpickr";
-import {SessionContext} from "../../App"
+import { SessionContext } from "../../App";
 import "flatpickr/dist/themes/material_green.css";
 import "../scss/buttonstyles.scss";
 import "../scss/newSession.scss";
@@ -9,15 +9,15 @@ import "../scss/newSession.scss";
 const Session = () => {
   const [host, setHost] = useState(values.te);
   const [date, setDate] = useState(new Date());
-  const [session, setSession] = useContext(SessionContext)
-  
+  const [session, setSession] = useContext(SessionContext);
 
   const handleSubmit = e => {
-    e.preventDefault()
+    const location = host === values.te ? values.teAddress : values.kjAddress;
+    e.preventDefault();
     axios
       .post("api/sessions", { host, date })
       .then(res => {
-        setSession({ id: res.data.id, date, host });
+        setSession({ id: res.data.id, date, host, location });
         setDate(new Date());
         setHost("");
       })
@@ -85,6 +85,8 @@ const Session = () => {
 export default Session;
 
 const values = {
-  te: "Tyler and Emily's",
-  kj: "Kevin and Jill's"
+  te: "Tyler & Emily's",
+  kj: "Kevin & Jill's",
+  teAddress: "",
+  kjAddress: ""
 };

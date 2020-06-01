@@ -29,20 +29,6 @@
       visibility: visible;
     }
   }
-  .delete-icon {
-    @include xsm {
-      visibility: visible;
-    }
-    @include sm {
-      visibility: visible;
-    }
-    @include md {
-      visibility: hidden;
-    }
-    @include lg {
-      visibility: hidden;
-    }
-  }
 }
 .rsvp {
   border: 1px;

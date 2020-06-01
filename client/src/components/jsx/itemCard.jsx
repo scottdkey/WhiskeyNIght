@@ -130,7 +130,6 @@ const ItemCard = ({ item_id, setItems, items, session_id }) => {
             onClick={() => setShowDelete(!showDelete)}
           >
             <div className="delete-text">{String.fromCharCode(8722)}</div>
-            <img className="delete-icon" src={deleteIcon} alt="trash can" />
           </button>
           <DeleteModal
             deleteFunction={deleteItem}

@@ -50,12 +50,12 @@ $small-head-top: 25px;
       .attendees {
         display: flex;
         flex-wrap: wrap;
-        font-size: 12px;
-        font-weight: 200;
-        opacity: 0.5;
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 16px;
         color: $text-color;
         height: 100%;
-        .attendee{
+        .attendee {
           padding-right: 2px;
         }
       }
@@ -85,8 +85,24 @@ $small-head-top: 25px;
       }
 
       .host {
-        color: $text-color;
-        font-weight: 700;
+        display: flex;
+        max-width: 200px;
+        &:hover {
+          cursor: pointer;
+          .image {
+            visibility: visible;
+          }
+        }
+        .name {
+          color: $text-color;
+          font-weight: 700;
+          font-size: 24px;
+        }
+        .image {
+          margin-left: 10px;
+          visibility: hidden;
+          opacity: 0.3;
+        }
       }
       .button-position {
         @include xsm {
@@ -98,16 +114,11 @@ $small-head-top: 25px;
       }
 
       #count {
-        font-weight: 600;
         text-transform: uppercase;
         color: $text-color;
-        @include xsm {
-          font-size: 15px;
-        }
-
-        @include lg {
-          font-size: 20px;
-        }
+        font-size: 12px;
+        font-feature-settings: "pnum" on, "lnum" on;
+        opacity: 0.5;
       }
     }
     .delete-area {
@@ -131,26 +142,14 @@ $small-head-top: 25px;
         top: -10px;
         padding-right: $padding-right;
       }
-      .delete-button {
-        content: "Delete Event";
+      .trash-icon {
+        position: absolute;
         font-weight: 400;
         opacity: 0.7;
-        color: $text-color;
         z-index: 5;
-        width: 100%;
-        @include xsm {
-          font-size: 10px;
-          padding-top: 10px;
-        }
-        @include sm {
-          font-size: 10px;
-        }
-        @include md {
-          font-size: 20px;
-        }
-        @include lg {
-          font-size: 22px;
-        }
+        width: 30px;
+        height: 30px;
+        margin-top: 5px;
       }
     }
   }
