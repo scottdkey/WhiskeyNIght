@@ -43,6 +43,7 @@ const RSVPModal = ({ id, setAttendees, toggleShow, show }) => {
   }, [show, id, setAttendees]);
   return (
     <>
+    <div style={{display: "none"}}>{user}</div>
       <Modal show={show} onHide={toggleShow}>
         <form className="custom-modal" onSubmit={handleSubmit}>
           <div className="header">

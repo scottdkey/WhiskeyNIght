@@ -21,10 +21,10 @@ const Session = () => {
         <Header/>
         <div className="content-container">
           <div className="offset">
-            <ItemList listType="Food" />
+            <ItemList session={session} listType="Food" />
           </div>
           <div>
-            <ItemList listType="Drinks" />
+            <ItemList session={session} listType="Drinks" />
           </div>
         </div>
       </>
