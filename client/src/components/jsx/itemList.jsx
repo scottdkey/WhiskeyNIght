@@ -51,9 +51,7 @@ const ItemList = ({ listType }) => {
         <button
           onClick={() => setOpenModal(!openModal)}
           className="bttn plus"
-        >
-          <img src={xIcon}/>
-        </button>
+        />
       </div>
 
       <div>{itemsRender()}</div>

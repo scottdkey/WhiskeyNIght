@@ -1,7 +1,12 @@
 $primary: #8b54ff !default;
+$primary-hover: #b89fec;
 $secondary: rgb(214, 194, 255) !default;
 $tertiary: rgb(255, 246, 223) !default;
+$tertiary-hover: #eedfb7;
 $accent: #cb9e29 !default;
+$accent-hover: #93721e;
+$delete: #df3d3d;
+$delete-hover: #a22c2c;
 $background: white !default;
 $text-color: white !default;
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
@@ -23,36 +28,36 @@ $lg-max: 1600px;
 // x-tra small
 
 @mixin xsm {
-  @media (min-width: #{$xsm-min}) {
-    @content;
-  }
-  @media (max-width: $xsm-max) {
-    @content;
-  }
+	@media (min-width: #{$xsm-min}) {
+		@content;
+	}
+	@media (max-width: $xsm-max) {
+		@content;
+	}
 }
 
 // Small devices
 @mixin sm {
-  @media (min-width: $sm-min) {
-    @content;
-  }
-  @media (max-width: $sm-max) {
-    @content;
-  }
+	@media (min-width: $sm-min) {
+		@content;
+	}
+	@media (max-width: $sm-max) {
+		@content;
+	}
 }
 // Medium devices
 @mixin md {
-  @media (min-width: $md-min) {
-    @content;
-  }
-  @media (max-width: $md-max) {
-    @content;
-  }
+	@media (min-width: $md-min) {
+		@content;
+	}
+	@media (max-width: $md-max) {
+		@content;
+	}
 }
 
 // Large devices
 @mixin lg {
-  @media (min-width: $lg-min) {
-    @content;
-  }
+	@media (min-width: $lg-min) {
+		@content;
+	}
 }

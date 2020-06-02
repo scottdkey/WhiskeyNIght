@@ -20,7 +20,7 @@ const IngredientRender = ({
     setShow(!show);
   };
 
-  const handleSubmit = async (user) => {
+  const handleSubmit = async user => {
     const assigned = ingredient.complete ? "" : user;
     const res = await axios.patch(
       `/api/items/${ingredient.item_id}/ingredients/${ingredient.id}`,
@@ -33,7 +33,7 @@ const IngredientRender = ({
     const newIngredients = ingredients;
     newIngredients[index] = res.data;
     setIngredients(newIngredients);
-    allCompleteCheck(newIngredients)
+    allCompleteCheck(newIngredients);
     setShow(false);
   };
 
@@ -61,6 +61,7 @@ const IngredientRender = ({
         toggleShow={toggleModal}
         handleSubmit={handleSubmit}
         show={show}
+        bringAll="true"
       />
     </div>
   );

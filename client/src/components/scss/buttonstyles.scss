@@ -1,148 +1,191 @@
 @import "./_variables";
 
 .bttn {
-  height: 40px;
-  width: 80px;
-  border-radius: 10px;
-  border: none;
-  background-color: transparent;
-  font-family: $font-stack;
-  font-weight: 800;
-  &:focus {
-    outline: none;
-  }
-  &:hover {
-    cursor: pointer;
-  }
+	height: 40px;
+	width: 80px;
+	border-radius: 10px;
+	border: none;
+	background-color: transparent;
+	font-family: $font-stack;
+	font-weight: 800;
+	&:focus {
+		outline: none;
+	}
+	&:hover {
+		cursor: pointer;
+	}
 
-  .delete-text {
-    @include xsm {
-      visibility: hidden;
-    }
-    @include sm {
-      visibility: hidden;
-    }
-    @include md {
-      visibility: visible;
-    }
-    @include lg {
-      visibility: visible;
-    }
-  }
+	.delete-text {
+		@include xsm {
+			visibility: hidden;
+		}
+		@include sm {
+			visibility: hidden;
+		}
+		@include md {
+			visibility: visible;
+		}
+		@include lg {
+			visibility: visible;
+		}
+	}
 }
 .rsvp {
-  border: 1px;
-  z-index: 3;
-  background-color: $secondary;
-  color: $text-color;
-  position: relative;
-  width: 98px;
-  height: 39px;
-  font-size: 20px;
+	border: 1px;
+	z-index: 3;
+	background-color: $accent;
+	color: $text-color;
+	position: relative;
+	width: 98px;
+	height: 39px;
+	font-size: 20px;
+	&:hover {
+		background-color: $accent-hover;
+	}
 }
 
 .host {
-  font-weight: 900;
-  border: none;
-  outline: none;
-  height: 100%;
-  flex: 50%;
-  @include xsm {
-    font-size: 3px;
-  }
-  @include sm {
-    font-size: 6px;
-  }
-  @include md {
-    font-size: 16px;
-  }
-  @include lg {
-    font-size: 17px;
-  }
+	font-weight: 900;
+	border: none;
+	outline: none;
+	height: 100%;
+	flex: 50%;
+	@include xsm {
+		font-size: 3px;
+	}
+	@include sm {
+		font-size: 6px;
+	}
+	@include md {
+		font-size: 16px;
+	}
+	@include lg {
+		font-size: 17px;
+	}
+	&:hover {
+		background-color: #ede7fa;
+	}
 }
 
 .left-host {
-  border-radius: 15px 0px 0px 15px;
+	border-radius: 15px 0px 0px 15px;
 }
 
 .right-host {
-  border-radius: 0px 15px 15px 0px !important;
+	border-radius: 0px 15px 15px 0px !important;
 }
 .active {
-  background-color: $primary;
-  color: $text-color;
+	background-color: $primary;
+	color: $text-color;
+	&:hover {
+		background-color: $primary;
+	}
 }
 
 .ingredient-delete {
-  margin-bottom: 50%;
-  padding: 0;
-  border: none;
-  color: $accent;
-  width: 14px;
+	margin-bottom: 50%;
+	padding: 0;
+	border: none;
+	color: $accent;
+	width: 14px;
+	&:hover {
+		color: $accent-hover;
+	}
 }
 .delete {
-  background-color: #df3d3d;
-  border: none;
-  color: $text-color;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 179px;
-  height: 50px;
+	background-color: $delete;
+	border: none;
+	color: $text-color;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 179px;
+	height: 50px;
+	&:hover {
+		background-color: $delete-hover;
+	}
 }
 .cancel {
-  position: relative;
-  background-color: $accent;
-  border: none;
-  color: $text-color;
-  float: left;
-  margin-right: auto;
-  width: 179px;
+	position: relative;
+	background-color: $accent;
+	border: none;
+	color: $text-color;
+	float: left;
+	margin-right: auto;
+	width: 179px;
   height: 50px;
+  &:hover{
+    background: $accent-hover;
+  }
+}
+.escape {
+  right: -55px;
+  top: 15px;
+  position: absolute;
+  border-radius: 0px;
+	background: url('../../images/x_icon.svg') no-repeat;
+	&:hover {
+		background: url("../../images/x_icon_hover.svg") no-repeat;
+	}
 }
 
 .submit {
-  position: absolute;
-  border: none;
-  color: $text-color;
-  background-color: $accent;
-  border-radius: 14px;
-  height: 50px;
-  width: 242px;
-  font-weight: 800;
-  bottom: 0px;
-  right: 0px;
+	position: absolute;
+	border: none;
+	color: $text-color;
+	background-color: $accent;
+	border-radius: 14px;
+	height: 50px;
+	width: 242px;
+	font-weight: 800;
+	bottom: 0px;
+	right: 0px;
+	&:hover {
+		background-color: $accent-hover;
+	}
 }
 .add-name {
-  color: $text-color;
-  font-size: 18px;
-  line-height: 21px;
-  font-weight: 800;
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-  border: none;
-  width: 242px;
-  height: 50px;
-  background-color: $accent;
+	color: $text-color;
+	font-size: 18px;
+	line-height: 21px;
+	font-weight: 800;
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	border: none;
+	width: 242px;
+	height: 50px;
+	background-color: $accent;
+	&:hover {
+		background-color: $accent-hover;
+	}
 }
 .plus {
-  position: relative;
-  text-align: center;
-  padding: 0px;
-  color: $accent;
-  width: 25px;
-  font-size: 30px;
+	position: relative;
+	text-align: center;
+	padding: 0px;
+	width: 25px;
+	height: 25px;
+	font-size: 30px;
   right: 0px;
-  transform: rotate(45deg);
+  top: 15px;
+	border-radius: 0px;
+	transform: rotate(45deg);
+	background: url('../../images/x_icon.svg') no-repeat;
+	&:hover {
+		background: url("../../images/x_icon_hover.svg") no-repeat;
+	}
 }
 .add-item {
-  position: relative;
-  // top: 27px;
-  color: $text-color;
-  width: 242px;
-  height: 50px;
-  background-color: $accent;
-  float: right;
-  margin-left: auto;
+	position: relative;
+	// top: 27px;
+	color: $text-color;
+	width: 242px;
+	height: 50px;
+	background-color: $accent;
+	float: right;
+	margin-left: auto;
+	&:hover {
+		background-color: $accent-hover;
+	}
 }

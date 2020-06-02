@@ -16,7 +16,7 @@ const DeleteModal = ({ text, deleteFunction, toggleModal, show }) => {
       <div className="custom-modal">
         <div className="header">
           <div className="title">Delete</div>
-          <button className="bttn cancel" type="button" onClick={toggleModal} />
+          <button className="bttn escape" type="button" onClick={toggleModal} />
         </div>
 
         <div className="body">

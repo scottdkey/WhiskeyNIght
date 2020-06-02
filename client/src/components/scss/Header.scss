@@ -3,154 +3,157 @@
 $small-head-top: 25px;
 
 .main-header {
-  display: flex;
-  border-bottom: none;
-  overflow: visible;
-  position: relative;
-  height: 100%;
-  width: 100%;
+	display: flex;
+	border-bottom: none;
+	overflow: visible;
+	position: relative;
+	height: 100%;
+	width: 100%;
 
-  .shape {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+	.shape {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
 
-    background-color: $primary;
-    height: 100%;
-    @include md {
-      -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-      clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-    }
-    @include lg {
-      -webkit-clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
-      clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
-    }
-  }
-  .sub-header {
-    position: relative;
-    padding-top: 20px;
-    width: 100%;
+		background-color: $primary;
+		height: 100%;
+		@include md {
+			-webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+			clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+		}
+		@include lg {
+			-webkit-clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+			clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+		}
+	}
+	.sub-header {
+		position: relative;
+		padding-top: 20px;
+		width: 100%;
 
-    @include sm {
-      padding-left: 11%;
-      padding-right: 11%;
-    }
-    @include md {
-    }
-    @include lg {
-      padding-left: $padding-left;
-      padding-right: $padding-right;
-    }
+		@include sm {
+			padding-left: 11%;
+			padding-right: 11%;
+		}
+		@include md {
+		}
+		@include lg {
+			padding-left: $padding-left;
+			padding-right: $padding-right;
+		}
 
-    .event {
-      z-index: 2;
-      float: left;
-      top: -4px;
+		.event {
+			z-index: 2;
+			float: left;
+			top: -4px;
 
-      .attendees {
-        display: flex;
-        flex-wrap: wrap;
-        font-size: 14px;
-        font-weight: 300;
-        line-height: 16px;
-        color: $text-color;
-        height: 100%;
-        .attendee {
-          padding-right: 2px;
-        }
-      }
+			.attendees {
+				display: flex;
+				flex-wrap: wrap;
+				font-size: 14px;
+				font-weight: 300;
+				line-height: 16px;
+				color: $text-color;
+				height: 100%;
+				.attendee {
+					padding-right: 2px;
+				}
+			}
 
-      @include xsm {
-        font-size: 20px;
-        max-width: 200px;
-        width: 60%;
-      }
-      @include sm {
-        max-width: 250px;
-        width: 65%;
-      }
-      @include md {
-        font-size: 20px;
-        max-width: 400px;
-        width: 90%;
-      }
-      @include lg {
-        font-size: 25px;
-        max-width: 500px;
-        width: 100%;
-      }
-      .date {
-        font-weight: 900;
-        width: 100%;
-      }
+			@include xsm {
+				font-size: 20px;
+				max-width: 200px;
+				width: 60%;
+			}
+			@include sm {
+				max-width: 250px;
+				width: 65%;
+			}
+			@include md {
+				font-size: 20px;
+				max-width: 400px;
+				width: 90%;
+			}
+			@include lg {
+				font-size: 25px;
+				max-width: 500px;
+				width: 100%;
+			}
+			.date {
+				font-weight: 900;
+				width: 100%;
+			}
 
-      .host {
-        display: flex;
-        max-width: 200px;
-        &:hover {
-          cursor: pointer;
-          .image {
-            visibility: visible;
-          }
-        }
-        .name {
-          color: $text-color;
-          font-weight: 700;
-          font-size: 24px;
-        }
-        .image {
-          margin-left: 10px;
-          visibility: hidden;
-          opacity: 0.3;
-        }
-      }
-      .button-position {
-        @include xsm {
-          top: 10px;
-        }
-        @include lg {
-          top: 10px;
-        }
-      }
+			.host {
+				display: flex;
+				max-width: 200px;
+				&:hover {
+					cursor: pointer;
+					.image {
+						opacity: 1;
+					}
+					background-color: transparent;
+				}
+				.name {
+					color: $text-color;
+					font-weight: 700;
+					font-size: 24px;
+				}
+				.image {
+					margin-left: 10px;
+					opacity: 0.3;
+				}
+			}
+			.button-position {
+				@include xsm {
+					top: 10px;
+				}
+				@include lg {
+					top: 10px;
+				}
+			}
 
-      #count {
-        text-transform: uppercase;
-        color: $text-color;
-        font-size: 12px;
-        font-feature-settings: "pnum" on, "lnum" on;
-        opacity: 0.5;
-      }
-    }
-    .delete-area {
-      position: absolute;
-      z-index: 4;
-      font-weight: 500;
-      right: 0px;
-      @include xsm {
-        top: -7px;
-        padding-top: 20px;
-        padding-right: 8%;
-      }
-      @include sm {
-        top: -170px;
-        padding-right: 10%;
-      }
-      @include md {
-        top: -10px;
-      }
-      @include lg {
-        top: -10px;
-        padding-right: $padding-right;
-      }
-      .trash-icon {
-        position: absolute;
-        font-weight: 400;
-        opacity: 0.7;
-        z-index: 5;
-        width: 30px;
-        height: 30px;
-        margin-top: 5px;
-      }
-    }
-  }
+			#count {
+				text-transform: uppercase;
+				color: $text-color;
+				font-size: 12px;
+				font-feature-settings: "pnum" on, "lnum" on;
+				opacity: 0.5;
+			}
+		}
+		.delete-area {
+			position: absolute;
+			z-index: 4;
+			font-weight: 500;
+			right: 0px;
+			@include xsm {
+				top: -7px;
+				padding-top: 20px;
+				padding-right: 8%;
+			}
+			@include sm {
+				top: -170px;
+				padding-right: 10%;
+			}
+			@include md {
+				top: -10px;
+			}
+			@include lg {
+				top: -10px;
+				padding-right: $padding-right;
+			}
+			.trash-icon {
+				position: absolute;
+				font-weight: 400;
+				opacity: 0.7;
+				z-index: 5;
+				width: 30px;
+				height: 30px;
+				margin-top: 5px;
+				&:hover {
+					opacity: 1;
+				}
+			}
+		}
+	}
 }

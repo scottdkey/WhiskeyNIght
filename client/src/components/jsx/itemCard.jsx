@@ -114,7 +114,7 @@ const ItemCard = ({ item_id, setItems, items, session_id }) => {
   return (
     <div className="info-area">
       <div className="head">
-        <div onClick={bringItemModal}>
+        <div onClick={bringItemModal} className="clickable-name">
           <Checkbox checked={item.complete} />
           <h3 className="name">{item.label}</h3>
         </div>
@@ -124,6 +124,7 @@ const ItemCard = ({ item_id, setItems, items, session_id }) => {
             toggleShow={() => setOpenModal(!openModal)}
             handleSubmit={bringItem}
             show={openModal}
+            bringAll="true"
           />
           <button
             className="bttn ingredient-delete"
