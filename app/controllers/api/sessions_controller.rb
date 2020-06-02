@@ -29,7 +29,7 @@ class Api::SessionsController < ApplicationController
   private
 
   def session_params
-    params.require(:session).permit(:date, :host)
+    params.require(:session).permit(:date, :host, :location)
   end
 
   def set_session

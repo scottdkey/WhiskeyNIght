@@ -34,10 +34,10 @@ const Header = () => {
 			<div className="sub-header">
 				<div className="event">
 					<div className="date">{event}</div>
-					<div className="host">
+					<a href={session.host === values.te ? values.teAddress : values.kjAddress} className="host" target="_blank">
 						<div className="name">{session.host}</div>
 						<img src={map} className="image" alt="map Icon" />
-					</div>
+					</a>
 					<div id="count">
 						{attending.length} {attending.length === 1 ? 'Person' : 'People'}
 					</div>
@@ -72,3 +72,10 @@ const Header = () => {
 };
 
 export default Header;
+
+const values = {
+	te: "Tyler & Emily's",
+	kj: "Kevin & Jill's",
+	teAddress: 'https://goo.gl/maps/WmDQQmAaPaj8HLiC7',
+	kjAddress: 'https://goo.gl/maps/NzJXuMZ4XMjdh7es7'
+};
