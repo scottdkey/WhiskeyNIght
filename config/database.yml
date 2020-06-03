@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: whiskeyNight_production
-  username: whiskeyNight
+  username: postgres
   password: <%= ENV['WHISKEYNIGHT_DATABASE_PASSWORD'] %>
