@@ -1,25 +1,32 @@
 {
   "files": {
-    "main.css": "/static/css/main.5c8fd874.chunk.css",
-    "main.js": "/static/js/main.0590cd11.chunk.js",
-    "main.js.map": "/static/js/main.0590cd11.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.8c40394c.js",
-    "runtime-main.js.map": "/static/js/runtime-main.8c40394c.js.map",
-    "static/css/2.67687809.chunk.css": "/static/css/2.67687809.chunk.css",
-    "static/js/2.d509e6c4.chunk.js": "/static/js/2.d509e6c4.chunk.js",
-    "static/js/2.d509e6c4.chunk.js.map": "/static/js/2.d509e6c4.chunk.js.map",
+    "main.css": "/static/css/main.60a735f5.chunk.css",
+    "main.js": "/static/js/main.7e2cd601.chunk.js",
+    "main.js.map": "/static/js/main.7e2cd601.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.cfae3202.js",
+    "runtime-main.js.map": "/static/js/runtime-main.cfae3202.js.map",
+    "static/css/2.4c96432a.chunk.css": "/static/css/2.4c96432a.chunk.css",
+    "static/js/2.ecc6ab21.chunk.js": "/static/js/2.ecc6ab21.chunk.js",
+    "static/js/2.ecc6ab21.chunk.js.map": "/static/js/2.ecc6ab21.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.4a53253376f38b98667f0eeb94f1a4d9.js": "/precache-manifest.4a53253376f38b98667f0eeb94f1a4d9.js",
+    "precache-manifest.03ca6fc507564fd263362ebdba2de29a.js": "/precache-manifest.03ca6fc507564fd263362ebdba2de29a.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/2.67687809.chunk.css.map": "/static/css/2.67687809.chunk.css.map",
-    "static/css/main.5c8fd874.chunk.css.map": "/static/css/main.5c8fd874.chunk.css.map",
-    "static/js/2.d509e6c4.chunk.js.LICENSE.txt": "/static/js/2.d509e6c4.chunk.js.LICENSE.txt"
+    "static/css/2.4c96432a.chunk.css.map": "/static/css/2.4c96432a.chunk.css.map",
+    "static/css/main.60a735f5.chunk.css.map": "/static/css/main.60a735f5.chunk.css.map",
+    "static/js/2.ecc6ab21.chunk.js.LICENSE.txt": "/static/js/2.ecc6ab21.chunk.js.LICENSE.txt",
+    "static/media/NewItemModal.scss": "/static/media/-_icon.dc94b21f.svg",
+    "static/media/NoSession.scss": "/static/media/DesktopGroup.3b0f2953.svg",
+    "static/media/check_icon.svg": "/static/media/check_icon.bc5a18f3.svg",
+    "static/media/map_icon.svg": "/static/media/map_icon.aae9c7f7.svg",
+    "static/media/trash_icon.svg": "/static/media/trash_icon.5d5963bf.svg",
+    "static/media/Modal.scss": "/static/media/x_icon.c085782b.svg",
+    "static/media/buttonstyles.scss": "/static/media/x_icon_hover.84d83cbc.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.8c40394c.js",
-    "static/css/2.67687809.chunk.css",
-    "static/js/2.d509e6c4.chunk.js",
-    "static/css/main.5c8fd874.chunk.css",
-    "static/js/main.0590cd11.chunk.js"
+    "static/js/runtime-main.cfae3202.js",
+    "static/css/2.4c96432a.chunk.css",
+    "static/js/2.ecc6ab21.chunk.js",
+    "static/css/main.60a735f5.chunk.css",
+    "static/js/main.7e2cd601.chunk.js"
   ]
 }
