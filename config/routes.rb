@@ -2,17 +2,17 @@
 
 Rails.application.routes.draw do
   namespace :api do
-      resources :sessions do
-        resources :attendees
-      end
+    resources :sessions do
+      resources :attendees
+    end
 
-      resources :sessions do
-        resources :items
-      end
+    resources :sessions do
+      resources :items
+    end
 
-      resources :items do
-        resources :ingredients
-      end
+    resources :items do
+      resources :ingredients
+    end
   end
 
   get '*other', to: 'static#index'
