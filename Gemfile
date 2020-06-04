@@ -28,10 +28,10 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # gem 'rack-cors'
 
 group :development, :test do
-  gem 'capistrano', '~> 3.11.0'
+  gem 'capistrano', '~> 3.11'
   gem 'capistrano-passenger', '~> 0.2.0'
-  gem 'capistrano-rails', '~> 1.2'
-  gem 'capistrano-rbenv', '~> 2.1'
+  gem 'capistrano-rails', '~> 1.4'
+  gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'better_errors'
   gem 'binding_of_caller'

@@ -228,10 +228,10 @@ DEPENDENCIES
   binding_of_caller
   bootsnap (>= 1.4.2)
   byebug
-  capistrano (~> 3.11.0)
+  capistrano (~> 3.11)
   capistrano-passenger (~> 0.2.0)
-  capistrano-rails (~> 1.2)
-  capistrano-rbenv (~> 2.1)
+  capistrano-rails (~> 1.4)
+  capistrano-rbenv (~> 2.1, >= 2.1.4)
   listen (>= 3.0.5, < 3.2)
   meta_request
   pg (>= 0.18, < 2.0)
