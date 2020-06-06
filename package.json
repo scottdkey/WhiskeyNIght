@@ -1,10 +1,21 @@
 {
+	"name": "super-fun-whiskeynight-app",
+	"version": "1.0.0",
+	"description": "Run yarn start to start React Dev Server. Run yarn build to create static site for deployment. Run yarn deploy to copy static site files in the rails public folder",
+	"main": "index.js",
+	"directories": {
+		"lib": "lib",
+		"test": "test"
+	},
 	"scripts": {
-		"build": "cd client && npm install --only=dev && npm install && npm run build && cd ..",
-		"deploy": "cp -a client/build/. public/",
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "cd client && yarn start",
+		"rails": "cd api && bundle && rails s -p 3000",
+		"build": "docker-compose build",
+		"deploy": "docker-compose up",
 		"heroku-postbuild": "npm run build && npm run deploy && echo 'Client Built'"
-	}
+	},
+	"keywords": [],
+	"author": "Scott Key",
+	"license": "ISC"
 }
-
-
-

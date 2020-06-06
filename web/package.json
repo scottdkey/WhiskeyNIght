@@ -1,0 +1,57 @@
+{
+	"name": "client",
+	"version": "0.1.0",
+	"proxy": "http://localhost:3000",
+	"private": true,
+	"dependencies": {
+		"@popperjs/core": "^2.4.0",
+		"axios": "^0.19.2",
+		"bootstrap": "^4.5.0",
+		"flatpickr": "^4.6.3",
+		"jquery": "^3.5.1",
+		"moment": "^2.25.3",
+		"moment-timezone": "^0.5.28",
+		"node-sass": "^4.14.1",
+		"popper.js": "^1.16.1",
+		"prop-types": "^15.7.2",
+		"react": "^16.13.1",
+		"react-bootstrap": "^1.0.1",
+		"react-datetime": "^2.16.3",
+		"react-dom": "^16.13.1",
+		"react-flatpickr": "^3.10.0",
+		"react-is": "^16.13.1",
+		"react-moment": "^0.9.7",
+		"react-scripts": "^3.4.1",
+		"typescript": "^3.9.5"
+	},
+	"scripts": {
+		"start": "PORT=3001 react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject",
+		"lint": "npm audit fix"
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {
+		"eslint": "^6.8.0",
+		"eslint-config-airbnb": "^18.1.0",
+		"eslint-plugin-import": "^2.20.2",
+		"eslint-plugin-jsx-a11y": "^6.2.3",
+		"eslint-plugin-react": "^7.20.0",
+		"eslint-plugin-react-hooks": "^2.5.1"
+	}
+}

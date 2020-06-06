@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: db
+  username: postgres
+  password: 
+  pool: 5
+
+# everything below inherits  from default 
+development:
+  <<: *default
+  database: whiskeynight_development
+  
+test:
+  <<: *default
+  database: whiskeynight_test
+
+production:
+  <<: *default
+  database: whiskeynight_production

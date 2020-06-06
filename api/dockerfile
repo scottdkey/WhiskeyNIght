@@ -1,0 +1,38 @@
+#stage 3 Rails collection and build to serve as 
+
+#grab ruby environment from dockerhub
+FROM ruby:2.7.1
+
+# update and install dependancies for local ENV
+RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+RUN gem install bundler -v 2.1.4
+
+#create and define the directory in container to be working in
+RUN mkdir /app
+WORKDIR /app
+
+#copy the gemfile and lock to the working directory
+COPY Gemfile /app/Gemfile
+COPY Gemfile.lock /app/Gemfile.lock
+
+#install rails dependances with bundler gem
+RUN bundle install
+
+# copy all files from current directory and put in working directory
+COPY . /app
+
+#define entrypoint - in this case a script to be run when starting the actual deployment
+COPY entrypoint.sh /usr/bin/
+
+#make that script executable
+RUN chmod +x /usr/bin/entrypoint.sh
+
+#when running this dockerfile run this script first to clear existing server data
+ENTRYPOINT [ "entrypoint.sh" ]
+
+#allow port 3000 to be available outside of this context0
+EXPOSE 3000
+
+#Create CMD command for entrypoint.sh to use
+CMD ["rails", "server", "-b", "0.0.0.0"]
+
