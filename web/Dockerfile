@@ -30,7 +30,7 @@ RUN rm -rf /usr/share/nginx/html/*
 COPY --from=build /react-ui/build /usr/share/nginx/html/
 
 #expose certain ports to the outside world
-EXPOSE 3000 80
+EXPOSE 443 80
 
 
 #run this docker with the daemon not showing
