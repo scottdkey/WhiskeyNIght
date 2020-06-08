@@ -3,26 +3,33 @@ services:
   db:
     image: postgres
     volumes:
-      - ./tmp/db:/var/lib/postgresql/data
-    environment: 
-      POSTGRES_DB: "db"
-      POSTGRES_HOST_AUTH_METHOD: "trust"
+    - ./tmp/db:/var/lib/postgresql/data
+    ports:
+    - "5432:5432"
   api:
     build: ./api
-    command: bash -c "rm -f tmp/pids/server.pid && rails db:create && rails db:migrate && bundle exec rails s -e production"
+    expose:
+      - ${API_SERVER_PORT}
+    image: scottkey/whiskeynightapi:1.0.0
+    command: bash -c "rm -f tmp/pids/server.pid && rails db:create && rails db:migrate && bundle exec rails s -p 9000 -e production"
     volumes:
-      - .:/whiskeynight
+    - .:/whiskeynight
     depends_on:
-      - db
+    - db
     links:
-      - "db:database"
+    - "db:database"
     ports:
-      - "3000:3000"
+    - "9000:9000"
   web:
     build: ./web
+    image: scottkey/whiskeynightweb:1.0.0
     volumes:
-      - .:/whiskeynight
+    - .:/whiskeynight
+    links:
+    - api:api
     ports:
-      - "80:80"
+    - 80:80
+    - 443:443
     depends_on:
-      - api
+    - api
+

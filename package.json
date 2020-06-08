@@ -11,8 +11,6 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "cd client && yarn start",
 		"rails": "cd api && bundle && rails s -p 3000",
-		"build": "docker-compose build",
-		"deploy": "docker-compose up",
 		"heroku-postbuild": "npm run build && npm run deploy && echo 'Client Built'"
 	},
 	"keywords": [],

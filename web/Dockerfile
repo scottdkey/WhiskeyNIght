@@ -21,7 +21,7 @@ FROM nginx:alpine
 #!/bin/sh
 #remove default config
 RUN rm /etc/nginx/conf.d/default.conf
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 ## Remove default nginx page/folder contents
 RUN rm -rf /usr/share/nginx/html/*
@@ -30,7 +30,8 @@ RUN rm -rf /usr/share/nginx/html/*
 COPY --from=build /react-ui/build /usr/share/nginx/html/
 
 #expose certain ports to the outside world
-EXPOSE 443 80
+EXPOSE 443 
+EXPOSE 80
 
 
 #run this docker with the daemon not showing
