@@ -30,7 +30,7 @@ RUN chmod +x /usr/bin/entrypoint.sh
 #when running this dockerfile run this script first to clear existing server data
 ENTRYPOINT [ "entrypoint.sh" ]
 
-#allow port 3000 to be available outside of this context
+#allow port 9000 to be available outside of this context
 EXPOSE 9000
 
 ENV RAILS_ENV development

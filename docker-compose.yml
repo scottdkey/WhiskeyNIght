@@ -6,21 +6,25 @@ services:
       - ./tmp/db:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+    env_file: 
+      - .env
     environment: 
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=-X3c*E@!zUjPiBcAcXRNV2g
-      - POSTGRES_DB=whiskeynight
+      - POSTGRES_USER:${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 30s
+      timeout: 30s
+      retries: 5
   api:
     build: ./api
-    # expose:
-    #   - ${APP_SERVER_PORT}
-    # environment: 
-    #   API_HOST: ${API_HOST}
-    #   APP_SERVER_PORT: ${APP_SERVER_PORT}
+    env_file: 
+      - .env
     ports:
       - ${API_SERVER_PORT}:${API_SERVER_PORT}
     image: scottkey/whiskeynightapi:1.0.0
-    command: bash -c "rm -f tmp/pids/server.pid && rails db:create && rails db:migrate && bundle exec rails s -p 9000 -e production"
+    command: bash -c "rm -f tmp/pids/server.pid && rails db:create && rails db:migrate && bundle exec rails s -p ${API_SERVER_PORT} -e ${RAILS_ENV}"
     volumes:
       - .:/whiskeynight
     depends_on:
@@ -30,10 +34,8 @@ services:
 
   web:
     build: ./web
-    # environment: 
-    # - WEB_APP_ORIGIN=${WEB_APP_ORIGIN}
-    # expose: 
-    # - ${WEB_APP_PORT}:${WEB_APP_ORIGIN}
+    env_file: 
+      - .env
     ports: 
       - ${WEB_APP_PORT}:${WEB_APP_ORIGIN}
     image: scottkey/whiskeynightweb:1.0.0
