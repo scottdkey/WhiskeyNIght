@@ -21,7 +21,7 @@ FROM nginx:alpine
 #!/bin/sh
 #remove default config
 RUN rm /etc/nginx/conf.d/default.conf
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY default.conf /etc/nginx/conf.d/default.conf
 
 ## Remove default nginx page/folder contents
 RUN rm -rf /usr/share/nginx/html/*

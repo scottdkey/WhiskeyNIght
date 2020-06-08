@@ -8,8 +8,13 @@ services:
     - "5432:5432"
   api:
     build: ./api
-    expose:
-      - ${API_SERVER_PORT}
+    # expose:
+    #   - ${APP_SERVER_PORT}
+    # environment: 
+    #   API_HOST: ${API_HOST}
+    #   APP_SERVER_PORT: ${APP_SERVER_PORT}
+    ports:
+    - ${API_SERVER_PORT}:${API_SERVER_PORT}
     image: scottkey/whiskeynightapi:1.0.0
     command: bash -c "rm -f tmp/pids/server.pid && rails db:create && rails db:migrate && bundle exec rails s -p 9000 -e production"
     volumes:
@@ -18,18 +23,20 @@ services:
     - db
     links:
     - "db:database"
-    ports:
-    - "9000:9000"
+
   web:
     build: ./web
+    # environment: 
+    # - WEB_APP_ORIGIN=${WEB_APP_ORIGIN}
+    # expose: 
+    # - ${WEB_APP_PORT}:${WEB_APP_ORIGIN}
+    ports: 
+    - ${WEB_APP_PORT}:${WEB_APP_ORIGIN}
     image: scottkey/whiskeynightweb:1.0.0
     volumes:
     - .:/whiskeynight
     links:
-    - api:api
-    ports:
-    - 80:80
-    - 443:443
+    - api
     depends_on:
     - api
 
