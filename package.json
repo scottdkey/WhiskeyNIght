@@ -11,7 +11,10 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"react": "cd web && yarn start",
 		"rails": "cd api && bundle && rails s -p 3000",
-		"start": "yarn run-p rails react",
+		"start": "run-p rails react",
+		"bundle-gems": "cd api && bundle",
+		"node-install": "cd web && yarn install",
+		"install": "run-s -sn bundle-gems node-install",
 		"heroku-postbuild": "npm run build && npm run deploy && echo 'Client Built'"
 	},
 	"keywords": [],
