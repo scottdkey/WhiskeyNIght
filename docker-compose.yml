@@ -6,8 +6,10 @@ services:
       - ./tmp/db:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-    env_file: 
-      - database.env
+    environment: 
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=-X3c*E@!zUjPiBcAcXRNV2g
+      - POSTGRES_DB=whiskeynight
   api:
     build: ./api
     # expose:
