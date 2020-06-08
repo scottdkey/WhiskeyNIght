@@ -1,0 +1,336 @@
+I, [2020-06-08T16:29:41.471672 #84583]  INFO -- : [ed947993-2347-4f50-b6c9-572fb2428abd] Started GET "/api/sessions/undefined/items" for 127.0.0.1 at 2020-06-08 16:29:41 -0600
+I, [2020-06-08T16:29:41.473962 #84583]  INFO -- : [ed947993-2347-4f50-b6c9-572fb2428abd] Processing by Api::ItemsController#index as HTML
+I, [2020-06-08T16:29:41.474171 #84583]  INFO -- : [ed947993-2347-4f50-b6c9-572fb2428abd]   Parameters: {"session_id"=>"undefined"}
+I, [2020-06-08T16:29:41.474650 #84583]  INFO -- : [e9f40fe3-d7ca-4367-8126-cd4c6d989733] Started GET "/api/sessions" for 127.0.0.1 at 2020-06-08 16:29:41 -0600
+I, [2020-06-08T16:29:41.476453 #84583]  INFO -- : [e9f40fe3-d7ca-4367-8126-cd4c6d989733] Processing by Api::SessionsController#index as HTML
+I, [2020-06-08T16:29:41.510756 #84583]  INFO -- : [ed947993-2347-4f50-b6c9-572fb2428abd] Completed 500 Internal Server Error in 36ms (Allocations: 1301)
+F, [2020-06-08T16:29:41.511781 #84583] FATAL -- : [ed947993-2347-4f50-b6c9-572fb2428abd]   
+[ed947993-2347-4f50-b6c9-572fb2428abd] PG::ConnectionBad (could not translate host name "db" to address: nodename nor servname provided, or not known
+):
+[ed947993-2347-4f50-b6c9-572fb2428abd]   
+[ed947993-2347-4f50-b6c9-572fb2428abd] app/controllers/api/items_controller.rb:48:in `set_session'
+I, [2020-06-08T16:29:41.511235 #84583]  INFO -- : [e9f40fe3-d7ca-4367-8126-cd4c6d989733] Completed 500 Internal Server Error in 35ms (Allocations: 784)
+F, [2020-06-08T16:29:41.512829 #84583] FATAL -- : [e9f40fe3-d7ca-4367-8126-cd4c6d989733]   
+[e9f40fe3-d7ca-4367-8126-cd4c6d989733] PG::ConnectionBad (could not translate host name "db" to address: nodename nor servname provided, or not known
+):
+[e9f40fe3-d7ca-4367-8126-cd4c6d989733]   
+[e9f40fe3-d7ca-4367-8126-cd4c6d989733] app/controllers/api/sessions_controller.rb:6:in `index'
+I, [2020-06-08T16:29:41.515394 #84583]  INFO -- : [c5cd8287-ee82-4603-bd0b-67759758938d] Started GET "/api/sessions/undefined/items" for 127.0.0.1 at 2020-06-08 16:29:41 -0600
+I, [2020-06-08T16:29:41.515957 #84583]  INFO -- : [c5cd8287-ee82-4603-bd0b-67759758938d] Processing by Api::ItemsController#index as HTML
+I, [2020-06-08T16:29:41.516034 #84583]  INFO -- : [c5cd8287-ee82-4603-bd0b-67759758938d]   Parameters: {"session_id"=>"undefined"}
+I, [2020-06-08T16:29:41.520045 #84583]  INFO -- : [c5cd8287-ee82-4603-bd0b-67759758938d] Completed 500 Internal Server Error in 4ms (Allocations: 343)
+F, [2020-06-08T16:29:41.520708 #84583] FATAL -- : [c5cd8287-ee82-4603-bd0b-67759758938d]   
+[c5cd8287-ee82-4603-bd0b-67759758938d] PG::ConnectionBad (could not translate host name "db" to address: nodename nor servname provided, or not known
+):
+[c5cd8287-ee82-4603-bd0b-67759758938d]   
+[c5cd8287-ee82-4603-bd0b-67759758938d] app/controllers/api/items_controller.rb:48:in `set_session'
+I, [2020-06-08T16:29:49.089891 #84583]  INFO -- : [9c002cd7-5e14-44a4-8477-e68392dd03c5] Started POST "/api/sessions/undefined/items" for 127.0.0.1 at 2020-06-08 16:29:49 -0600
+F, [2020-06-08T16:29:49.094022 #84583] FATAL -- : [9c002cd7-5e14-44a4-8477-e68392dd03c5]   
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] PG::ConnectionBad (could not translate host name "db" to address: nodename nor servname provided, or not known
+):
+[9c002cd7-5e14-44a4-8477-e68392dd03c5]   
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] pg (1.2.3) lib/pg.rb:58:in `initialize'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] pg (1.2.3) lib/pg.rb:58:in `new'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] pg (1.2.3) lib/pg.rb:58:in `connect'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] activerecord (6.0.3.1) lib/active_record/connection_adapters/postgresql_adapter.rb:46:in `postgresql_connection'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:887:in `new_connection'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:931:in `checkout_new_connection'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:910:in `try_to_checkout_new_connection'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:871:in `acquire_connection'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:593:in `checkout'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:437:in `connection'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:1119:in `retrieve_connection'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] activerecord (6.0.3.1) lib/active_record/connection_handling.rb:221:in `retrieve_connection'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] activerecord (6.0.3.1) lib/active_record/connection_handling.rb:189:in `connection'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] activerecord (6.0.3.1) lib/active_record/model_schema.rb:340:in `table_exists?'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] activerecord (6.0.3.1) lib/active_record/attribute_methods.rb:155:in `attribute_names'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] actionpack (6.0.3.1) lib/action_controller/metal/params_wrapper.rb:109:in `block in include'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] /Users/scottkey/.rbenv/versions/2.7.1/lib/ruby/2.7.0/mutex_m.rb:78:in `synchronize'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] /Users/scottkey/.rbenv/versions/2.7.1/lib/ruby/2.7.0/mutex_m.rb:78:in `mu_synchronize'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] actionpack (6.0.3.1) lib/action_controller/metal/params_wrapper.rb:103:in `include'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] actionpack (6.0.3.1) lib/action_controller/metal/params_wrapper.rb:265:in `_extract_parameters'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] actionpack (6.0.3.1) lib/action_controller/metal/params_wrapper.rb:261:in `_wrap_parameters'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] actionpack (6.0.3.1) lib/action_controller/metal/params_wrapper.rb:282:in `_perform_parameter_wrapping'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] actionpack (6.0.3.1) lib/action_controller/metal/params_wrapper.rb:244:in `process_action'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] activerecord (6.0.3.1) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] actionpack (6.0.3.1) lib/abstract_controller/base.rb:136:in `process'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] actionpack (6.0.3.1) lib/action_controller/metal.rb:190:in `dispatch'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] actionpack (6.0.3.1) lib/action_controller/metal.rb:254:in `dispatch'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `each'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] rack (2.2.2) lib/rack/etag.rb:27:in `call'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] rack (2.2.2) lib/rack/conditional_get.rb:40:in `call'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] rack (2.2.2) lib/rack/head.rb:12:in `call'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] activesupport (6.0.3.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] actionpack (6.0.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] actionpack (6.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] actionpack (6.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] railties (6.0.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `call'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] actionpack (6.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] actionpack (6.0.3.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] activesupport (6.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] actionpack (6.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:76:in `call'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+[9c002cd7-5e14-44a4-8477-e68392dd03c5] puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+I, [2020-06-08T16:29:49.657702 #84583]  INFO -- : [f6d49f60-34d2-44bf-a7de-0ebbf49c11c5] Started POST "/api/sessions/undefined/items" for 127.0.0.1 at 2020-06-08 16:29:49 -0600
+I, [2020-06-08T16:29:49.658281 #84583]  INFO -- : [f6d49f60-34d2-44bf-a7de-0ebbf49c11c5] Processing by Api::ItemsController#create as HTML
+I, [2020-06-08T16:29:49.658339 #84583]  INFO -- : [f6d49f60-34d2-44bf-a7de-0ebbf49c11c5]   Parameters: {"label"=>"easdf", "foodstuff"=>"Food", "session_id"=>"undefined", "item"=>{"label"=>"easdf", "foodstuff"=>"Food"}}
+I, [2020-06-08T16:29:49.661284 #84583]  INFO -- : [f6d49f60-34d2-44bf-a7de-0ebbf49c11c5] Completed 500 Internal Server Error in 3ms (Allocations: 351)
+F, [2020-06-08T16:29:49.661844 #84583] FATAL -- : [f6d49f60-34d2-44bf-a7de-0ebbf49c11c5]   
+[f6d49f60-34d2-44bf-a7de-0ebbf49c11c5] PG::ConnectionBad (could not translate host name "db" to address: nodename nor servname provided, or not known
+):
+[f6d49f60-34d2-44bf-a7de-0ebbf49c11c5]   
+[f6d49f60-34d2-44bf-a7de-0ebbf49c11c5] app/controllers/api/items_controller.rb:48:in `set_session'
+I, [2020-06-08T16:29:49.876770 #84583]  INFO -- : [f7342d01-5f8c-434b-8f53-f883826a65f6] Started POST "/api/sessions/undefined/items" for 127.0.0.1 at 2020-06-08 16:29:49 -0600
+I, [2020-06-08T16:29:49.877381 #84583]  INFO -- : [f7342d01-5f8c-434b-8f53-f883826a65f6] Processing by Api::ItemsController#create as HTML
+I, [2020-06-08T16:29:49.877437 #84583]  INFO -- : [f7342d01-5f8c-434b-8f53-f883826a65f6]   Parameters: {"label"=>"easdf", "foodstuff"=>"Food", "session_id"=>"undefined", "item"=>{"label"=>"easdf", "foodstuff"=>"Food"}}
+I, [2020-06-08T16:29:49.880401 #84583]  INFO -- : [f7342d01-5f8c-434b-8f53-f883826a65f6] Completed 500 Internal Server Error in 3ms (Allocations: 351)
+F, [2020-06-08T16:29:49.880964 #84583] FATAL -- : [f7342d01-5f8c-434b-8f53-f883826a65f6]   
+[f7342d01-5f8c-434b-8f53-f883826a65f6] PG::ConnectionBad (could not translate host name "db" to address: nodename nor servname provided, or not known
+):
+[f7342d01-5f8c-434b-8f53-f883826a65f6]   
+[f7342d01-5f8c-434b-8f53-f883826a65f6] app/controllers/api/items_controller.rb:48:in `set_session'
+I, [2020-06-08T16:30:03.564637 #84583]  INFO -- : [0097349f-b626-4331-ba50-c57b9ef63928] Started GET "/api/sessions" for 127.0.0.1 at 2020-06-08 16:30:03 -0600
+I, [2020-06-08T16:30:03.565445 #84583]  INFO -- : [0097349f-b626-4331-ba50-c57b9ef63928] Processing by Api::SessionsController#index as HTML
+I, [2020-06-08T16:30:03.569350 #84583]  INFO -- : [0097349f-b626-4331-ba50-c57b9ef63928] Completed 500 Internal Server Error in 4ms (Allocations: 425)
+F, [2020-06-08T16:30:03.570018 #84583] FATAL -- : [0097349f-b626-4331-ba50-c57b9ef63928]   
+[0097349f-b626-4331-ba50-c57b9ef63928] PG::ConnectionBad (could not translate host name "db" to address: nodename nor servname provided, or not known
+):
+[0097349f-b626-4331-ba50-c57b9ef63928]   
+[0097349f-b626-4331-ba50-c57b9ef63928] app/controllers/api/sessions_controller.rb:6:in `index'
+I, [2020-06-08T16:30:06.196385 #84583]  INFO -- : [d9a5f1da-9ec9-4848-92d8-e6addfbbdb8f] Started GET "/api/session" for 127.0.0.1 at 2020-06-08 16:30:06 -0600
+I, [2020-06-08T16:30:06.196974 #84583]  INFO -- : [d9a5f1da-9ec9-4848-92d8-e6addfbbdb8f] Processing by StaticController#index as HTML
+I, [2020-06-08T16:30:06.197057 #84583]  INFO -- : [d9a5f1da-9ec9-4848-92d8-e6addfbbdb8f]   Parameters: {"other"=>"api/session"}
+I, [2020-06-08T16:30:06.198111 #84583]  INFO -- : [d9a5f1da-9ec9-4848-92d8-e6addfbbdb8f]   Rendering public/index.html
+I, [2020-06-08T16:30:06.198735 #84583]  INFO -- : [d9a5f1da-9ec9-4848-92d8-e6addfbbdb8f]   Rendered public/index.html (Duration: 0.5ms | Allocations: 6)
+I, [2020-06-08T16:30:06.198998 #84583]  INFO -- : [d9a5f1da-9ec9-4848-92d8-e6addfbbdb8f] Completed 200 OK in 2ms (Views: 1.4ms | Allocations: 568)
+I, [2020-06-08T16:30:06.329571 #84583]  INFO -- : [d4905441-8283-446d-8feb-04aa32c12620] Started GET "/api/sessions/undefined/items" for 127.0.0.1 at 2020-06-08 16:30:06 -0600
+I, [2020-06-08T16:30:06.330450 #84583]  INFO -- : [d4905441-8283-446d-8feb-04aa32c12620] Processing by Api::ItemsController#index as HTML
+I, [2020-06-08T16:30:06.330573 #84583]  INFO -- : [d4905441-8283-446d-8feb-04aa32c12620]   Parameters: {"session_id"=>"undefined"}
+I, [2020-06-08T16:30:06.332241 #84583]  INFO -- : [8ef5a59c-cd4f-4f62-a115-b83f9f9ea2c7] Started GET "/api/api/sessions" for 127.0.0.1 at 2020-06-08 16:30:06 -0600
+I, [2020-06-08T16:30:06.333090 #84583]  INFO -- : [8ef5a59c-cd4f-4f62-a115-b83f9f9ea2c7] Processing by StaticController#index as HTML
+I, [2020-06-08T16:30:06.333175 #84583]  INFO -- : [8ef5a59c-cd4f-4f62-a115-b83f9f9ea2c7]   Parameters: {"other"=>"api/api/sessions"}
+I, [2020-06-08T16:30:06.333734 #84583]  INFO -- : [8ef5a59c-cd4f-4f62-a115-b83f9f9ea2c7]   Rendering public/index.html
+I, [2020-06-08T16:30:06.333934 #84583]  INFO -- : [8ef5a59c-cd4f-4f62-a115-b83f9f9ea2c7]   Rendered public/index.html (Duration: 0.1ms | Allocations: 5)
+I, [2020-06-08T16:30:06.334106 #84583]  INFO -- : [8ef5a59c-cd4f-4f62-a115-b83f9f9ea2c7] Completed 200 OK in 1ms (Views: 0.5ms | Allocations: 274)
+I, [2020-06-08T16:30:06.334889 #84583]  INFO -- : [d4905441-8283-446d-8feb-04aa32c12620] Completed 500 Internal Server Error in 4ms (Allocations: 1132)
+F, [2020-06-08T16:30:06.336148 #84583] FATAL -- : [d4905441-8283-446d-8feb-04aa32c12620]   
+[d4905441-8283-446d-8feb-04aa32c12620] PG::ConnectionBad (could not translate host name "db" to address: nodename nor servname provided, or not known
+):
+[d4905441-8283-446d-8feb-04aa32c12620]   
+[d4905441-8283-446d-8feb-04aa32c12620] app/controllers/api/items_controller.rb:48:in `set_session'
+I, [2020-06-08T16:30:06.337672 #84583]  INFO -- : [d9cc21a9-1dec-4934-9140-51285048d2ee] Started GET "/api/sessions/undefined/items" for 127.0.0.1 at 2020-06-08 16:30:06 -0600
+I, [2020-06-08T16:30:06.338555 #84583]  INFO -- : [d9cc21a9-1dec-4934-9140-51285048d2ee] Processing by Api::ItemsController#index as HTML
+I, [2020-06-08T16:30:06.338750 #84583]  INFO -- : [d9cc21a9-1dec-4934-9140-51285048d2ee]   Parameters: {"session_id"=>"undefined"}
+I, [2020-06-08T16:30:06.344606 #84583]  INFO -- : [d9cc21a9-1dec-4934-9140-51285048d2ee] Completed 500 Internal Server Error in 6ms (Allocations: 343)
+F, [2020-06-08T16:30:06.345765 #84583] FATAL -- : [d9cc21a9-1dec-4934-9140-51285048d2ee]   
+[d9cc21a9-1dec-4934-9140-51285048d2ee] PG::ConnectionBad (could not translate host name "db" to address: nodename nor servname provided, or not known
+):
+[d9cc21a9-1dec-4934-9140-51285048d2ee]   
+[d9cc21a9-1dec-4934-9140-51285048d2ee] app/controllers/api/items_controller.rb:48:in `set_session'
+I, [2020-06-08T16:30:06.360477 #84583]  INFO -- : [17f427ee-0921-4100-b3b3-5613d2517a14] Started GET "/api/sessions/undefined/items" for 127.0.0.1 at 2020-06-08 16:30:06 -0600
+I, [2020-06-08T16:30:06.361337 #84583]  INFO -- : [17f427ee-0921-4100-b3b3-5613d2517a14] Processing by Api::ItemsController#index as HTML
+I, [2020-06-08T16:30:06.361413 #84583]  INFO -- : [17f427ee-0921-4100-b3b3-5613d2517a14]   Parameters: {"session_id"=>"undefined"}
+I, [2020-06-08T16:30:06.367471 #84583]  INFO -- : [17f427ee-0921-4100-b3b3-5613d2517a14] Completed 500 Internal Server Error in 6ms (Allocations: 343)
+F, [2020-06-08T16:30:06.369077 #84583] FATAL -- : [17f427ee-0921-4100-b3b3-5613d2517a14]   
+[17f427ee-0921-4100-b3b3-5613d2517a14] PG::ConnectionBad (could not translate host name "db" to address: nodename nor servname provided, or not known
+):
+[17f427ee-0921-4100-b3b3-5613d2517a14]   
+[17f427ee-0921-4100-b3b3-5613d2517a14] app/controllers/api/items_controller.rb:48:in `set_session'
+I, [2020-06-08T16:30:06.371394 #84583]  INFO -- : [f9c85ec6-4cf6-432a-be55-b0e8ef4b7536] Started GET "/api/sessions/undefined/items" for 127.0.0.1 at 2020-06-08 16:30:06 -0600
+I, [2020-06-08T16:30:06.372797 #84583]  INFO -- : [f9c85ec6-4cf6-432a-be55-b0e8ef4b7536] Processing by Api::ItemsController#index as HTML
+I, [2020-06-08T16:30:06.372938 #84583]  INFO -- : [f9c85ec6-4cf6-432a-be55-b0e8ef4b7536]   Parameters: {"session_id"=>"undefined"}
+I, [2020-06-08T16:30:06.376217 #84583]  INFO -- : [f9c85ec6-4cf6-432a-be55-b0e8ef4b7536] Completed 500 Internal Server Error in 3ms (Allocations: 343)
+F, [2020-06-08T16:30:06.376732 #84583] FATAL -- : [f9c85ec6-4cf6-432a-be55-b0e8ef4b7536]   
+[f9c85ec6-4cf6-432a-be55-b0e8ef4b7536] PG::ConnectionBad (could not translate host name "db" to address: nodename nor servname provided, or not known
+):
+[f9c85ec6-4cf6-432a-be55-b0e8ef4b7536]   
+[f9c85ec6-4cf6-432a-be55-b0e8ef4b7536] app/controllers/api/items_controller.rb:48:in `set_session'
+I, [2020-06-08T16:30:12.410779 #84583]  INFO -- : [fd15f2a1-7fa7-425d-b248-e1a70b0c608a] Started GET "/api/sessions/undefined/items" for 127.0.0.1 at 2020-06-08 16:30:12 -0600
+I, [2020-06-08T16:30:12.411603 #84583]  INFO -- : [fd15f2a1-7fa7-425d-b248-e1a70b0c608a] Processing by Api::ItemsController#index as HTML
+I, [2020-06-08T16:30:12.411715 #84583]  INFO -- : [fd15f2a1-7fa7-425d-b248-e1a70b0c608a]   Parameters: {"session_id"=>"undefined"}
+I, [2020-06-08T16:30:12.414926 #84583]  INFO -- : [09b8a705-397b-468a-8a6d-0af6dfca7cb1] Started GET "/api/sessions" for 127.0.0.1 at 2020-06-08 16:30:12 -0600
+I, [2020-06-08T16:30:12.415785 #84583]  INFO -- : [09b8a705-397b-468a-8a6d-0af6dfca7cb1] Processing by Api::SessionsController#index as HTML
+I, [2020-06-08T16:30:12.416154 #84583]  INFO -- : [fd15f2a1-7fa7-425d-b248-e1a70b0c608a] Completed 500 Internal Server Error in 4ms (Allocations: 766)
+F, [2020-06-08T16:30:12.417393 #84583] FATAL -- : [fd15f2a1-7fa7-425d-b248-e1a70b0c608a]   
+[fd15f2a1-7fa7-425d-b248-e1a70b0c608a] PG::ConnectionBad (could not translate host name "db" to address: nodename nor servname provided, or not known
+):
+[fd15f2a1-7fa7-425d-b248-e1a70b0c608a]   
+[fd15f2a1-7fa7-425d-b248-e1a70b0c608a] app/controllers/api/items_controller.rb:48:in `set_session'
+I, [2020-06-08T16:30:12.419788 #84583]  INFO -- : [3e246ba0-20bb-4eee-81ab-44ca35dde8c4] Started GET "/api/sessions/undefined/items" for 127.0.0.1 at 2020-06-08 16:30:12 -0600
+I, [2020-06-08T16:30:12.420793 #84583]  INFO -- : [3e246ba0-20bb-4eee-81ab-44ca35dde8c4] Processing by Api::ItemsController#index as HTML
+I, [2020-06-08T16:30:12.420186 #84583]  INFO -- : [09b8a705-397b-468a-8a6d-0af6dfca7cb1] Completed 500 Internal Server Error in 4ms (Allocations: 1246)
+F, [2020-06-08T16:30:12.421757 #84583] FATAL -- : [09b8a705-397b-468a-8a6d-0af6dfca7cb1]   
+[09b8a705-397b-468a-8a6d-0af6dfca7cb1] PG::ConnectionBad (could not translate host name "db" to address: nodename nor servname provided, or not known
+):
+[09b8a705-397b-468a-8a6d-0af6dfca7cb1]   
+[09b8a705-397b-468a-8a6d-0af6dfca7cb1] app/controllers/api/sessions_controller.rb:6:in `index'
+I, [2020-06-08T16:30:12.420946 #84583]  INFO -- : [3e246ba0-20bb-4eee-81ab-44ca35dde8c4]   Parameters: {"session_id"=>"undefined"}
+I, [2020-06-08T16:30:12.425924 #84583]  INFO -- : [3e246ba0-20bb-4eee-81ab-44ca35dde8c4] Completed 500 Internal Server Error in 4ms (Allocations: 428)
+F, [2020-06-08T16:30:12.426689 #84583] FATAL -- : [3e246ba0-20bb-4eee-81ab-44ca35dde8c4]   
+[3e246ba0-20bb-4eee-81ab-44ca35dde8c4] PG::ConnectionBad (could not translate host name "db" to address: nodename nor servname provided, or not known
+):
+[3e246ba0-20bb-4eee-81ab-44ca35dde8c4]   
+[3e246ba0-20bb-4eee-81ab-44ca35dde8c4] app/controllers/api/items_controller.rb:48:in `set_session'
+I, [2020-06-08T16:30:20.848718 #84583]  INFO -- : [5d4e7853-d96b-4f18-b0b8-af34d201c707] Started DELETE "/api/sessions/undefined" for 127.0.0.1 at 2020-06-08 16:30:20 -0600
+I, [2020-06-08T16:30:20.854094 #84583]  INFO -- : [5d4e7853-d96b-4f18-b0b8-af34d201c707] Processing by Api::SessionsController#destroy as HTML
+I, [2020-06-08T16:30:20.854174 #84583]  INFO -- : [5d4e7853-d96b-4f18-b0b8-af34d201c707]   Parameters: {"id"=>"undefined"}
+I, [2020-06-08T16:30:20.855074 #84583]  INFO -- : [c68bc92d-3952-494d-b94f-11304ea777aa] Started GET "/static/media/DesktopGroup.3b0f2953.svg" for 127.0.0.1 at 2020-06-08 16:30:20 -0600
+I, [2020-06-08T16:30:20.855770 #84583]  INFO -- : [c68bc92d-3952-494d-b94f-11304ea777aa] Processing by StaticController#index as SVG
+I, [2020-06-08T16:30:20.855858 #84583]  INFO -- : [c68bc92d-3952-494d-b94f-11304ea777aa]   Parameters: {"other"=>"static/media/DesktopGroup.3b0f2953"}
+I, [2020-06-08T16:30:20.856633 #84583]  INFO -- : [c68bc92d-3952-494d-b94f-11304ea777aa]   Rendering public/index.html
+I, [2020-06-08T16:30:20.857482 #84583]  INFO -- : [5d4e7853-d96b-4f18-b0b8-af34d201c707] Completed 500 Internal Server Error in 3ms (Allocations: 975)
+F, [2020-06-08T16:30:20.858161 #84583] FATAL -- : [5d4e7853-d96b-4f18-b0b8-af34d201c707]   
+[5d4e7853-d96b-4f18-b0b8-af34d201c707] PG::ConnectionBad (could not translate host name "db" to address: nodename nor servname provided, or not known
+):
+[5d4e7853-d96b-4f18-b0b8-af34d201c707]   
+[5d4e7853-d96b-4f18-b0b8-af34d201c707] app/controllers/api/sessions_controller.rb:38:in `set_session'
+I, [2020-06-08T16:30:20.858313 #84583]  INFO -- : [c68bc92d-3952-494d-b94f-11304ea777aa]   Rendered public/index.html (Duration: 1.6ms | Allocations: 656)
+I, [2020-06-08T16:30:20.858757 #84583]  INFO -- : [c68bc92d-3952-494d-b94f-11304ea777aa] Completed 200 OK in 3ms (Views: 2.2ms | Allocations: 944)
+I, [2020-06-08T16:30:21.780956 #84583]  INFO -- : [378a0f83-d1a9-4dab-8989-0dc2dbe17619] Started POST "/api/sessions" for 127.0.0.1 at 2020-06-08 16:30:21 -0600
+F, [2020-06-08T16:30:21.785469 #84583] FATAL -- : [378a0f83-d1a9-4dab-8989-0dc2dbe17619]   
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] PG::ConnectionBad (could not translate host name "db" to address: nodename nor servname provided, or not known
+):
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619]   
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] pg (1.2.3) lib/pg.rb:58:in `initialize'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] pg (1.2.3) lib/pg.rb:58:in `new'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] pg (1.2.3) lib/pg.rb:58:in `connect'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] activerecord (6.0.3.1) lib/active_record/connection_adapters/postgresql_adapter.rb:46:in `postgresql_connection'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:887:in `new_connection'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:931:in `checkout_new_connection'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:910:in `try_to_checkout_new_connection'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:871:in `acquire_connection'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:593:in `checkout'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:437:in `connection'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] activerecord (6.0.3.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:1119:in `retrieve_connection'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] activerecord (6.0.3.1) lib/active_record/connection_handling.rb:221:in `retrieve_connection'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] activerecord (6.0.3.1) lib/active_record/connection_handling.rb:189:in `connection'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] activerecord (6.0.3.1) lib/active_record/model_schema.rb:340:in `table_exists?'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] activerecord (6.0.3.1) lib/active_record/attribute_methods.rb:155:in `attribute_names'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] actionpack (6.0.3.1) lib/action_controller/metal/params_wrapper.rb:109:in `block in include'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] /Users/scottkey/.rbenv/versions/2.7.1/lib/ruby/2.7.0/mutex_m.rb:78:in `synchronize'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] /Users/scottkey/.rbenv/versions/2.7.1/lib/ruby/2.7.0/mutex_m.rb:78:in `mu_synchronize'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] actionpack (6.0.3.1) lib/action_controller/metal/params_wrapper.rb:103:in `include'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] actionpack (6.0.3.1) lib/action_controller/metal/params_wrapper.rb:265:in `_extract_parameters'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] actionpack (6.0.3.1) lib/action_controller/metal/params_wrapper.rb:261:in `_wrap_parameters'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] actionpack (6.0.3.1) lib/action_controller/metal/params_wrapper.rb:282:in `_perform_parameter_wrapping'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] actionpack (6.0.3.1) lib/action_controller/metal/params_wrapper.rb:244:in `process_action'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] activerecord (6.0.3.1) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] actionpack (6.0.3.1) lib/abstract_controller/base.rb:136:in `process'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] actionpack (6.0.3.1) lib/action_controller/metal.rb:190:in `dispatch'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] actionpack (6.0.3.1) lib/action_controller/metal.rb:254:in `dispatch'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `each'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] actionpack (6.0.3.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] actionpack (6.0.3.1) lib/action_dispatch/routing/route_set.rb:834:in `call'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] rack (2.2.2) lib/rack/etag.rb:27:in `call'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] rack (2.2.2) lib/rack/conditional_get.rb:40:in `call'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] rack (2.2.2) lib/rack/head.rb:12:in `call'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] activesupport (6.0.3.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] actionpack (6.0.3.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] actionpack (6.0.3.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] actionpack (6.0.3.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] actionpack (6.0.3.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] railties (6.0.3.1) lib/rails/rack/logger.rb:37:in `call_app'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `block in call'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] activesupport (6.0.3.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] railties (6.0.3.1) lib/rails/rack/logger.rb:26:in `call'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] actionpack (6.0.3.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] actionpack (6.0.3.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] activesupport (6.0.3.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] actionpack (6.0.3.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] actionpack (6.0.3.1) lib/action_dispatch/middleware/host_authorization.rb:76:in `call'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] railties (6.0.3.1) lib/rails/engine.rb:527:in `call'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+[378a0f83-d1a9-4dab-8989-0dc2dbe17619] puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+I, [2020-06-08T16:30:22.183046 #84583]  INFO -- : [36979320-10ad-472a-9144-8ae85addcbda] Started POST "/api/sessions" for 127.0.0.1 at 2020-06-08 16:30:22 -0600
+I, [2020-06-08T16:30:22.183617 #84583]  INFO -- : [36979320-10ad-472a-9144-8ae85addcbda] Processing by Api::SessionsController#create as HTML
+I, [2020-06-08T16:30:22.183681 #84583]  INFO -- : [36979320-10ad-472a-9144-8ae85addcbda]   Parameters: {"host"=>"Tyler & Emily's", "date"=>"2020-06-08T22:30:20.830Z", "session"=>{"host"=>"Tyler & Emily's", "date"=>"2020-06-08T22:30:20.830Z"}}
+I, [2020-06-08T16:30:22.187312 #84583]  INFO -- : [36979320-10ad-472a-9144-8ae85addcbda] Completed 500 Internal Server Error in 3ms (Allocations: 416)
+F, [2020-06-08T16:30:22.187961 #84583] FATAL -- : [36979320-10ad-472a-9144-8ae85addcbda]   
+[36979320-10ad-472a-9144-8ae85addcbda] PG::ConnectionBad (could not translate host name "db" to address: nodename nor servname provided, or not known
+):
+[36979320-10ad-472a-9144-8ae85addcbda]   
+[36979320-10ad-472a-9144-8ae85addcbda] app/controllers/api/sessions_controller.rb:10:in `create'
+I, [2020-06-08T16:30:24.349393 #84583]  INFO -- : [4fc7b2f0-a5b9-4182-b0aa-e3cf106c0daa] Started POST "/api/sessions" for 127.0.0.1 at 2020-06-08 16:30:24 -0600
+I, [2020-06-08T16:30:24.350004 #84583]  INFO -- : [4fc7b2f0-a5b9-4182-b0aa-e3cf106c0daa] Processing by Api::SessionsController#create as HTML
+I, [2020-06-08T16:30:24.350063 #84583]  INFO -- : [4fc7b2f0-a5b9-4182-b0aa-e3cf106c0daa]   Parameters: {"host"=>"Kevin & Jill's", "date"=>"2020-06-08T22:30:20.830Z", "session"=>{"host"=>"Kevin & Jill's", "date"=>"2020-06-08T22:30:20.830Z"}}
+I, [2020-06-08T16:30:24.353710 #84583]  INFO -- : [4fc7b2f0-a5b9-4182-b0aa-e3cf106c0daa] Completed 500 Internal Server Error in 4ms (Allocations: 409)
+F, [2020-06-08T16:30:24.354470 #84583] FATAL -- : [4fc7b2f0-a5b9-4182-b0aa-e3cf106c0daa]   
+[4fc7b2f0-a5b9-4182-b0aa-e3cf106c0daa] PG::ConnectionBad (could not translate host name "db" to address: nodename nor servname provided, or not known
+):
+[4fc7b2f0-a5b9-4182-b0aa-e3cf106c0daa]   
+[4fc7b2f0-a5b9-4182-b0aa-e3cf106c0daa] app/controllers/api/sessions_controller.rb:10:in `create'
+I, [2020-06-08T16:30:24.560365 #84583]  INFO -- : [d9775245-369b-4047-84be-31ee45cfe636] Started POST "/api/sessions" for 127.0.0.1 at 2020-06-08 16:30:24 -0600
+I, [2020-06-08T16:30:24.561185 #84583]  INFO -- : [d9775245-369b-4047-84be-31ee45cfe636] Processing by Api::SessionsController#create as HTML
+I, [2020-06-08T16:30:24.561253 #84583]  INFO -- : [d9775245-369b-4047-84be-31ee45cfe636]   Parameters: {"host"=>"Kevin & Jill's", "date"=>"2020-06-08T22:30:20.830Z", "session"=>{"host"=>"Kevin & Jill's", "date"=>"2020-06-08T22:30:20.830Z"}}
+I, [2020-06-08T16:30:24.564466 #84583]  INFO -- : [d9775245-369b-4047-84be-31ee45cfe636] Completed 500 Internal Server Error in 3ms (Allocations: 407)
+F, [2020-06-08T16:30:24.565020 #84583] FATAL -- : [d9775245-369b-4047-84be-31ee45cfe636]   
+[d9775245-369b-4047-84be-31ee45cfe636] PG::ConnectionBad (could not translate host name "db" to address: nodename nor servname provided, or not known
+):
+[d9775245-369b-4047-84be-31ee45cfe636]   
+[d9775245-369b-4047-84be-31ee45cfe636] app/controllers/api/sessions_controller.rb:10:in `create'
+I, [2020-06-08T16:30:25.631242 #84583]  INFO -- : [8a59b2d4-7be0-4766-adf5-176c8bd75de7] Started POST "/api/sessions" for 127.0.0.1 at 2020-06-08 16:30:25 -0600
+I, [2020-06-08T16:30:25.632265 #84583]  INFO -- : [8a59b2d4-7be0-4766-adf5-176c8bd75de7] Processing by Api::SessionsController#create as HTML
+I, [2020-06-08T16:30:25.632340 #84583]  INFO -- : [8a59b2d4-7be0-4766-adf5-176c8bd75de7]   Parameters: {"host"=>"Kevin & Jill's", "date"=>"2020-06-08T22:30:20.830Z", "session"=>{"host"=>"Kevin & Jill's", "date"=>"2020-06-08T22:30:20.830Z"}}
+I, [2020-06-08T16:30:25.635446 #84583]  INFO -- : [8a59b2d4-7be0-4766-adf5-176c8bd75de7] Completed 500 Internal Server Error in 3ms (Allocations: 407)
+F, [2020-06-08T16:30:25.636137 #84583] FATAL -- : [8a59b2d4-7be0-4766-adf5-176c8bd75de7]   
+[8a59b2d4-7be0-4766-adf5-176c8bd75de7] PG::ConnectionBad (could not translate host name "db" to address: nodename nor servname provided, or not known
+):
+[8a59b2d4-7be0-4766-adf5-176c8bd75de7]   
+[8a59b2d4-7be0-4766-adf5-176c8bd75de7] app/controllers/api/sessions_controller.rb:10:in `create'
+I, [2020-06-08T16:30:27.253055 #84583]  INFO -- : [2540b148-38b5-4223-9593-4069a23b10e1] Started POST "/api/sessions" for 127.0.0.1 at 2020-06-08 16:30:27 -0600
+I, [2020-06-08T16:30:27.253656 #84583]  INFO -- : [2540b148-38b5-4223-9593-4069a23b10e1] Processing by Api::SessionsController#create as HTML
+I, [2020-06-08T16:30:27.253710 #84583]  INFO -- : [2540b148-38b5-4223-9593-4069a23b10e1]   Parameters: {"host"=>"Tyler & Emily's", "date"=>"2020-06-08T22:30:20.830Z", "session"=>{"host"=>"Tyler & Emily's", "date"=>"2020-06-08T22:30:20.830Z"}}
+I, [2020-06-08T16:30:27.257070 #84583]  INFO -- : [2540b148-38b5-4223-9593-4069a23b10e1] Completed 500 Internal Server Error in 3ms (Allocations: 407)
+F, [2020-06-08T16:30:27.257732 #84583] FATAL -- : [2540b148-38b5-4223-9593-4069a23b10e1]   
+[2540b148-38b5-4223-9593-4069a23b10e1] PG::ConnectionBad (could not translate host name "db" to address: nodename nor servname provided, or not known
+):
+[2540b148-38b5-4223-9593-4069a23b10e1]   
+[2540b148-38b5-4223-9593-4069a23b10e1] app/controllers/api/sessions_controller.rb:10:in `create'
+I, [2020-06-08T16:30:33.843806 #84583]  INFO -- : [7afef066-16d0-4010-bd7e-a27fb91aa85e] Started GET "/api/sessions/undefined/items" for 127.0.0.1 at 2020-06-08 16:30:33 -0600
+I, [2020-06-08T16:30:33.845009 #84583]  INFO -- : [7afef066-16d0-4010-bd7e-a27fb91aa85e] Processing by Api::ItemsController#index as HTML
+I, [2020-06-08T16:30:33.845140 #84583]  INFO -- : [7afef066-16d0-4010-bd7e-a27fb91aa85e]   Parameters: {"session_id"=>"undefined"}
+I, [2020-06-08T16:30:33.850826 #84583]  INFO -- : [7afef066-16d0-4010-bd7e-a27fb91aa85e] Completed 500 Internal Server Error in 5ms (Allocations: 343)
+F, [2020-06-08T16:30:33.853240 #84583] FATAL -- : [7afef066-16d0-4010-bd7e-a27fb91aa85e]   
+[7afef066-16d0-4010-bd7e-a27fb91aa85e] PG::ConnectionBad (could not translate host name "db" to address: nodename nor servname provided, or not known
+):
+[7afef066-16d0-4010-bd7e-a27fb91aa85e]   
+[7afef066-16d0-4010-bd7e-a27fb91aa85e] app/controllers/api/items_controller.rb:48:in `set_session'
+I, [2020-06-08T16:30:33.855148 #84583]  INFO -- : [9cc8bc03-5067-4f5d-89d3-ad785993030c] Started GET "/api/sessions/undefined/items" for 127.0.0.1 at 2020-06-08 16:30:33 -0600
+I, [2020-06-08T16:30:33.856355 #84583]  INFO -- : [9cc8bc03-5067-4f5d-89d3-ad785993030c] Processing by Api::ItemsController#index as HTML
+I, [2020-06-08T16:30:33.856520 #84583]  INFO -- : [9cc8bc03-5067-4f5d-89d3-ad785993030c]   Parameters: {"session_id"=>"undefined"}
+I, [2020-06-08T16:30:33.860150 #84583]  INFO -- : [9cc8bc03-5067-4f5d-89d3-ad785993030c] Completed 500 Internal Server Error in 3ms (Allocations: 343)
+F, [2020-06-08T16:30:33.860678 #84583] FATAL -- : [9cc8bc03-5067-4f5d-89d3-ad785993030c]   
+[9cc8bc03-5067-4f5d-89d3-ad785993030c] PG::ConnectionBad (could not translate host name "db" to address: nodename nor servname provided, or not known
+):
+[9cc8bc03-5067-4f5d-89d3-ad785993030c]   
+[9cc8bc03-5067-4f5d-89d3-ad785993030c] app/controllers/api/items_controller.rb:48:in `set_session'
