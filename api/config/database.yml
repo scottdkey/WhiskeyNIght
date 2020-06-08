@@ -3,7 +3,7 @@ default: &default
   encoding: unicode
   host: db
   username: postgres
-  password: postgres
+  password: -X3c*E@!zUjPiBcAcXRNV2g
   pool: 5
 
 # everything below inherits  from default 
