@@ -24,11 +24,11 @@ This app was created with Rails and Create React App as well as SASS to be respo
  
 
  
-# To run this in production Mode:
+# To Deploy to Web/ Run Locally in Production Mode:
  1. go to top level .env_example, copy and rename to .env
  2. Enter in your own passwords for a production environment. Just leaving these as default will allow the server to run as a demo.
- 3. Enter the ./api/.env and copy your username and password from the top level .env
- 4. From the top level folder console run "yarn deploy" 
+ 3. Enter the ./api/.env-example and copy your username and password from the top level .env. Make sure to rename or copy this file so that it is a standard .env
+ 4. From the top level folder console run "yarn deploy". This will run docker-compose and make this site available at 'localhost' or from your cloud deploy IP address. 
   - If you run into errors within this process run each service to trouble shoot errors. you can run each service with:
     - "docker-compose up db"
     - "docker-compose up api"

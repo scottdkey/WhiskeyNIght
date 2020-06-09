@@ -24,7 +24,7 @@ services:
       - .env
     ports:
       - ${API_SERVER_PORT}:${API_SERVER_PORT}
-    image: scottkey/whiskeynightapi:1.0.0
+    image: scottdkey/whiskeynightapi:1.0.0
     command: bash -c "rm -f tmp/pids/server.pid && rails db:create && rails db:migrate && bundle exec rails s -p ${API_SERVER_PORT} -e ${RAILS_ENV}"
     volumes:
       - .:/whiskeynight
@@ -40,7 +40,7 @@ services:
       - .env
     ports: 
       - ${WEB_APP_PORT}:${WEB_APP_ORIGIN}
-    image: scottkey/whiskeynightweb:1.0.0
+    image: scottdkey/whiskeynightweb:1.0.0
     volumes:
       - .:/whiskeynight
     links:
