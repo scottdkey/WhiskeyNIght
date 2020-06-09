@@ -21,19 +21,19 @@ This app was created with Rails and Create React App as well as SASS to be respo
  2. Make sure Postgres(^12.0) is Running locally and on port 5432(default)
  3. If you would like your static files to be served by rails in development run 'yarn build', this will build the required files and copy them to the rails public folder.
  4. run "yarn start" - this will start both the Rails development server(localhost:3000) and the React frontend development(localhost:3001) server.
+ 5. shutdown service by either quitting your terminal or hitting "control+c" form the running window.
  
 
  
 # To Deploy to Web/ Run Locally in Production Mode:
  1. go to top level .env_example, copy and rename to .env
  2. Enter in your own passwords for a production environment. Just leaving these as default will allow the server to run as a demo.
- 3. Enter the ./api/.env-example and copy your username and password from the top level .env. Make sure to rename or copy this file so that it is a standard .env
- 4. From the top level folder console run "yarn deploy". This will run docker-compose and make this site available at 'localhost' or from your cloud deploy IP address. 
+ 3. From the top level folder console run "yarn deploy". This will run docker-compose and make this site available at 'localhost' or from your cloud deploy IP address. 
   - If you run into errors within this process run each service to trouble shoot errors. you can run each service with:
     - "docker-compose up db"
     - "docker-compose up api"
     - "docker-compose up web"
- 5. to Shutdown service run "docker-compose down" from another terminal window or hit "control+c" from the running terminal window
+ 4. to Shutdown service run "docker-compose down" from another terminal window or hit "control+c" from the running terminal window
  
  
 ## Running on [Heroku](https://whiskey-night2020.herokuapp.com/) with the Static Site files being served by rails.

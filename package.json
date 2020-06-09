@@ -10,18 +10,18 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"react": "cd web && yarn start",
-		"rails": "cd api && bundle && rails s",
+		"rails": "cd api && rails s",
 		"deploy-rails": "cp -a web/build/. api/public",
 		"build-react": "cd web && yarn build && echo 'Static Assets Built'",
-		"build": "run-s build-react deploy-rails",
 		"deploy-build": "docker-compose build && echo 'Docker Containers Built'",
-		"deploy": "yarn deploy-build && docker-compose up",
-		"start": "run-p rails react",
 		"bundle-gems": "cd api && bundle",
 		"node-install": "cd web && yarn install",
 		"top-level": "yarn install",
-		"dev-install": "run-s -sn top-level bundle-gems node-install",
-		"heroku-postbuild": "npm run build && npm run deploy && echo 'Client Built'"
+		
+		"build": "run-s build-react deploy-rails",
+		"deploy": "yarn deploy-build && docker-compose up",
+		"start": "run-p rails react",
+		"dev-install": "run-s -sn top-level bundle-gems node-install"
 	},
 	"keywords": [],
 	"author": "Scott Key",
