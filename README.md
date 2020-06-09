@@ -17,9 +17,10 @@ This app was created with Rails and Create React App as well as SASS to be respo
 
 # To run this in Dev Mode:
  
- 1. go to top level directory and run "yarn install"
- 2. Make sure Postgres(^12.0) is Running
- 3. run "yarn start" - this will start both the rails development server and the React frontend development server.
+ 1. go to top level directory and run "yarn dev-install"
+ 2. Make sure Postgres(^12.0) is Running locally and on port 5432(default)
+ 3. If you would like your static files to be served by rails in development run 'yarn build', this will build the required files and copy them to the rails public folder.
+ 4. run "yarn start" - this will start both the Rails development server(localhost:3000) and the React frontend development(localhost:3001) server.
  
 
  
@@ -27,17 +28,19 @@ This app was created with Rails and Create React App as well as SASS to be respo
  1. go to top level .env_example, copy and rename to .env
  2. Enter in your own passwords for a production environment. Just leaving these as default will allow the server to run as a demo.
  3. Enter the ./api/.env and copy your username and password from the top level .env
- 4. From the top level folder console run "docker-compose up --build" 
+ 4. From the top level folder console run "yarn deploy" 
   - If you run into errors within this process run each service to trouble shoot errors. you can run each service with:
     - "docker-compose up db"
     - "docker-compose up api"
-    _ "docker-compose up web"
- 5) to Shutdown service run "docker-compose down" or hit "control+c" from the running terminal window
+    - "docker-compose up web"
+ 5. to Shutdown service run "docker-compose down" from another terminal window or hit "control+c" from the running terminal window
  
  
 ## Running on [Heroku](https://whiskey-night2020.herokuapp.com/) with the Static Site files being served by rails.
+### Note the slower load times
 
 ## Running from docker-compose on [Google Cloud Compute](whiskeynight.site)
+### This build is running entirely in Docker with nginx serving static site files.
 
 
 # MAJOR GOALS OF THE PROJECT
@@ -48,7 +51,7 @@ I wanted to get to know the process of building and fully deploying a site using
 
 # Next Steps
 - [] Convert the back end to an express or koa
-- [] Add ssl certificates and full https support through Nginx
+- [] Add ssl certificates and full https support through nginx
 
 ## THANK YOU
 To Tyler Hansen

@@ -17,6 +17,7 @@ services:
       interval: 30s
       timeout: 30s
       retries: 5
+    restart: on-failure
   api:
     build: ./api
     env_file: 
@@ -31,6 +32,7 @@ services:
       - db
     links:
       - "db:database"
+    restart: unless-stopped
 
   web:
     build: ./web
@@ -45,4 +47,5 @@ services:
       - api
     depends_on:
       - api
+    restart: always
 
