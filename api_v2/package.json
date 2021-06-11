@@ -1,0 +1,47 @@
+{
+  "name": "api_v2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node dist/index.js",
+    "watch:ts": "tsc -w",
+    "build:ts": "tsc",
+    "watch:js": "nodemon dist/index.js",
+    "dev": "run-p watch:*",
+    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts' --exit"
+  },
+  "dependencies": {
+    "@mikro-orm/core": "^4.5.5",
+    "@mikro-orm/mongodb": "^4.5.5",
+    "apollo-server-koa": "^2.25.0",
+    "class-validator": "^0.13.1",
+    "dotenv": "^10.0.0",
+    "graphql": "^15.5.0",
+    "koa": "^2.13.1",
+    "koa-body": "^4.2.0",
+    "koa-router": "^10.0.0",
+    "koa-session": "^6.2.0",
+    "mikro-orm": "^4.5.5",
+    "nodemon": "^2.0.7",
+    "npm-run-all": "^4.1.5",
+    "pg": "^8.6.0",
+    "reflect-metadata": "^0.1.13",
+    "type-graphql": "^1.1.1",
+    "typeorm": "^0.2.34",
+    "typescript": "^4.3.2"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.18",
+    "@types/koa": "^2.13.3",
+    "@types/koa-router": "^7.4.2",
+    "@types/koa-session": "^5.10.3",
+    "@types/mocha": "^8.2.2",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "chai": "^4.3.4",
+    "eslint": "^7.28.0",
+    "mocha": "^9.0.0",
+    "ts-node": "^10.0.0"
+  }
+}
