@@ -17,7 +17,6 @@
 		"bundle-gems": "cd api && bundle",
 		"node-install": "cd web && yarn install",
 		"top-level": "yarn install",
-		
 		"build": "run-s build-react deploy-rails",
 		"deploy": "yarn deploy-build && docker-compose up",
 		"start": "run-p rails react",
@@ -27,6 +26,27 @@
 	"author": "Scott Key",
 	"license": "ISC",
 	"dependencies": {
-		"npm-run-all": "^4.1.5"
+		"apollo-server-koa": "^2.24.1",
+		"class-validator": "^0.13.1",
+		"connect-redis": "^5.2.0",
+		"dotenv": "^9.0.2",
+		"graphql": "^15.5.0",
+		"ioredis": "^4.27.2",
+		"koa-cors": "^0.0.16",
+		"koa-generic-session": "^2.1.1",
+		"koa-redis": "^4.0.1",
+		"koa-session": "^6.2.0",
+		"mongodb": "^3.6.8",
+		"npm-run-all": "^4.1.5",
+		"reflect-metadata": "^0.1.13",
+		"type-graphql": "^1.1.1",
+		"typeorm": "^0.2.32"
+	},
+	"devDependencies": {
+		"@types/connect-redis": "^0.0.16",
+		"@types/ioredis": "^4.26.4",
+		"@types/koa-generic-session": "^1.0.5",
+		"@types/koa-redis": "^4.0.0",
+		"@types/koa-session": "^5.10.3"
 	}
 }
