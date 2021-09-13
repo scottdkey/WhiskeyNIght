@@ -5,8 +5,8 @@ import session from 'koa-session'
 import { createConnection } from "typeorm";
 import RedisStore from "koa-redis"
 import 'reflect-metadata'
-import { buildSchema } from "type-graphql"
-import { ApolloServer } from "apollo-server-koa"
+// import { buildSchema } from "type-graphql"
+// import { ApolloServer } from "apollo-server-koa"
 config()
 
 
@@ -32,14 +32,14 @@ const main = async () => {
     maxAge: 1000 * 60 * 60 * 24 * 7, //sessions last a week
   }, app))
 
-  const apolloServer = new ApolloServer({
-    schema: await buildSchema({
-      resolvers: [],
-      validate: false
+  // const apolloServer = new ApolloServer({
+  //   schema: await buildSchema({
+  //     resolvers: [],
+  //     validate: false
 
-    }),
-    context: ({ ctx }) => ({ ctx, redis })
-  })
+  //   }),
+  //   context: ({ ctx }) => ({ ctx, redis })
+  // })
 
   app.use(indexRouter.routes())
 
